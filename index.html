@@ -320,6 +320,10 @@
     #field { opacity: .55; }
   }
   @media (max-width: 480px) {
+    .nav__inner { gap: 12px; }
+    .logo { gap: 8px; }
+    .logo img { height: 36px; }
+    .wordmark { font-size: 14px; letter-spacing: 0; }
     .display { letter-spacing: -0.035em; }
   }
 
@@ -370,7 +374,7 @@
 
 <main>
   <!-- Hero: the call to adventure -->
-  <section class="chapter hero" id="inicio" data-shape="brain" data-side="right">
+  <section class="chapter hero" id="inicio" data-shape="tikal" data-side="right">
     <div class="chapter__inner">
       <div class="chapter__text">
         <span class="label">Para empresas que quieren crecer con tecnología</span>
@@ -405,7 +409,7 @@
   </section>
 
   <!-- Chapter 2: meeting the guide -->
-  <section class="chapter" id="guia" data-shape="ring" data-side="right">
+  <section class="chapter" id="guia" data-shape="calendar" data-side="right">
     <div class="chapter__inner">
       <div class="chapter__text">
         <span class="label">Capítulo dos: el guía</span>
@@ -421,7 +425,7 @@
   </section>
 
   <!-- Chapter 3: the tools for the road -->
-  <section class="chapter" id="servicios" data-shape="grid" data-side="left">
+  <section class="chapter" id="servicios" data-shape="numerals" data-side="left">
     <div class="chapter__inner">
       <div class="chapter__text">
         <span class="label">Capítulo tres: lo que puedo hacer por ti</span>
@@ -518,7 +522,7 @@
   </section>
 
   <!-- Chapter 5: the return with the elixir -->
-  <section class="chapter" id="resultado" data-shape="sphere" data-side="left">
+  <section class="chapter" id="resultado" data-shape="greca" data-side="left">
     <div class="chapter__inner">
       <div class="chapter__text">
         <span class="label">Capítulo cinco: la transformación</span>
@@ -538,7 +542,7 @@
   </section>
 
   <!-- Objections: what stops people from writing -->
-  <section class="chapter" id="preguntas" data-shape="ring" data-side="right">
+  <section class="chapter" id="preguntas" data-shape="kin" data-side="right">
     <div class="chapter__inner">
       <div class="chapter__text">
         <span class="label">Antes de escribirme</span>
@@ -574,7 +578,7 @@
   </section>
 
   <!-- Finale: the call -->
-  <section class="chapter finale" id="contacto" data-shape="core" data-side="center">
+  <section class="chapter finale" id="contacto" data-shape="nahuales" data-side="center">
     <div class="chapter__inner">
       <div class="chapter__text">
         <span class="label">Tu siguiente capítulo</span>
@@ -855,51 +859,132 @@ const EN = {
   const canvas = document.getElementById('field');
   const ctx = canvas.getContext('2d');
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const COLORS = ['#8052ff', '#8052ff', '#a68bff', '#ffb829', '#ffb829', '#15846e', '#1fb596', '#e05bd0', '#4f7cff', '#ffffff'];
+  // Dark green palette: mostly deep jungle tones, a few lighter jade sparks so the figures still read on black.
+  const COLORS = ['#0e5a45', '#0f6b4f', '#15846e', '#15846e', '#1b7a4c', '#237a4b', '#2e8b57', '#2e8b57', '#3a9d6a', '#1fb596'];
 
   let W = 0, H = 0, DPR = 1, mobile = false;
   let particles = [];
-  let shape = 'brain', side = 'right';
+  let shape = 'tikal', side = 'right';
   let angle = 0, mouseX = 0, mouseY = 0;
 
   const rand = (a, b) => a + Math.random() * (b - a);
   const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
 
+  /* ---- Figure builder: Mayan figures are drawn as lines, outlines and filled areas,
+     then particles are sampled along them. Coordinates: x right, y down, roughly -1..1. ---- */
+  function figure(draw, fillShare) {
+    const segs = [], fills = [];
+    const g = {
+      line(x1, y1, x2, y2) { segs.push([x1, y1, x2, y2, Math.hypot(x2 - x1, y2 - y1)]); },
+      poly(pts, closed) {
+        for (let i = 1; i < pts.length; i++) g.line(pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]);
+        if (closed) g.line(pts[pts.length - 1][0], pts[pts.length - 1][1], pts[0][0], pts[0][1]);
+      },
+      rect(x0, y0, x1, y1) { g.poly([[x0, y0], [x1, y0], [x1, y1], [x0, y1]], true); },
+      circle(cx, cy, r, n = 48) {
+        const pts = [];
+        for (let i = 0; i < n; i++) pts.push([cx + Math.cos(i / n * Math.PI * 2) * r, cy + Math.sin(i / n * Math.PI * 2) * r]);
+        g.poly(pts, true);
+      },
+      fillRect(x0, y0, x1, y1) { fills.push({ r: [x0, y0, x1, y1], a: (x1 - x0) * (y1 - y0) }); },
+      fillDisc(cx, cy, r) { fills.push({ d: [cx, cy, r], a: Math.PI * r * r }); }
+    };
+    draw(g);
+    const segTotal = segs.reduce((s, x) => s + x[4], 0);
+    const fillTotal = fills.reduce((s, x) => s + x.a, 0);
+    const pick = (list, total, key) => {
+      let r = Math.random() * total;
+      for (const it of list) { r -= key(it); if (r <= 0) return it; }
+      return list[list.length - 1];
+    };
+    return () => {
+      let x, y;
+      if (fills.length && Math.random() < fillShare) {
+        const f = pick(fills, fillTotal, it => it.a);
+        if (f.r) { x = rand(f.r[0], f.r[2]); y = rand(f.r[1], f.r[3]); }
+        else { const a = Math.random() * Math.PI * 2, r = f.d[2] * Math.sqrt(Math.random()); x = f.d[0] + Math.cos(a) * r; y = f.d[1] + Math.sin(a) * r; }
+      } else {
+        const s = pick(segs, segTotal, it => it[4]), t = Math.random();
+        x = s[0] + (s[2] - s[0]) * t + gauss() * .012;
+        y = s[1] + (s[3] - s[1]) * t + gauss() * .012;
+      }
+      return [x, y, gauss() * .07];
+    };
+  }
+
+  // Temple I of Tikal: nine stepped tiers, central stairway, temple and roof comb.
+  const tikal = figure(g => {
+    const th = .15, oy = .08;
+    let top = 1;
+    for (let i = 0; i < 8; i++) {
+      const yb = 1 - i * th + oy, yt = yb - th, wb = .95 - i * .075, wt = wb - .035;
+      g.poly([[-wb, yb], [-wt, yt], [wt, yt], [wb, yb]]);
+      g.fillRect(-wt, yt + .03, wt, yb - .03);
+      top = yt;
+    }
+    g.line(-.13, 1 + oy, -.13, top); g.line(.13, 1 + oy, .13, top);
+    for (let y = 1 + oy; y > top; y -= .06) g.line(-.13, y, .13, y);
+    g.rect(-.3, top - .26, .3, top);
+    g.rect(-.08, top - .16, .08, top);
+    g.poly([[-.22, top - .26], [-.17, top - .62], [.17, top - .62], [.22, top - .26]]);
+    g.line(-.15, top - .38, .15, top - .38);
+    g.line(-.14, top - .5, .14, top - .5);
+  }, .18);
+
+  // Tzolk'in wheel: 20 day signs on the outer ring, 13 numbers inside, the four directions at the centre.
+  const calendar = figure(g => {
+    g.circle(0, 0, 1, 72); g.circle(0, 0, .84, 64); g.circle(0, 0, .5, 48); g.circle(0, 0, .2, 28);
+    for (let i = 0; i < 20; i++) {
+      const a = i / 20 * Math.PI * 2;
+      g.line(Math.cos(a) * .84, Math.sin(a) * .84, Math.cos(a), Math.sin(a));
+    }
+    for (let i = 0; i < 13; i++) {
+      const a = i / 13 * Math.PI * 2 - Math.PI / 2;
+      g.fillDisc(Math.cos(a) * .67, Math.sin(a) * .67, .045);
+    }
+    for (let i = 0; i < 4; i++) {
+      const a = Math.PI / 4 + i * Math.PI / 2;
+      g.line(Math.cos(a) * .2, Math.sin(a) * .2, Math.cos(a) * .5, Math.sin(a) * .5);
+    }
+  }, .3);
+
+  // Mayan numerals 8, 13 and 19 (bars are five, dots are one), each in its glyph block.
+  const numerals = figure(g => {
+    const numeral = (cx, bars, dots) => {
+      const bw = .22, bh = .075, gap = .06;
+      let y = .28;
+      for (let b = 0; b < bars; b++) { g.fillRect(cx - bw, y - bh, cx + bw, y); y -= bh + gap; }
+      for (let d = 0; d < dots; d++) g.fillDisc(cx - (dots - 1) * .055 + d * .11, y - .04, .042);
+      g.rect(cx - .3, -.42, cx + .3, .4);
+    };
+    numeral(-.72, 1, 3); numeral(0, 2, 3); numeral(.72, 3, 4);
+  }, .62);
+
+  // Step fret (xicalcoliuhqui): two interlocking square spirals joined by stairs, inside a band.
+  const greca = figure(g => {
+    const s = 1.6, unit = [[0, 0]];
+    let x = 0, y = 0;
+    const dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+    [.1, .1, .2, .2, .3, .3, .4].forEach((L, i) => { x += dirs[i % 4][0] * L; y += dirs[i % 4][1] * L; unit.push([x, y]); });
+    for (let i = 0; i < 4; i++) { x -= .12; unit.push([x, y]); y += .12; unit.push([x, y]); }
+    const a = unit.map(([px, py]) => [(px + .22) * s, (py - .2) * s]);
+    g.poly(a); g.poly(a.map(([px, py]) => [-px, -py]));
+    g.line(-1.05, -.82, 1.05, -.82); g.line(-1.05, .82, 1.05, .82);
+  }, 0);
+
+  // K'in, the sun glyph: cartouche, ring of beads and four-petal flower.
+  const kin = figure(g => {
+    g.circle(0, 0, 1, 72);
+    for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; g.fillDisc(Math.cos(a) * .87, Math.sin(a) * .87, .035); }
+    [[.33, 0], [-.33, 0], [0, .33], [0, -.33]].forEach(([cx, cy]) => g.circle(cx, cy, .27, 36));
+    g.fillDisc(0, 0, .12);
+  }, .28);
+
   // Each generator returns a point in a unit-ish 3D space (roughly -1..1).
   const SHAPES = {
-    brain() {
-      // Two lobes plus a small cerebellum, with a slightly bumpy surface.
-      const lobe = Math.random();
-      let cx = 0, cy = 0, cz = 0, rx = 1, ry = .78, rz = .7;
-      if (lobe < .45) { cx = -.08; cz = -.32; }
-      else if (lobe < .9) { cx = -.08; cz = .32; }
-      else { cx = .55; cy = .55; rx = .35; ry = .25; rz = .4; }
-      const u = Math.random() * Math.PI * 2, v = Math.acos(rand(-1, 1));
-      const r = Math.pow(Math.random(), .35) * (1 + .08 * Math.sin(u * 7) * Math.sin(v * 5));
-      return [cx + rx * r * Math.sin(v) * Math.cos(u), cy + ry * r * Math.cos(v) * .9, cz + rz * r * Math.sin(v) * Math.sin(u)];
-    },
+    tikal, calendar, numerals, greca, kin,
     chaos() {
       return [rand(-2.4, 2.4), rand(-1.6, 1.6), rand(-1, 1)];
-    },
-    ring() {
-      const u = Math.random() * Math.PI * 2, v = Math.random() * Math.PI * 2;
-      const R = .95, r = .14 * Math.sqrt(Math.random());
-      const x = (R + r * Math.cos(v)) * Math.cos(u), y = r * Math.sin(v), z = (R + r * Math.cos(v)) * Math.sin(u);
-      // tilt the ring
-      const t = .5;
-      return [x, y * Math.cos(t) - z * Math.sin(t), y * Math.sin(t) + z * Math.cos(t)];
-    },
-    grid() {
-      // Lattice of nodes: infrastructure.
-      const n = 5, s = 1.7 / (n - 1);
-      const gx = Math.floor(Math.random() * n), gy = Math.floor(Math.random() * n), gz = Math.floor(Math.random() * n);
-      const j = .05;
-      // some particles travel along edges between nodes
-      const along = Math.random() < .45 ? rand(0, s) : 0;
-      const axis = Math.floor(Math.random() * 3);
-      const p = [-.85 + gx * s, -.85 + gy * s, -.85 + gz * s];
-      if (along && p[axis] + along <= .86) p[axis] += along;
-      return [p[0] + gauss() * j, p[1] + gauss() * j, p[2] + gauss() * j];
     },
     helix() {
       // Two intertwined strands climbing upward: a process moving forward.
@@ -908,14 +993,14 @@ const EN = {
       const r = .55 + gauss() * .06;
       return [r * Math.cos(a), 1.2 - t * 2.4, r * Math.sin(a)];
     },
-    sphere() {
-      const u = Math.random() * Math.PI * 2, v = Math.acos(rand(-1, 1));
-      const r = Math.random() < .7 ? .95 + gauss() * .03 : Math.pow(Math.random(), .5) * .9;
-      return [r * Math.sin(v) * Math.cos(u), r * Math.cos(v), r * Math.sin(v) * Math.sin(u)];
-    },
-    core() {
-      // Orbit around the contact block: [angle, radial jitter, unused]. Projected in 2D.
-      return [Math.random() * Math.PI * 2, gauss() * .045, 0];
+    nahuales() {
+      // 20 day-sign cartouches orbiting the contact block: [sign index, local x, local y].
+      const k = Math.floor(Math.random() * 20);
+      if (Math.random() < .75) {
+        const side = Math.floor(Math.random() * 4), t = rand(-1, 1);
+        return [k, ...[[t, -1], [1, t], [t, 1], [-1, t]][side]];
+      }
+      return [k, (Math.random() < .5 ? -.4 : .4) + gauss() * .12, gauss() * .15];
     }
   };
 
@@ -949,7 +1034,7 @@ const EN = {
   }
 
   function retarget(snap) {
-    const gen = SHAPES[shape] || SHAPES.brain;
+    const gen = SHAPES[shape] || SHAPES.tikal;
     particles.forEach(p => {
       const [x, y, z] = gen();
       p.tx = x; p.ty = y; p.tz = z;
@@ -959,7 +1044,7 @@ const EN = {
 
   function center() {
     if (mobile) {
-      return { cx: W * .5, cy: shape === 'brain' ? H * .3 : H * .5, scale: Math.min(W, H) * .36 };
+      return { cx: W * .5, cy: shape === 'tikal' ? H * .3 : H * .5, scale: Math.min(W, H) * .36 };
     }
     const cx = side === 'left' ? W * .27 : side === 'center' ? W * .5 : W * .73;
     const scale = Math.min(W * .22, H * .34);
@@ -971,12 +1056,14 @@ const EN = {
     if (p.ambient && shape !== 'chaos') {
       return { x: p.ax * W, y: p.ay * H, k: .6 };
     }
-    if (shape === 'core') {
-      const a = p.tx + angle * 2, r = 1 + p.ty;
-      const rx = mobile ? W * .47 : Math.min(W * .42, 620), ry = mobile ? H * .44 : H * .4;
-      return { x: cx + Math.cos(a) * r * rx, y: cy + Math.sin(a) * r * ry, k: .9 };
+    if (shape === 'nahuales') {
+      const a = p.tx / 20 * Math.PI * 2 + angle * 2;
+      const rx = mobile ? W * .46 : Math.min(W * .42, 620), ry = mobile ? H * .43 : H * .4;
+      const box = mobile ? 9 : 15;
+      return { x: cx + Math.cos(a) * rx + p.ty * box, y: cy + Math.sin(a) * ry + p.tz * box, k: .9 };
     }
-    const a = shape === 'chaos' ? angle * .15 : angle;
+    // The helix spins fully; flat Mayan figures only sway so they never turn edge-on.
+    const a = shape === 'helix' ? angle : shape === 'chaos' ? angle * .15 : Math.sin(angle * 3) * .35;
     const cos = Math.cos(a), sin = Math.sin(a);
     const x = p.tx * cos - p.tz * sin;
     const z = p.tx * sin + p.tz * cos;
@@ -1018,7 +1105,9 @@ const EN = {
       const dim = shape === 'chaos' ? .5 : 1;
       ctx.globalAlpha = dim * p.alpha * (p.ambient && shape !== 'chaos' ? .35 : Math.min(1, .35 + s.k * .55));
       ctx.strokeStyle = p.color;
-      tri(p.x + wob, p.y - wob, p.size * (p.ambient ? .7 : s.k), p.rot);
+      // Figures with fine detail use slightly smaller particles so their lines stay readable.
+      const fine = shape === 'nahuales' ? .55 : shape === 'helix' || shape === 'chaos' ? 1 : .8;
+      tri(p.x + wob, p.y - wob, p.size * (p.ambient ? .7 : s.k * fine), p.rot);
     }
     ctx.globalAlpha = 1;
     if (!reduce) requestAnimationFrame(frame);
