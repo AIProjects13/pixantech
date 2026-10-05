@@ -59,7 +59,8 @@
 
   /* ---------- Constellation (fixed background) ---------- */
   #field {
-    position: fixed; inset: 0; width: 100%; height: 100%;
+    position: fixed; top: 0; left: 0; width: 100%;
+    height: 100vh; height: 100lvh; /* large viewport: stays put while the phone's address bar collapses */
     z-index: 0; pointer-events: none;
   }
 
@@ -317,7 +318,9 @@
     .progress { display: none; }
     .dock { display: block; }
     .footer__inner { padding-bottom: 110px; }
-    #field { opacity: .55; }
+    #field { opacity: .9; }
+    /* Particles are brighter on phones now, so keep the text readable on top of them. */
+    .chapter__text { text-shadow: 0 0 14px #000, 0 0 4px #000; }
   }
   @media (max-width: 480px) {
     .nav__inner { gap: 12px; }
@@ -858,6 +861,8 @@ const EN = {
 (function constellation() {
   const canvas = document.getElementById('field');
   const ctx = canvas.getContext('2d');
+  // "Calm" mode (reduced-motion setting, often switched on by battery saver on phones): nothing spins or
+  // wobbles on its own, but figures still glide into each other and sway as you scroll. Never fully frozen.
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Dark green palette: mostly deep jungle tones, a few lighter jade sparks so the figures still read on black.
   const COLORS = ['#0e5a45', '#0f6b4f', '#15846e', '#15846e', '#1b7a4c', '#237a4b', '#2e8b57', '#2e8b57', '#3a9d6a', '#1fb596'];
@@ -1006,13 +1011,16 @@ const EN = {
 
   function resize() {
     DPR = Math.min(window.devicePixelRatio || 1, 2);
-    W = window.innerWidth; H = window.innerHeight;
+    // Size from the canvas itself (CSS uses the large viewport), so the phone's collapsing address bar never changes it.
+    const rect = canvas.getBoundingClientRect();
+    W = Math.round(rect.width); H = Math.round(rect.height);
     mobile = W < 900;
     canvas.width = W * DPR; canvas.height = H * DPR;
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     const count = mobile ? 520 : 1100;
     if (particles.length !== count) build(count);
     retarget(true);
+    kick();
   }
 
   function build(count) {
@@ -1038,7 +1046,7 @@ const EN = {
     particles.forEach(p => {
       const [x, y, z] = gen();
       p.tx = x; p.ty = y; p.tz = z;
-      if (snap && reduce) { const s = project(p); p.x = s.x; p.y = s.y; }
+      if (snap) { const s = project(p); p.x = s.x; p.y = s.y; }
     });
   }
 
@@ -1085,21 +1093,29 @@ const EN = {
     ctx.stroke();
   }
 
-  let last = performance.now(), t = 0;
+  let last = performance.now(), t = 0, running = false;
+  // Start the loop if it is idle (calm mode stops it once everything has settled, to save battery).
+  function kick() {
+    if (running) return;
+    running = true; last = performance.now();
+    requestAnimationFrame(frame);
+  }
   function frame(now) {
     const dt = Math.min((now - last) / 16.67, 3);
     last = now; t += dt;
-    if (!reduce) angle += .0016 * dt;
+    if (reduce) angle = window.scrollY * .0006; else angle += .0016 * dt;
     ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 1;
+    // A touch thicker and larger on phones, where 1px lines on a dense screen look faint.
+    ctx.lineWidth = mobile ? 1.4 : 1;
+    const grow = mobile ? 1.35 : 1;
+    let moved = 0;
     for (const p of particles) {
       const s = project(p);
-      if (reduce) { p.x = s.x; p.y = s.y; }
-      else {
-        p.x += (s.x - p.x) * p.ease * dt;
-        p.y += (s.y - p.y) * p.ease * dt;
-        p.rot += p.spin * dt;
-      }
+      const ease = reduce ? p.ease * .7 : p.ease;
+      const dx = (s.x - p.x) * ease * dt, dy = (s.y - p.y) * ease * dt;
+      p.x += dx; p.y += dy;
+      moved = Math.max(moved, Math.abs(dx) + Math.abs(dy));
+      if (!reduce) p.rot += p.spin * dt;
       const wob = reduce ? 0 : Math.sin(t * .02 + p.phase) * 1.2;
       // Chaos spreads behind the text, so it stays dimmer for readability.
       const dim = shape === 'chaos' ? .5 : 1;
@@ -1107,10 +1123,10 @@ const EN = {
       ctx.strokeStyle = p.color;
       // Figures with fine detail use slightly smaller particles so their lines stay readable.
       const fine = shape === 'nahuales' ? .55 : shape === 'helix' || shape === 'chaos' ? 1 : .8;
-      tri(p.x + wob, p.y - wob, p.size * (p.ambient ? .7 : s.k * fine), p.rot);
+      tri(p.x + wob, p.y - wob, grow * p.size * (p.ambient ? .7 : s.k * fine), p.rot);
     }
     ctx.globalAlpha = 1;
-    if (!reduce) requestAnimationFrame(frame);
+    if (!reduce || moved > .05) requestAnimationFrame(frame); else running = false;
   }
 
   // Switch shape when a chapter crosses the middle of the viewport.
@@ -1123,7 +1139,7 @@ const EN = {
       if (next !== shape || nextSide !== side) {
         shape = next; side = nextSide;
         retarget(false);
-        if (reduce) requestAnimationFrame(frame);
+        kick();
       }
     });
   }, { rootMargin: '-45% 0px -45% 0px' });
@@ -1136,10 +1152,18 @@ const EN = {
     }, { passive: true });
   }
 
-  let rt;
-  window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(resize, 120); });
+  // In calm mode the figures sway with the scroll position, so wake the loop when the page moves.
+  window.addEventListener('scroll', kick, { passive: true });
+
+  // Rebuild only when the width changes (rotation, window resize). Height-only resizes are the phone's
+  // address bar showing or hiding while scrolling, and must not reshuffle the particles.
+  let rt, lastW = window.innerWidth;
+  window.addEventListener('resize', () => {
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(rt); rt = setTimeout(resize, 120);
+  });
   resize();
-  requestAnimationFrame(frame);
 })();
 </script>
 </body>
