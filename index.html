@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pixan Tech | Infraestructura, sistemas y sitios web para empresas en Guatemala</title>
-<meta name="description" content="Infraestructura, sistemas a la medida, sitios web y asesoría en procesos digitales para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
+<title>Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala</title>
+<meta name="description" content="Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
 <meta name="theme-color" content="#e5e5e5">
 <meta property="og:title" content="Pixan Tech">
 <meta property="og:description" content="Menos trabajo manual, más control de tu negocio. Cotiza tu proyecto por WhatsApp.">
@@ -178,7 +178,7 @@
 
   /* ---------- Services ---------- */
   .services { padding: var(--section) 0 0; }
-  .services__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .services__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .service { display: flex; flex-direction: column; }
   .service .h3 { margin-bottom: 16px; }
   .service > p { color: var(--slate); }
@@ -304,6 +304,8 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; }
   }
+  .footer__brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+  .footer__brand .footer__logo { width: auto; height: 52px; opacity: 1; }
 </style>
 </head>
 <body>
@@ -350,7 +352,7 @@
       <div>
         <span class="tag mono">Para empresas que quieren crecer con tecnología</span>
         <h1 class="display">Menos trabajo manual. Más control de tu negocio.</h1>
-        <p class="lead">Implemento la infraestructura, los sistemas y los procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.</p>
+        <p class="lead">Creo los sistemas, sitios web y procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.</p>
         <div class="actions">
           <a class="btn btn--lg" data-wa="general" href="#contacto">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
@@ -363,9 +365,9 @@
       <figure class="specimen" style="margin:0">
         <img src="assets/pixan-emblem-black.png" alt="Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente" width="589" height="440">
         <dl>
-          <div><dt>Infraestructura</dt><dd>Redes, servidores, nube y respaldos</dd></div>
           <div><dt>Productos digitales</dt><dd>Sitios web, sistemas y aplicaciones</dd></div>
           <div><dt>Procesos</dt><dd>Diagnóstico, automatización y capacitación</dd></div>
+          <div><dt>Adopción digital</dt><dd>Acompañamiento para que tu equipo use la tecnología</dd></div>
         </dl>
         <figcaption class="mono">Pixan Tech, Guatemala</figcaption>
       </figure>
@@ -429,22 +431,6 @@
       <ul class="services__grid">
         <li class="card service">
           <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-1"/></svg><span class="mono">Servicio 1</span></div>
-          <h3 class="h3">Infraestructura digital</h3>
-          <p>Que tu operación no se detenga. Redes, servidores, nube y respaldos configurados para que todo funcione, esté protegido y crezca contigo.</p>
-          <p class="ideal"><strong>Ideal si</strong> se te cae el internet, temes perder información o tu equipo está creciendo.</p>
-          <ul class="tags">
-            <li>Redes y servidores</li>
-            <li>Nube</li>
-            <li>Respaldos y seguridad</li>
-            <li>Soporte</li>
-          </ul>
-          <a class="cta-link" data-wa="infra" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Cotizar infraestructura
-          </a>
-        </li>
-        <li class="card service">
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Servicio 2</span></div>
           <h3 class="h3">Productos digitales</h3>
           <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
           <p class="ideal"><strong>Ideal si</strong> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.</p>
@@ -460,7 +446,7 @@
           </a>
         </li>
         <li class="card service">
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-3"/></svg><span class="mono">Servicio 3</span></div>
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Servicio 2</span></div>
           <h3 class="h3">Adopción digital y mejora de procesos</h3>
           <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
           <p class="ideal"><strong>Ideal si</strong> ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.</p>
@@ -592,7 +578,7 @@
         <ul class="topics">
           <li><a data-wa="sitio" href="#contacto">Quiero un sitio web</a></li>
           <li><a data-wa="sistema" href="#contacto">Necesito un sistema a la medida</a></li>
-          <li><a data-wa="infra" href="#contacto">Mejorar mi red o servidores</a></li>
+          <li><a data-wa="automatizar" href="#contacto">Automatizar tareas repetitivas</a></li>
           <li><a data-wa="procesos" href="#contacto">Digitalizar mis procesos</a></li>
         </ul>
       </div>
@@ -603,7 +589,7 @@
 
 <footer class="footer on-dark">
   <div class="wrap footer__inner">
-    <img class="footer__logo" src="assets/pixan-logo.png" alt="Pixan Tech, infraestructura y productos digitales" width="597" height="556" loading="lazy">
+    <a class="footer__brand" href="#inicio" aria-label="Pixan Tech"><img class="footer__logo" src="assets/pixan-emblem.png" alt="" width="589" height="440" loading="lazy"><span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span></a>
     <div class="footer__meta">
       <a class="footer__wa" data-wa="general" href="#contacto" aria-label="Escríbeme por WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
@@ -626,17 +612,17 @@ const EXTRA_EN = {
   'Secciones': 'Sections',
   'Preguntas': 'FAQ',
   'Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente': 'Pixan Tech emblem: a Mayan figure riding a rocket with a serpent',
-  'Infraestructura': 'Infrastructure',
-  'Redes, servidores, nube y respaldos': 'Networks, servers, cloud and backups',
   'Sitios web, sistemas y aplicaciones': 'Websites, systems and apps',
   'Procesos': 'Processes',
+  'Adopción digital': 'Digital adoption',
+  'Acompañamiento para que tu equipo use la tecnología': 'Support so your team actually uses the technology',
   'Diagnóstico, automatización y capacitación': 'Assessment, automation and training',
   'Horas copiando datos entre hojas de cálculo.': 'Hours copying data between spreadsheets.',
   'Sistemas que no se hablan entre sí.': "Systems that don't talk to each other.",
   'Procesos que se detienen cuando falta una persona.': 'Processes that stop when one person is out.',
   'Herramientas que pagas y nadie usa.': 'Tools you pay for that nobody uses.',
   'Numerado con numerales mayas: cada punto vale uno.': 'Numbered with Mayan numerals: each dot is worth one.',
-  'Servicio 1': 'Service 1', 'Servicio 2': 'Service 2', 'Servicio 3': 'Service 3',
+  'Servicio 1': 'Service 1', 'Servicio 2': 'Service 2',
   'Paso 1': 'Step 1', 'Paso 2': 'Step 2', 'Paso 3': 'Step 3', 'Paso 4': 'Step 4'
 };
 </script>
@@ -652,7 +638,7 @@ const WHATSAPP = {
       general: 'Hola, vi tu página de Pixan Tech y quiero cotizar un proyecto para mi empresa.',
       caso: 'Hola, quiero contarte cómo trabajamos hoy en mi empresa y ver qué podemos mejorar.',
       precio: 'Hola, ¿me puedes dar un rango de precio? Esto es lo que necesito: ',
-      infra: 'Hola, quiero cotizar infraestructura digital (redes, servidores, nube o respaldos) para mi empresa.',
+      automatizar: 'Hola, quiero automatizar tareas repetitivas en mi empresa. ¿Cuánto costaría?',
       producto: 'Hola, quiero cotizar un producto digital (sitio web, sistema o aplicación) para mi empresa.',
       procesos: 'Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa.',
       sitio: 'Hola, quiero cotizar un sitio web para mi empresa.',
@@ -663,7 +649,7 @@ const WHATSAPP = {
       general: "Hi, I saw the Pixan Tech website and I'd like a quote for a project for my business.",
       caso: "Hi, I'd like to tell you how we work today at my business and see what we can improve.",
       precio: 'Hi, could you give me a price range? This is what I need: ',
-      infra: "Hi, I'd like a quote for digital infrastructure (networks, servers, cloud or backups) for my business.",
+      automatizar: 'Hi, I want to automate repetitive tasks at my business. How much would it cost?',
       producto: "Hi, I'd like a quote for a digital product (website, system or app) for my business.",
       procesos: "Hi, I'm interested in digital adoption and process improvement advisory for my business.",
       sitio: "Hi, I'd like a quote for a website for my business.",
@@ -689,15 +675,14 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const EN = {
   ...EXTRA_EN,
   // Head
-  'Pixan Tech | Infraestructura, sistemas y sitios web para empresas en Guatemala': 'Pixan Tech | Infrastructure, systems and websites for businesses in Guatemala',
-  'Infraestructura, sistemas a la medida, sitios web y asesoría en procesos digitales para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.': 'Infrastructure, custom systems, websites and digital process advisory for businesses in Guatemala. First consultation free: get a quote on WhatsApp.',
+  'Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala': 'Pixan Tech | Systems, websites and digital processes for businesses in Guatemala',
+  'Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.': 'Custom systems, websites and digital adoption and process advisory for businesses in Guatemala. First consultation free: get a quote on WhatsApp.',
   'Menos trabajo manual, más control de tu negocio. Cotiza tu proyecto por WhatsApp.': 'Less manual work, more control of your business. Get a quote on WhatsApp.',
   // Nav and accessibility labels
   'Saltar al contenido': 'Skip to content',
   'Pixan Tech, ir al inicio': 'Pixan Tech, go to top',
   'Idioma': 'Language',
   'Escríbeme por WhatsApp': 'Message me on WhatsApp',
-  'Pixan Tech, infraestructura y productos digitales': 'Pixan Tech, infrastructure and digital products',
   'El camino': 'The journey',
   'Servicios': 'Services',
   'Método': 'Method',
@@ -712,7 +697,7 @@ const EN = {
   // Hero
   'Para empresas que quieren crecer con tecnología': 'For businesses ready to grow with technology',
   'Menos trabajo manual. Más control de tu negocio.': 'Less manual work. More control of your business.',
-  'Implemento la infraestructura, los sistemas y los procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.': 'I implement the infrastructure, systems and digital processes your business needs to sell more and run better. Tell me about your case and I’ll tell you what it would cost.',
+  'Creo los sistemas, sitios web y procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.': 'I build the systems, websites and digital processes your business needs to sell more and run better. Tell me about your case and I’ll tell you what it would cost.',
   'Cotiza tu proyecto por WhatsApp': 'Get a quote on WhatsApp',
   'Ver servicios': 'See services',
   'Primera asesoría sin costo. Te respondo personalmente.': 'First consultation is free. I reply personally.',
@@ -731,15 +716,7 @@ const EN = {
   // Chapter 3
   'Capítulo tres: lo que puedo hacer por ti': 'Chapter three: what I can do for you',
   'Elige por dónde empezar.': 'Choose where to start.',
-  'Infraestructura digital': 'Digital infrastructure',
-  'Que tu operación no se detenga. Redes, servidores, nube y respaldos configurados para que todo funcione, esté protegido y crezca contigo.': 'Keep your operation running. Networks, servers, cloud and backups set up so everything works, stays protected and grows with you.',
   'Ideal si': 'Ideal if',
-  'se te cae el internet, temes perder información o tu equipo está creciendo.': 'your internet keeps going down, you worry about losing data or your team is growing.',
-  'Redes y servidores': 'Networks and servers',
-  'Nube': 'Cloud',
-  'Respaldos y seguridad': 'Backups and security',
-  'Soporte': 'Support',
-  'Cotizar infraestructura': 'Get an infrastructure quote',
   'Productos digitales': 'Digital products',
   'Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.': 'A website that brings you customers and custom systems that organize your operation: inventory, sales, reports or whatever your business needs.',
   'tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.': 'your business lives in spreadsheets or you want to sell and get customers online.',
@@ -798,7 +775,7 @@ const EN = {
   'O toca un tema y el mensaje se escribe solo:': 'Or tap a topic and the message writes itself:',
   'Quiero un sitio web': 'I want a website',
   'Necesito un sistema a la medida': 'I need a custom system',
-  'Mejorar mi red o servidores': 'Improve my network or servers',
+  'Automatizar tareas repetitivas': 'Automate repetitive tasks',
   'Digitalizar mis procesos': 'Digitize my processes'
 };
 
