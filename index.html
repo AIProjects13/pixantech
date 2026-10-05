@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala</title>
 <meta name="description" content="Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
-<meta name="theme-color" content="#e5e5e5">
+<meta name="theme-color" content="#000000">
 <meta property="og:title" content="Pixan Tech">
 <meta property="og:description" content="Menos trabajo manual, más control de tu negocio. Cotiza tu proyecto por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,47 +14,45 @@
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <style>
+  /* The whole page speaks the language of the dark "pain" block: black canvas, graphite cards,
+     condensed uppercase display, mono labels, mint links, tiny yellow sparks. */
   :root {
     --black: #000000;
     --white: #ffffff;
-    --canvas: #e5e5e5;
-    --mist: #f3f3f3;
-    --ash: #c6c6c6;
-    --smoke: #979797;
-    --slate: #444444;
     --graphite: #2f2f2f;
+    --slate: #444444;
+    --smoke: #979797;
+    --ash: #c6c6c6;
     --mint: #d1ffca;
     --volt: #fff100;
 
     --cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
     --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
     --max: 1200px;
     --gutter: clamp(16px, 4vw, 40px);
-    --section: clamp(64px, 8vw, 96px);
+    --section: clamp(72px, 9vw, 112px);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0; background: var(--canvas); color: var(--black);
-    font-family: var(--sans); font-size: 16px; font-weight: 400; line-height: 1.4;
-    letter-spacing: -0.011em;
+    margin: 0; background: var(--black); color: var(--white);
+    font: 400 16px/1.45 var(--sans); letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
   img, svg { display: block; }
   a { color: inherit; }
   p { margin: 0 0 16px; }
   h1, h2, h3 { margin: 0; font-weight: inherit; }
-  :focus-visible { outline: 2px solid var(--black); outline-offset: 3px; border-radius: 4px; }
-  .on-dark :focus-visible { outline-color: var(--volt); }
+  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 4px; }
   ::selection { background: var(--volt); color: var(--black); }
 
-  .skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--black); color: var(--white); padding: 10px 16px; border-radius: 8px; text-decoration: none; }
+  .skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--white); color: var(--black); padding: 10px 16px; border-radius: 8px; text-decoration: none; }
   .skip:focus { top: 16px; }
   .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   /* ---------- Type ---------- */
   .display {
@@ -63,159 +61,148 @@
   }
   .display--md { font-size: clamp(48px, 6.6vw, 80px); }
   .h3 {
-    font-family: var(--sans); font-weight: 500; text-transform: uppercase;
+    font-weight: 500; text-transform: uppercase;
     font-size: clamp(22px, 2.4vw, 28px); line-height: 1.1; letter-spacing: -0.02em;
+    overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto;
   }
-  .h3 { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
-  .lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.33; max-width: 520px; color: var(--slate); }
-  .on-dark .lead { color: var(--smoke); }
+  .lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.35; max-width: 540px; color: var(--smoke); }
   .mono { font-family: var(--mono); font-size: 12px; line-height: 1.6; letter-spacing: -0.03em; }
-  .label { display: block; margin-bottom: 24px; color: var(--slate); }
-  .on-dark .label { color: var(--smoke); }
+  .label { display: block; margin-bottom: 24px; color: var(--smoke); }
 
-  /* ---------- Buttons and links ---------- */
+  /* ---------- Buttons and links (press feedback, exact properties) ---------- */
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    background: var(--black); color: var(--white);
+    background: var(--white); color: var(--black);
     border-radius: 8px; padding: 16px 24px;
-    font: 500 16px/1.2 var(--sans); letter-spacing: -0.01em;
-    text-decoration: none; transition: background-color .15s ease;
+    font: 500 16px/1.2 var(--sans); letter-spacing: -0.01em; text-decoration: none;
+    transition: background-color 150ms ease, transform 160ms var(--ease-out);
   }
-  .btn:hover { background: var(--graphite); }
+  .btn:active { transform: scale(0.97); }
   .btn svg { width: 18px; height: 18px; flex: none; }
-  .btn--light { background: var(--white); color: var(--black); }
-  .btn--light:hover { background: var(--mint); }
   .btn--lg { padding: 20px 28px; font-size: 17px; }
   .ghost {
     display: inline-flex; align-items: center; padding: 14px 16px;
-    border: 1.5px solid var(--slate); border-radius: 4px; color: var(--slate);
+    border: 1.5px solid var(--slate); border-radius: 4px; color: var(--ash);
     font: 500 16px/1.2 var(--sans); text-decoration: none;
-    transition: background-color .15s ease;
+    transition: border-color 150ms ease, color 150ms ease, transform 160ms var(--ease-out);
   }
-  .ghost:hover { background: var(--white); }
-  /* Text link CTA: mint background marks it as a link, per the system */
+  .ghost:active { transform: scale(0.97); }
   .cta-link {
     display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
     background: var(--mint); color: var(--black);
     padding: 8px 14px; border-radius: 64px;
     font: 500 15px/1.2 var(--sans); text-decoration: none;
-    transition: background-color .15s ease;
+    transition: background-color 150ms ease, transform 160ms var(--ease-out);
   }
-  .cta-link:hover { background: var(--volt); }
+  .cta-link:active { transform: scale(0.97); }
   .cta-link svg { width: 16px; height: 16px; flex: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover { background: var(--mint); }
+    .ghost:hover { border-color: var(--ash); color: var(--white); }
+    .cta-link:hover, .topics a:hover, .footer__wa:hover { background: var(--volt); }
+  }
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 40px; }
-  .note { margin: 16px 0 0; color: var(--slate); }
-  .note::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--volt); outline: 1px solid var(--black); margin-right: 8px; transform: translateY(-1px); }
+  .note { margin: 16px 0 0; color: var(--smoke); }
+  .note::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--volt); margin-right: 8px; transform: translateY(-1px); }
 
-  /* ---------- Nav: logo, floating white pill, black CTA ---------- */
-  .nav { position: sticky; top: 0; z-index: 20; background: rgba(229,229,229,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
-  .nav__inner { height: 96px; display: flex; align-items: center; gap: 24px; }
+  /* ---------- Nav ---------- */
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(0,0,0,.86); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color 200ms ease; }
+  .nav.is-scrolled { border-bottom-color: var(--graphite); }
+  .nav__inner { height: 88px; display: flex; align-items: center; gap: 24px; }
   .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo img { height: 44px; width: auto; }
+  .logo img { height: 40px; width: auto; }
   .wordmark { font-family: 'Montserrat', var(--sans); font-size: 17px; letter-spacing: .02em; white-space: nowrap; }
   .wordmark b { font-weight: 700; }
-  .pill {
-    margin: 0 auto; display: flex; align-items: center; gap: 24px;
-    background: var(--white); border-radius: 48px; padding: 10px 12px 10px 28px;
-  }
+  .pill { margin: 0 auto; display: flex; align-items: center; gap: 24px; background: var(--graphite); border-radius: 48px; padding: 8px 8px 8px 24px; }
   .pill ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-  .pill a { color: var(--slate); text-decoration: none; font-weight: 500; }
-  .pill a:hover { color: var(--black); }
-  .lang { display: flex; align-items: center; background: var(--mist); border-radius: 48px; padding: 3px; }
-  .lang button {
-    border: 0; background: none; cursor: pointer; border-radius: 48px;
-    font: 400 12px/1 var(--mono); padding: 8px 10px; color: var(--slate);
-  }
-  .lang button[aria-pressed="true"] { background: var(--black); color: var(--white); }
-  .lang span { display: none; }
-  .nav .btn { transition: background-color .15s ease, opacity .25s ease, visibility .25s; }
+  .pill a { color: var(--ash); text-decoration: none; font-weight: 500; }
+  @media (hover: hover) and (pointer: fine) { .pill a:hover { color: var(--white); } }
+  .lang { display: flex; background: var(--black); border-radius: 48px; padding: 3px; }
+  .lang button { border: 0; background: none; cursor: pointer; border-radius: 48px; font: 400 12px/1 var(--mono); padding: 8px 10px; color: var(--smoke); transition: background-color 150ms ease, color 150ms ease; }
+  .lang button[aria-pressed="true"] { background: var(--white); color: var(--black); }
+  .nav .btn { transition: background-color 150ms ease, transform 160ms var(--ease-out), opacity 200ms ease, visibility 200ms; }
   .nav.cta-hidden .btn { opacity: 0; visibility: hidden; }
 
   /* ---------- Surfaces ---------- */
-  .card { background: var(--white); border-radius: 32px; padding: clamp(24px, 4vw, 48px); }
-  .block { background: var(--black); color: var(--white); border-radius: 64px 64px 0 0; }
-  .block--round { border-radius: 64px; }
-  section { scroll-margin-top: 104px; }
+  .card { background: var(--graphite); border-radius: 32px; padding: clamp(24px, 4vw, 48px); }
+  section { padding: var(--section) 0 0; scroll-margin-top: 96px; }
+  .rule { border-top: 1px solid var(--graphite); }
+
+  /* ---------- Image slots: show the photo when the file exists; otherwise a labelled frame ---------- */
+  .slot { position: relative; margin: 0; overflow: hidden; background: var(--graphite); }
+  .slot img { width: 100%; height: 100%; object-fit: cover; }
+  .slot__hint { display: none; }
+  .slot.is-empty img { display: none; }
+  .slot.is-empty .slot__hint {
+    position: absolute; inset: 12px; display: grid; place-content: center; gap: 6px; text-align: center;
+    border: 1.5px dashed var(--slate); border-radius: inherit; color: var(--smoke);
+  }
+  .slot__hint strong { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ash); letter-spacing: -0.01em; }
+  .slot--portrait { aspect-ratio: 4 / 5; border-radius: 32px; }
+  .slot--shot { aspect-ratio: 16 / 10; border-radius: 20px; margin-bottom: 28px; }
+  .card .slot { background: var(--black); }
+  /* Readable demo label on top of demo screenshots (hidden while the slot is empty) */
+  .slot__demo { position: absolute; left: 12px; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: var(--volt); color: var(--black); }
+  .slot.is-empty .slot__demo { display: none; }
 
   /* ---------- Hero ---------- */
-  .hero { padding: clamp(24px, 4vw, 56px) 0 var(--section); }
+  .hero { padding-top: clamp(24px, 4vw, 56px); }
   .hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: end; }
-  .tag {
-    display: inline-block; background: var(--mint); color: var(--black);
-    border-radius: 64px; padding: 8px 16px; margin-bottom: 24px;
-  }
+  .tag { display: inline-block; background: var(--mint); color: var(--black); border-radius: 64px; padding: 8px 16px; margin-bottom: 24px; }
   .hero .display { margin-bottom: 32px; }
-  /* The hero object: the emblem presented like a product spec sheet in a dome card */
-  .specimen { background: var(--white); border-radius: 64px 64px 24px 24px; padding: 40px 32px 24px; }
-  .specimen img { width: 100%; height: auto; max-width: 420px; margin: 0 auto 24px; }
+  .specimen { margin: 0; background: var(--graphite); border-radius: 64px 64px 24px 24px; padding: 40px 32px 24px; }
+  .specimen img { width: 100%; height: auto; max-width: 400px; margin: 0 auto 24px; }
   .specimen dl { margin: 0; }
-  .specimen div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--ash); }
+  .specimen div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--slate); }
   .specimen dt { font-weight: 500; text-transform: uppercase; font-size: 14px; }
-  .specimen dd { margin: 0; color: var(--slate); }
+  .specimen dd { margin: 0; color: var(--smoke); }
   .specimen figcaption { margin-top: 12px; color: var(--smoke); }
 
-  /* ---------- Pain (inverted) ---------- */
-  .pain { padding: var(--section) 0; }
+  /* ---------- Pain (the reference block) ---------- */
   .pain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; margin-top: 48px; align-items: start; }
   .pains { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .pains li {
-    background: var(--graphite); border-radius: 24px; padding: 24px; min-height: 150px;
-    font-size: 20px; line-height: 1.2; display: flex; align-items: flex-end;
-  }
+  .pains li { background: var(--graphite); border-radius: 24px; padding: 24px; min-height: 150px; font-size: 20px; line-height: 1.2; display: flex; align-items: flex-end; }
 
-  /* ---------- Guide ---------- */
-  .guide { padding: var(--section) 0 0; }
-  .guide .card { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; align-items: start; }
+  /* ---------- Guide: your photo beside the promise ---------- */
+  .guide__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px 64px; align-items: center; }
 
   /* ---------- Section heads ---------- */
   .head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 40px; }
-  .head p { color: var(--slate); max-width: 440px; margin: 0; }
+  .head p { color: var(--smoke); max-width: 440px; margin: 0; }
 
-  /* Mayan numeral markers: a real sequence, counted the Mayan way (each dot is one) */
-  .glyph { width: 56px; height: 56px; }
-  .marker { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; color: var(--black); }
-  .marker .mono { color: var(--slate); }
+  /* Mayan numerals */
+  .glyph { width: 56px; height: 56px; color: var(--mint); }
+  .marker { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .marker .mono { color: var(--smoke); }
 
-  /* ---------- Services ---------- */
-  .services { padding: var(--section) 0 0; }
-  .services__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .service { display: flex; flex-direction: column; }
+  /* ---------- Services: project screenshot on top of each card ---------- */
+  .services__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .service { display: flex; flex-direction: column; padding: 16px 16px clamp(24px, 3vw, 32px); }
+  .service > :not(.slot) { margin-left: clamp(8px, 2vw, 16px); margin-right: clamp(8px, 2vw, 16px); }
   .service .h3 { margin-bottom: 16px; }
-  .service > p { color: var(--slate); }
-  .ideal { margin: 8px 0 0; }
-  .ideal strong {
-    display: inline-block; font-weight: 500; background: var(--mint);
-    border-radius: 64px; padding: 2px 10px; margin-right: 4px;
-  }
-  .tags { list-style: none; padding: 0; margin: 24px 0 32px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags li { background: var(--mist); border-radius: 64px; padding: 6px 12px; font-size: 14px; }
+  .service > p { color: var(--smoke); }
+  .ideal strong { display: inline-block; font-weight: 500; background: var(--mint); color: var(--black); border-radius: 64px; padding: 2px 10px; margin-right: 4px; }
+  .ideal { color: var(--ash) !important; }
+  .tags { list-style: none; padding: 0; margin: 20px 0 28px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { background: var(--black); border-radius: 64px; padding: 6px 12px; font-size: 14px; color: var(--ash); }
   .service .cta-link { margin-top: auto; align-self: flex-start; }
 
   /* ---------- Method ---------- */
-  .method { padding: var(--section) 0 0; }
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .steps .card { padding: 28px; height: 100%; }
   .steps h3 { font-size: 20px; margin-bottom: 12px; }
-  .steps p { color: var(--slate); margin: 0; }
-  .after { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
-  .after .mono { color: var(--slate); }
+  .steps p { color: var(--smoke); margin: 0; }
+  .after { margin-top: 24px; }
 
-  /* ---------- Outcomes (inverted, rounded) ---------- */
-  .outcomes-wrap { padding: var(--section) 0 0; }
-  .outcomes-wrap .block { padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 64px); }
+  /* ---------- Outcomes ---------- */
   .outcomes { list-style: none; margin: 48px 0 40px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
-  .outcomes li {
-    display: grid; grid-template-columns: 16px 1fr; gap: 16px; align-items: baseline;
-    padding: 20px 0; border-top: 1px solid var(--graphite);
-    font-size: clamp(18px, 1.8vw, 22px); line-height: 1.25;
-  }
+  .outcomes li { display: grid; grid-template-columns: 16px 1fr; gap: 16px; align-items: baseline; padding: 20px 0; border-top: 1px solid var(--graphite); font-size: clamp(18px, 1.8vw, 22px); line-height: 1.25; }
   .outcomes li::before { content: ""; width: 10px; height: 10px; background: var(--volt); transform: translateY(-2px); }
 
   /* ---------- FAQ ---------- */
-  .faq { padding: var(--section) 0 0; }
   .faq__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px 64px; align-items: start; }
   .faq .card { padding: 8px clamp(20px, 3vw, 40px); }
-  .faq details { border-top: 1px solid var(--mist); }
+  .faq details { border-top: 1px solid var(--slate); }
   .faq details:first-child { border-top: 0; }
   .faq summary {
     list-style: none; cursor: pointer; padding: 24px 0;
@@ -225,93 +212,80 @@
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after {
     content: ""; width: 28px; height: 28px; border-radius: 50%;
-    background:
-      linear-gradient(var(--black), var(--black)) center / 12px 2px no-repeat,
-      linear-gradient(var(--black), var(--black)) center / 2px 12px no-repeat,
-      var(--mint);
-    transition: transform .2s ease;
+    background: linear-gradient(var(--black), var(--black)) center / 12px 2px no-repeat, linear-gradient(var(--black), var(--black)) center / 2px 12px no-repeat, var(--mint);
+    transition: transform 200ms var(--ease-out);
   }
   .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq details p { color: var(--slate); max-width: 560px; }
+  .faq details p { color: var(--smoke); max-width: 560px; }
   .faq details .cta-link { margin: 0 0 24px; }
   .faq details > p:last-child { margin-bottom: 24px; }
 
-  /* ---------- Finale (inverted dome) ---------- */
-  .finale { padding: var(--section) 0 0; }
-  .finale .block { padding: clamp(56px, 8vw, 104px) clamp(24px, 5vw, 64px) clamp(56px, 7vw, 88px); text-align: center; }
+  /* ---------- Finale ---------- */
+  .finale .card { border-radius: 64px 64px 32px 32px; padding: clamp(56px, 8vw, 104px) clamp(24px, 5vw, 64px) clamp(48px, 6vw, 80px); text-align: center; }
   .finale .display { margin: 0 auto 32px; max-width: 980px; }
   .finale .lead { margin: 0 auto; }
   .finale .actions { justify-content: center; }
   .topics-label { margin: 40px 0 12px; color: var(--smoke); }
   .topics { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-  .topics a {
-    display: inline-block; background: var(--mint); color: var(--black); text-decoration: none;
-    border-radius: 64px; padding: 10px 18px; font-weight: 500; font-size: 15px;
-    transition: background-color .15s ease;
-  }
-  .topics a:hover { background: var(--volt); }
+  .topics a { display: inline-block; background: var(--mint); color: var(--black); text-decoration: none; border-radius: 64px; padding: 10px 18px; font-weight: 500; font-size: 15px; transition: background-color 150ms ease, transform 160ms var(--ease-out); }
+  .topics a:active { transform: scale(0.97); }
 
-  /* ---------- Footer (compact dark band) ---------- */
-  .footer { background: var(--black); color: var(--smoke); }
-  .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 32px; padding-bottom: 40px; border-top: 1px solid var(--graphite); }
-  .footer__logo { width: 150px; height: auto; }
+  /* ---------- Footer ---------- */
+  .footer { margin-top: var(--section); }
+  .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 32px; padding-bottom: 40px; border-top: 1px solid var(--graphite); color: var(--smoke); }
+  .footer__brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
+  .footer__brand img { height: 40px; width: auto; }
   .footer__meta { display: flex; align-items: center; gap: 16px; }
-  .footer__wa {
-    display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-    background: var(--mint); color: var(--black); transition: background-color .15s ease;
-  }
-  .footer__wa:hover { background: var(--volt); }
+  .footer__wa { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--mint); color: var(--black); transition: background-color 150ms ease, transform 160ms var(--ease-out); }
+  .footer__wa:active { transform: scale(0.97); }
   .footer__wa svg { width: 20px; height: 20px; }
 
   /* ---------- Mobile dock ---------- */
-  .dock { position: fixed; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30; display: none; transition: transform .3s ease, opacity .3s ease; }
+  .dock { position: fixed; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30; display: none; transition: transform 250ms var(--ease-out), opacity 250ms ease; }
   .dock .btn { width: 100%; }
-  .dock.is-hidden { transform: translateY(140%); opacity: 0; pointer-events: none; }
+  .dock.is-hidden { transform: translateY(calc(100% + 24px)); opacity: 0; pointer-events: none; transition-duration: 150ms; }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 1024px) {
     .pill ul { display: none; }
     .pill { padding: 6px; margin: 0 0 0 auto; }
-    .steps { grid-template-columns: 1fr 1fr; }
-    .services__grid { grid-template-columns: minmax(0, 1fr); }
+    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 860px) {
     .nav__inner { height: 72px; gap: 12px; }
     .nav .btn { display: none; }
-    .hero__grid, .pain__grid, .guide .card, .head, .faq__grid { grid-template-columns: minmax(0, 1fr); }
-    .outcomes { grid-template-columns: 1fr; }
-    .block { border-radius: 40px 40px 0 0; }
-    .block--round { border-radius: 40px; }
+    .hero__grid, .pain__grid, .guide__grid, .head, .faq__grid { grid-template-columns: minmax(0, 1fr); }
+    .services__grid, .outcomes { grid-template-columns: minmax(0, 1fr); }
+    .guide__grid .slot--portrait { max-width: 420px; }
     .specimen { border-radius: 48px 48px 24px 24px; }
+    .finale .card { border-radius: 40px 40px 24px 24px; }
     .dock { display: block; }
     .footer__inner { padding-bottom: 110px; }
     .btn--lg { width: 100%; }
-    /* Scale display type with the screen so long words like COTIZACIÓN never split */
+    section { scroll-margin-top: 80px; }
+    /* Display type scales with the screen so long words never split */
     .display { font-size: clamp(38px, 15vw, 96px); }
     .display--md { font-size: clamp(34px, 12.5vw, 72px); }
-    .card .display--md { font-size: clamp(30px, 10.5vw, 64px); }
-    section { scroll-margin-top: 80px; }
+    .card .display, .card .display--md { font-size: clamp(30px, 10.5vw, 64px); }
   }
   @media (max-width: 560px) {
     .pains { grid-template-columns: 1fr; }
     .pains li { min-height: 0; }
-    .steps { grid-template-columns: 1fr; }
-    .logo img { height: 36px; }
+    .steps { grid-template-columns: minmax(0, 1fr); }
+    .logo img { height: 34px; }
     .wordmark { font-size: 14px; letter-spacing: 0; }
     .specimen div { grid-template-columns: 1fr; gap: 2px; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after { transition: none !important; }
+    .btn:active, .ghost:active, .cta-link:active, .topics a:active, .footer__wa:active { transform: none; }
+    .dock.is-hidden { transform: none; }
   }
-  .footer__brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
-  .footer__brand .footer__logo { width: auto; height: 52px; opacity: 1; }
 </style>
 </head>
 <body>
 <a class="skip" href="#inicio">Saltar al contenido</a>
 
-<!-- Mayan numerals 1-4: a glyph-block cartouche with one dot per unit -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="wa-icon" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></symbol>
   <symbol id="maya-1" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="28" r="5" fill="currentColor"/></symbol>
@@ -323,7 +297,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav__inner">
     <a class="logo" href="#inicio" aria-label="Pixan Tech, ir al inicio">
-      <img src="assets/pixan-emblem-black.png" alt="" width="59" height="44">
+      <img src="assets/pixan-emblem.png" alt="" width="54" height="40">
       <span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span>
     </a>
     <nav class="pill" aria-label="Secciones">
@@ -334,7 +308,6 @@
       </ul>
       <div class="lang" role="group" aria-label="Idioma">
         <button type="button" data-lang="es" aria-pressed="true" lang="es" title="Español">ES</button>
-        <span aria-hidden="true">/</span>
         <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
       </div>
     </nav>
@@ -362,8 +335,8 @@
         </div>
         <p class="note mono">Primera asesoría sin costo. Te respondo personalmente.</p>
       </div>
-      <figure class="specimen" style="margin:0">
-        <img src="assets/pixan-emblem-black.png" alt="Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente" width="589" height="440">
+      <figure class="specimen">
+        <img src="assets/pixan-emblem.png" alt="Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente" width="589" height="440">
         <dl>
           <div><dt>Productos digitales</dt><dd>Sitios web, sistemas y aplicaciones</dd></div>
           <div><dt>Procesos</dt><dd>Diagnóstico, automatización y capacitación</dd></div>
@@ -374,8 +347,8 @@
     </div>
   </section>
 
-  <!-- Chapter 1: the starting point (inverted dome) -->
-  <section class="pain block on-dark" id="camino">
+  <!-- Chapter 1: the reference block, unchanged in structure -->
+  <section class="pain" id="camino">
     <div class="wrap">
       <span class="label mono">Capítulo uno: el punto de partida</span>
       <h2 class="display display--md">¿Tu empresa todavía funciona así?</h2>
@@ -397,29 +370,28 @@
     </div>
   </section>
 
-  <div class="on-light" style="background:var(--canvas)">
-  <!-- Chapter 2: the guide -->
-  <section class="guide" id="guia">
-    <div class="wrap">
-      <div class="card">
-        <div>
-          <span class="label mono">Capítulo dos: el guía</span>
-          <h2 class="display display--md">No necesitas más herramientas. Necesitas un plan que funcione.</h2>
-        </div>
-        <div>
-          <p class="lead">Analizo cómo opera tu empresa, te digo qué conviene digitalizar primero según tu presupuesto y lo implemento de principio a fin.</p>
-          <p class="lead">Tienes un solo responsable para todo: sin coordinar a cinco proveedores y sin jerga técnica. Recibes propuestas claras, con precio y plazos.</p>
-          <a class="cta-link" data-wa="precio" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Pregúntame cuánto costaría tu proyecto
-          </a>
-        </div>
+  <!-- Chapter 2: the guide, with your photo -->
+  <section id="guia">
+    <div class="wrap guide__grid">
+      <figure class="slot slot--portrait" data-slot>
+        <img src="assets/foto-guia.jpg" alt="Tu guía en Pixan Tech" loading="lazy" width="800" height="1000" onerror="this.parentNode.classList.add('is-empty')">
+        <figcaption class="slot__hint mono"><strong>Tu foto</strong>assets/foto-guia.jpg<br>800 × 1000 px</figcaption>
+      </figure>
+      <div>
+        <span class="label mono">Capítulo dos: el guía</span>
+        <h2 class="display display--md">No necesitas más herramientas. Necesitas un plan que funcione.</h2>
+        <p class="lead" style="margin-top:32px">Analizo cómo opera tu empresa, te digo qué conviene digitalizar primero según tu presupuesto y lo implemento de principio a fin.</p>
+        <p class="lead">Tienes un solo responsable para todo: sin coordinar a cinco proveedores y sin jerga técnica. Recibes propuestas claras, con precio y plazos.</p>
+        <a class="cta-link" data-wa="precio" href="#contacto">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+          Pregúntame cuánto costaría tu proyecto
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Chapter 3: services -->
-  <section class="services" id="servicios">
+  <!-- Chapter 3: services, each topped by a project screenshot -->
+  <section id="servicios">
     <div class="wrap">
       <div class="head">
         <div>
@@ -430,6 +402,11 @@
       </div>
       <ul class="services__grid">
         <li class="card service">
+          <figure class="slot slot--shot" data-slot>
+            <img src="assets/proyecto-1.jpg" alt="Demo de sistema de ventas e inventario, con datos ficticios" loading="lazy" width="1600" height="1000" onerror="this.parentNode.classList.add('is-empty')">
+            <span class="slot__demo mono">Demo con datos ficticios</span>
+            <figcaption class="slot__hint mono"><strong>Captura de proyecto</strong>assets/proyecto-1.jpg<br>1600 × 1000 px</figcaption>
+          </figure>
           <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-1"/></svg><span class="mono">Servicio 1</span></div>
           <h3 class="h3">Productos digitales</h3>
           <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
@@ -446,6 +423,11 @@
           </a>
         </li>
         <li class="card service">
+          <figure class="slot slot--shot" data-slot>
+            <img src="assets/proyecto-2.jpg" alt="Demo de tablero de procesos automatizados, con datos ficticios" loading="lazy" width="1600" height="1000" onerror="this.parentNode.classList.add('is-empty')">
+            <span class="slot__demo mono">Demo con datos ficticios</span>
+            <figcaption class="slot__hint mono"><strong>Captura de proyecto</strong>assets/proyecto-2.jpg<br>1600 × 1000 px</figcaption>
+          </figure>
           <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Servicio 2</span></div>
           <h3 class="h3">Adopción digital y mejora de procesos</h3>
           <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
@@ -466,7 +448,7 @@
   </section>
 
   <!-- Chapter 4: method -->
-  <section class="method" id="metodo">
+  <section id="metodo">
     <div class="wrap">
       <div class="head">
         <div>
@@ -505,23 +487,21 @@
     </div>
   </section>
 
-  <!-- Chapter 5: transformation (inverted, rounded) -->
-  <section class="outcomes-wrap" id="resultado">
+  <!-- Chapter 5: transformation -->
+  <section id="resultado">
     <div class="wrap">
-      <div class="block block--round on-dark">
-        <span class="label mono">Capítulo cinco: la transformación</span>
-        <h2 class="display display--md">Imagina tu empresa dentro de unos meses.</h2>
-        <ul class="outcomes">
-          <li>Toda tu información en un solo lugar, al día y a la mano.</li>
-          <li>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
-          <li>Menos errores y menos dependencia de una sola persona.</li>
-          <li>Decisiones con datos reales, no con suposiciones.</li>
-        </ul>
-        <a class="cta-link" data-wa="general" href="#contacto">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-          Quiero esto para mi empresa
-        </a>
-      </div>
+      <span class="label mono">Capítulo cinco: la transformación</span>
+      <h2 class="display display--md">Imagina tu empresa dentro de unos meses.</h2>
+      <ul class="outcomes">
+        <li>Toda tu información en un solo lugar, al día y a la mano.</li>
+        <li>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
+        <li>Menos errores y menos dependencia de una sola persona.</li>
+        <li>Decisiones con datos reales, no con suposiciones.</li>
+      </ul>
+      <a class="cta-link" data-wa="general" href="#contacto">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+        Quiero esto para mi empresa
+      </a>
     </div>
   </section>
 
@@ -563,13 +543,13 @@
 
   <!-- Finale -->
   <section class="finale" id="contacto">
-    <div class="block on-dark">
-      <div class="wrap">
+    <div class="wrap">
+      <div class="card">
         <span class="label mono">Tu siguiente capítulo</span>
         <h2 class="display">Tu cotización empieza con un mensaje.</h2>
         <p class="lead">Escríbeme por WhatsApp, cuéntame qué necesitas y te digo cómo lo resolvería y cuánto costaría. La primera conversación no tiene costo.</p>
         <div class="actions">
-          <a class="btn btn--light btn--lg" data-wa="general" href="#contacto">
+          <a class="btn btn--lg" data-wa="general" href="#contacto">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
             Pedir mi cotización por WhatsApp
           </a>
@@ -584,12 +564,14 @@
       </div>
     </div>
   </section>
-  </div>
 </main>
 
-<footer class="footer on-dark">
+<footer class="footer">
   <div class="wrap footer__inner">
-    <a class="footer__brand" href="#inicio" aria-label="Pixan Tech"><img class="footer__logo" src="assets/pixan-emblem.png" alt="" width="589" height="440" loading="lazy"><span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span></a>
+    <a class="footer__brand" href="#inicio" aria-label="Pixan Tech">
+      <img src="assets/pixan-emblem.png" alt="" width="54" height="40" loading="lazy">
+      <span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span>
+    </a>
     <div class="footer__meta">
       <a class="footer__wa" data-wa="general" href="#contacto" aria-label="Escríbeme por WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
@@ -607,8 +589,20 @@
 </div>
 
 <script>
+/* Labels for the image slots, merged into the shared EN dictionary below. */
+const SLOT_EN = {
+  'Tu foto': 'Your photo',
+  'Captura de proyecto': 'Project screenshot',
+  'Demo con datos ficticios': 'Demo with fictional data',
+  'Tu guía en Pixan Tech': 'Your guide at Pixan Tech',
+  'Demo de sistema de ventas e inventario, con datos ficticios': 'Sales and inventory system demo with fictional data',
+  'Demo de tablero de procesos automatizados, con datos ficticios': 'Automated processes dashboard demo with fictional data'
+};
+</script>
+<script>
 /* Strings that only exist in this editorial version; merged into the shared EN dictionary below. */
 const EXTRA_EN = {
+  ...SLOT_EN,
   'Secciones': 'Sections',
   'Preguntas': 'FAQ',
   'Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente': 'Pixan Tech emblem: a Mayan figure riding a rocket with a serpent',
