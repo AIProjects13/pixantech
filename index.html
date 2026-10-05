@@ -5,331 +5,301 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Pixan Tech | Infraestructura, sistemas y sitios web para empresas en Guatemala</title>
 <meta name="description" content="Infraestructura, sistemas a la medida, sitios web y asesoría en procesos digitales para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#e5e5e5">
 <meta property="og:title" content="Pixan Tech">
 <meta property="og:description" content="Menos trabajo manual, más control de tu negocio. Cotiza tu proyecto por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <style>
   :root {
-    --void: #000000;
-    --bone: #ffffff;
-    --ash: #9a9a9a;
-    --silver: #bdbdbd;
-    --iris: #8052ff;
-    --iris-hover: #9370ff;
-    --saffron: #ffb829;
-    --verdant: #15846e;
+    --black: #000000;
+    --white: #ffffff;
+    --canvas: #e5e5e5;
+    --mist: #f3f3f3;
+    --ash: #c6c6c6;
+    --smoke: #979797;
+    --slate: #444444;
+    --graphite: #2f2f2f;
+    --mint: #d1ffca;
+    --volt: #fff100;
 
-    --font: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-    --gutter: clamp(16px, 5vw, 60px);
-    --max: 1280px;
-    --radius: 24px;
+    --max: 1200px;
+    --gutter: clamp(16px, 4vw, 40px);
+    --section: clamp(64px, 8vw, 96px);
   }
 
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0;
-    background: var(--void);
-    color: var(--bone);
-    font-family: var(--font);
-    font-feature-settings: "ss01" on, "cv11" on;
-    font-weight: 200;
-    font-size: 18px;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    margin: 0; background: var(--canvas); color: var(--black);
+    font-family: var(--sans); font-size: 16px; font-weight: 400; line-height: 1.4;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
-  img, svg, canvas { display: block; }
+  img, svg { display: block; }
   a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--saffron); outline-offset: 4px; border-radius: 4px; }
-  ::selection { background: var(--iris); color: var(--bone); }
+  p { margin: 0 0 16px; }
+  h1, h2, h3 { margin: 0; font-weight: inherit; }
+  :focus-visible { outline: 2px solid var(--black); outline-offset: 3px; border-radius: 4px; }
+  .on-dark :focus-visible { outline-color: var(--volt); }
+  ::selection { background: var(--volt); color: var(--black); }
 
-  .skip {
-    position: absolute; left: 16px; top: -60px; z-index: 100;
-    background: var(--bone); color: var(--void); padding: 10px 16px; border-radius: var(--radius);
-    font-weight: 600; font-size: 14px; text-decoration: none;
-  }
+  .skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--black); color: var(--white); padding: 10px 16px; border-radius: 8px; text-decoration: none; }
   .skip:focus { top: 16px; }
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  /* ---------- Constellation (fixed background) ---------- */
-  #field {
-    position: fixed; top: 0; left: 0; width: 100%;
-    height: 100vh; height: 100lvh; /* large viewport: stays put while the phone's address bar collapses */
-    z-index: 0; pointer-events: none;
-  }
-
-  /* ---------- Nav ---------- */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 20;
-    transition: background-color .3s ease;
-  }
-  .nav.is-scrolled { background: rgba(0,0,0,.82); }
-  .nav .btn { transition: background-color .2s ease, opacity .3s ease, visibility .3s; }
-  .nav.cta-hidden .btn { opacity: 0; visibility: hidden; }
-  .nav__inner {
-    max-width: var(--max); margin: 0 auto;
-    padding: 18px var(--gutter);
-    display: flex; align-items: center; gap: 36px;
-  }
-  .logo {
-    display: inline-flex; align-items: center; gap: 12px;
-    text-decoration: none;
-  }
-  .logo img { width: auto; height: 44px; }
-  /* Wordmark matches the logo lockup: geometric sans, bold PIXAN + regular TECH */
-  .wordmark {
-    font-family: 'Montserrat', var(--font);
-    font-size: 17px; font-weight: 400; letter-spacing: 0.02em; white-space: nowrap;
-  }
-  .wordmark b { font-weight: 700; }
-  .nav__links { display: flex; gap: 30px; margin-left: auto; list-style: none; padding: 0; margin-top: 0; margin-bottom: 0; }
-  .nav__links a {
-    text-decoration: none; color: var(--ash);
-    font-size: 14px; font-weight: 600; letter-spacing: 0.025em; text-transform: uppercase;
-    transition: color .2s ease;
-  }
-  .nav__links a:hover, .nav__links a[aria-current="true"] { color: var(--bone); }
-
-  /* ---------- Buttons ---------- */
-  .btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--iris); color: var(--bone);
-    border-radius: var(--radius);
-    padding: 14px 20px;
-    font-family: var(--font); font-size: 14px; font-weight: 600;
-    letter-spacing: 0.025em; text-transform: uppercase;
-    text-decoration: none; white-space: nowrap;
-    transition: background-color .2s ease, transform .2s ease;
-  }
-  .btn:hover { background: var(--iris-hover); }
-  .btn:active { transform: scale(.98); }
-  .btn svg { width: 18px; height: 18px; flex: none; }
-  .btn--lg { padding: 18px 26px; font-size: 15px; }
-
-  .ghost {
-    color: var(--ash); text-decoration: none;
-    font-size: 14px; font-weight: 400;
-    border-bottom: 1px solid rgba(154,154,154,.4);
-    padding-bottom: 2px;
-    transition: color .2s ease, border-color .2s ease;
-  }
-  .ghost:hover { color: var(--bone); border-color: var(--bone); }
-
-  /* Language switch: plain text, no fill, so the violet pill stays the only button */
-  .lang { display: flex; align-items: center; gap: 2px; }
-  .lang button {
-    background: none; border: 0; cursor: pointer;
-    font-family: var(--font); font-size: 14px; font-weight: 600; letter-spacing: 0.025em;
-    color: var(--ash); padding: 8px 6px; border-radius: 8px;
-    transition: color .2s ease;
-  }
-  .lang button:hover { color: var(--bone); }
-  .lang button[aria-pressed="true"] { color: var(--bone); }
-  .lang span { color: rgba(154,154,154,.5); font-size: 14px; }
-
-  /* ---------- Chapters ---------- */
-  main { position: relative; z-index: 1; }
-  .chapter {
-    min-height: 100vh; min-height: 100svh;
-    display: flex; align-items: center;
-    padding: 120px 0;
-  }
-  .chapter__inner {
-    width: 100%; max-width: var(--max); margin: 0 auto;
-    padding: 0 var(--gutter);
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-  }
-  .chapter__text { grid-column: 1; max-width: 600px; }
-  .chapter[data-side="left"] .chapter__text { grid-column: 2; }
-  .hero .chapter__inner { grid-template-columns: 1.25fr 1fr; }
-  .hero .chapter__text { max-width: 680px; }
-
-  .label {
-    display: block;
-    color: var(--saffron);
-    font-size: 14px; font-weight: 600; letter-spacing: 0.025em;
-    margin: 0 0 24px;
-  }
-  h1, h2, h3 { font-weight: 400; margin: 0; color: var(--bone); }
+  /* ---------- Type ---------- */
   .display {
-    font-size: clamp(46px, min(7.6vw, 11vh), 113px);
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 36px;
+    font-family: var(--cond); font-weight: 700; text-transform: uppercase;
+    font-size: clamp(56px, 10.4vw, 130px); line-height: .9; letter-spacing: -0.02em;
   }
-  .h2 {
-    font-size: clamp(40px, 6vw, 78px);
-    line-height: 1.02;
-    letter-spacing: -0.04em;
-    margin-bottom: 36px;
-  }
+  .display--md { font-size: clamp(48px, 6.6vw, 80px); }
   .h3 {
-    font-size: clamp(28px, 3.2vw, 42px);
-    line-height: 1.1;
-    letter-spacing: -0.04em;
-    margin-bottom: 12px;
+    font-family: var(--sans); font-weight: 500; text-transform: uppercase;
+    font-size: clamp(22px, 2.4vw, 28px); line-height: 1.1; letter-spacing: -0.02em;
   }
-  p { margin: 0 0 18px; }
-  .lead { font-size: clamp(18px, 1.6vw, 21px); max-width: 520px; }
-  .muted { color: var(--silver); }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 30px; margin-top: 36px; }
+  .h3 { overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; }
+  .lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.33; max-width: 520px; color: var(--slate); }
+  .on-dark .lead { color: var(--smoke); }
+  .mono { font-family: var(--mono); font-size: 12px; line-height: 1.6; letter-spacing: -0.03em; }
+  .label { display: block; margin-bottom: 24px; color: var(--slate); }
+  .on-dark .label { color: var(--smoke); }
 
-  /* Service list */
-  .services { list-style: none; padding: 0; margin: 60px 0 0; display: grid; gap: 60px; }
-  .service p { color: var(--silver); max-width: 520px; }
-  .tags { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags li {
-    font-size: 14px; font-weight: 400; color: var(--bone);
-    border: 1px solid rgba(255,255,255,.18); border-radius: 9999px;
-    padding: 6px 14px;
+  /* ---------- Buttons and links ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--black); color: var(--white);
+    border-radius: 8px; padding: 16px 24px;
+    font: 500 16px/1.2 var(--sans); letter-spacing: -0.01em;
+    text-decoration: none; transition: background-color .15s ease;
   }
-
-  /* Method steps — a real sequence, so numbers carry meaning */
-  .steps { list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 36px; counter-reset: step; }
-  .step { display: grid; grid-template-columns: 56px 1fr; gap: 0 18px; counter-increment: step; }
-  .step::before {
-    content: counter(step, decimal-leading-zero);
-    color: var(--iris); font-size: 14px; font-weight: 600; padding-top: 8px;
+  .btn:hover { background: var(--graphite); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn--light { background: var(--white); color: var(--black); }
+  .btn--light:hover { background: var(--mint); }
+  .btn--lg { padding: 20px 28px; font-size: 17px; }
+  .ghost {
+    display: inline-flex; align-items: center; padding: 14px 16px;
+    border: 1.5px solid var(--slate); border-radius: 4px; color: var(--slate);
+    font: 500 16px/1.2 var(--sans); text-decoration: none;
+    transition: background-color .15s ease;
   }
-  .step h3 { font-size: clamp(24px, 2.4vw, 27px); line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 6px; }
-  .step p { color: var(--silver); margin: 0; }
-
-  /* Outcomes */
-  .outcomes { list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 24px; }
-  .outcomes li {
-    display: grid; grid-template-columns: 18px 1fr; gap: 14px; align-items: baseline;
-    font-size: clamp(20px, 2vw, 24px); line-height: 1.3; letter-spacing: -0.02em; font-weight: 200;
-  }
-  .outcomes li svg { width: 12px; height: 12px; transform: translateY(1px); }
-
-  /* Final CTA */
-  .finale .chapter__inner { grid-template-columns: 1fr; text-align: center; justify-items: center; }
-  .finale .chapter__text { grid-column: 1; max-width: 860px; }
-  .finale .lead { margin-left: auto; margin-right: auto; }
-  .finale .actions { justify-content: center; }
-
-  /* ---------- Conversion elements ---------- */
-  /* Secondary CTA: amber text link, one per chapter, each opens WhatsApp with its own message */
+  .ghost:hover { background: var(--white); }
+  /* Text link CTA: mint background marks it as a link, per the system */
   .cta-link {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 18px;
-    color: var(--saffron); text-decoration: none;
-    font-size: 16px; font-weight: 400;
-    border-bottom: 1px solid rgba(255,184,41,.4); padding-bottom: 3px;
-    transition: border-color .2s ease;
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
+    background: var(--mint); color: var(--black);
+    padding: 8px 14px; border-radius: 64px;
+    font: 500 15px/1.2 var(--sans); text-decoration: none;
+    transition: background-color .15s ease;
   }
-  .cta-link:hover { border-color: var(--saffron); }
+  .cta-link:hover { background: var(--volt); }
   .cta-link svg { width: 16px; height: 16px; flex: none; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 40px; }
+  .note { margin: 16px 0 0; color: var(--slate); }
+  .note::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--volt); outline: 1px solid var(--black); margin-right: 8px; transform: translateY(-1px); }
 
-  .note { margin: 16px 0 0; font-size: 14px; font-weight: 400; color: var(--ash); }
+  /* ---------- Nav: logo, floating white pill, black CTA ---------- */
+  .nav { position: sticky; top: 0; z-index: 20; background: rgba(229,229,229,.92); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+  .nav__inner { height: 96px; display: flex; align-items: center; gap: 24px; }
+  .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo img { height: 44px; width: auto; }
+  .wordmark { font-family: 'Montserrat', var(--sans); font-size: 17px; letter-spacing: .02em; white-space: nowrap; }
+  .wordmark b { font-weight: 700; }
+  .pill {
+    margin: 0 auto; display: flex; align-items: center; gap: 24px;
+    background: var(--white); border-radius: 48px; padding: 10px 12px 10px 28px;
+  }
+  .pill ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
+  .pill a { color: var(--slate); text-decoration: none; font-weight: 500; }
+  .pill a:hover { color: var(--black); }
+  .lang { display: flex; align-items: center; background: var(--mist); border-radius: 48px; padding: 3px; }
+  .lang button {
+    border: 0; background: none; cursor: pointer; border-radius: 48px;
+    font: 400 12px/1 var(--mono); padding: 8px 10px; color: var(--slate);
+  }
+  .lang button[aria-pressed="true"] { background: var(--black); color: var(--white); }
+  .lang span { display: none; }
+  .nav .btn { transition: background-color .15s ease, opacity .25s ease, visibility .25s; }
+  .nav.cta-hidden .btn { opacity: 0; visibility: hidden; }
 
-  .ideal { margin: 12px 0 0; font-size: 16px; color: var(--silver); }
-  .ideal strong { font-weight: 400; color: var(--bone); }
+  /* ---------- Surfaces ---------- */
+  .card { background: var(--white); border-radius: 32px; padding: clamp(24px, 4vw, 48px); }
+  .block { background: var(--black); color: var(--white); border-radius: 64px 64px 0 0; }
+  .block--round { border-radius: 64px; }
+  section { scroll-margin-top: 104px; }
 
-  /* FAQ: no boxes, spacing only */
-  .faq { margin: 48px 0 0; display: grid; gap: 6px; }
-  .faq details { padding: 12px 0; }
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(24px, 4vw, 56px) 0 var(--section); }
+  .hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: end; }
+  .tag {
+    display: inline-block; background: var(--mint); color: var(--black);
+    border-radius: 64px; padding: 8px 16px; margin-bottom: 24px;
+  }
+  .hero .display { margin-bottom: 32px; }
+  /* The hero object: the emblem presented like a product spec sheet in a dome card */
+  .specimen { background: var(--white); border-radius: 64px 64px 24px 24px; padding: 40px 32px 24px; }
+  .specimen img { width: 100%; height: auto; max-width: 420px; margin: 0 auto 24px; }
+  .specimen dl { margin: 0; }
+  .specimen div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--ash); }
+  .specimen dt { font-weight: 500; text-transform: uppercase; font-size: 14px; }
+  .specimen dd { margin: 0; color: var(--slate); }
+  .specimen figcaption { margin-top: 12px; color: var(--smoke); }
+
+  /* ---------- Pain (inverted) ---------- */
+  .pain { padding: var(--section) 0; }
+  .pain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; margin-top: 48px; align-items: start; }
+  .pains { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .pains li {
+    background: var(--graphite); border-radius: 24px; padding: 24px; min-height: 150px;
+    font-size: 20px; line-height: 1.2; display: flex; align-items: flex-end;
+  }
+
+  /* ---------- Guide ---------- */
+  .guide { padding: var(--section) 0 0; }
+  .guide .card { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; align-items: start; }
+
+  /* ---------- Section heads ---------- */
+  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 40px; }
+  .head p { color: var(--slate); max-width: 440px; margin: 0; }
+
+  /* Mayan numeral markers: a real sequence, counted the Mayan way (each dot is one) */
+  .glyph { width: 56px; height: 56px; }
+  .marker { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; color: var(--black); }
+  .marker .mono { color: var(--slate); }
+
+  /* ---------- Services ---------- */
+  .services { padding: var(--section) 0 0; }
+  .services__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .service { display: flex; flex-direction: column; }
+  .service .h3 { margin-bottom: 16px; }
+  .service > p { color: var(--slate); }
+  .ideal { margin: 8px 0 0; }
+  .ideal strong {
+    display: inline-block; font-weight: 500; background: var(--mint);
+    border-radius: 64px; padding: 2px 10px; margin-right: 4px;
+  }
+  .tags { list-style: none; padding: 0; margin: 24px 0 32px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags li { background: var(--mist); border-radius: 64px; padding: 6px 12px; font-size: 14px; }
+  .service .cta-link { margin-top: auto; align-self: flex-start; }
+
+  /* ---------- Method ---------- */
+  .method { padding: var(--section) 0 0; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .steps .card { padding: 28px; height: 100%; }
+  .steps h3 { font-size: 20px; margin-bottom: 12px; }
+  .steps p { color: var(--slate); margin: 0; }
+  .after { margin-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+  .after .mono { color: var(--slate); }
+
+  /* ---------- Outcomes (inverted, rounded) ---------- */
+  .outcomes-wrap { padding: var(--section) 0 0; }
+  .outcomes-wrap .block { padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 64px); }
+  .outcomes { list-style: none; margin: 48px 0 40px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
+  .outcomes li {
+    display: grid; grid-template-columns: 16px 1fr; gap: 16px; align-items: baseline;
+    padding: 20px 0; border-top: 1px solid var(--graphite);
+    font-size: clamp(18px, 1.8vw, 22px); line-height: 1.25;
+  }
+  .outcomes li::before { content: ""; width: 10px; height: 10px; background: var(--volt); transform: translateY(-2px); }
+
+  /* ---------- FAQ ---------- */
+  .faq { padding: var(--section) 0 0; }
+  .faq__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px 64px; align-items: start; }
+  .faq .card { padding: 8px clamp(20px, 3vw, 40px); }
+  .faq details { border-top: 1px solid var(--mist); }
+  .faq details:first-child { border-top: 0; }
   .faq summary {
-    list-style: none; cursor: pointer;
-    display: grid; grid-template-columns: 1fr 24px; gap: 18px; align-items: center;
-    font-size: clamp(22px, 2.2vw, 27px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.25;
+    list-style: none; cursor: pointer; padding: 24px 0;
+    display: grid; grid-template-columns: 1fr 28px; gap: 16px; align-items: center;
+    font-weight: 500; font-size: clamp(18px, 1.8vw, 20px); text-transform: uppercase; letter-spacing: -0.01em;
   }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after {
-    content: ""; width: 14px; height: 14px; justify-self: end;
+    content: ""; width: 28px; height: 28px; border-radius: 50%;
     background:
-      linear-gradient(var(--iris), var(--iris)) center / 14px 2px no-repeat,
-      linear-gradient(var(--iris), var(--iris)) center / 2px 14px no-repeat;
-    transition: transform .25s ease;
+      linear-gradient(var(--black), var(--black)) center / 12px 2px no-repeat,
+      linear-gradient(var(--black), var(--black)) center / 2px 12px no-repeat,
+      var(--mint);
+    transition: transform .2s ease;
   }
   .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq summary:hover { color: var(--silver); }
-  .faq details p { color: var(--silver); margin: 12px 0 0; max-width: 540px; }
-  .faq details .cta-link { margin-top: 12px; }
+  .faq details p { color: var(--slate); max-width: 560px; }
+  .faq details .cta-link { margin: 0 0 24px; }
+  .faq details > p:last-child { margin-bottom: 24px; }
 
-  /* One-tap topics in the finale */
-  .topics-label { margin: 36px 0 12px; font-size: 14px; font-weight: 400; color: var(--ash); }
-  .topics { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  /* ---------- Finale (inverted dome) ---------- */
+  .finale { padding: var(--section) 0 0; }
+  .finale .block { padding: clamp(56px, 8vw, 104px) clamp(24px, 5vw, 64px) clamp(56px, 7vw, 88px); text-align: center; }
+  .finale .display { margin: 0 auto 32px; max-width: 980px; }
+  .finale .lead { margin: 0 auto; }
+  .finale .actions { justify-content: center; }
+  .topics-label { margin: 40px 0 12px; color: var(--smoke); }
+  .topics { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .topics a {
-    display: inline-block; text-decoration: none;
-    font-size: 15px; font-weight: 400; color: var(--bone);
-    border: 1px solid rgba(255,255,255,.25); border-radius: 9999px;
-    padding: 10px 18px;
-    transition: border-color .2s ease, color .2s ease;
+    display: inline-block; background: var(--mint); color: var(--black); text-decoration: none;
+    border-radius: 64px; padding: 10px 18px; font-weight: 500; font-size: 15px;
+    transition: background-color .15s ease;
   }
-  .topics a:hover { border-color: var(--saffron); color: var(--saffron); }
+  .topics a:hover { background: var(--volt); }
 
-  /* Footer */
-  .footer { position: relative; z-index: 1; }
-  .footer__inner {
-    max-width: var(--max); margin: 0 auto; padding: 60px var(--gutter) 48px;
-    display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; align-items: flex-end;
-    color: var(--ash); font-size: 14px; font-weight: 400;
-  }
-  .footer__logo { width: 180px; height: auto; opacity: .9; }
-  .footer__meta { display: flex; align-items: center; gap: 18px; }
+  /* ---------- Footer (compact dark band) ---------- */
+  .footer { background: var(--black); color: var(--smoke); }
+  .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 32px; padding-bottom: 40px; border-top: 1px solid var(--graphite); }
+  .footer__logo { width: 150px; height: auto; }
+  .footer__meta { display: flex; align-items: center; gap: 16px; }
   .footer__wa {
     display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-    color: var(--bone); border: 1px solid rgba(255,255,255,.25);
-    transition: border-color .2s ease, color .2s ease;
+    background: var(--mint); color: var(--black); transition: background-color .15s ease;
   }
-  .footer__wa:hover { border-color: var(--saffron); color: var(--saffron); }
+  .footer__wa:hover { background: var(--volt); }
   .footer__wa svg { width: 20px; height: 20px; }
 
-  /* Mobile sticky WhatsApp bar */
-  .dock {
-    position: fixed; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom));
-    z-index: 30; display: none;
-    transition: transform .35s ease, opacity .35s ease;
-  }
-  .dock .btn { width: 100%; justify-content: center; padding: 16px 20px; white-space: normal; text-align: center; }
+  /* ---------- Mobile dock ---------- */
+  .dock { position: fixed; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30; display: none; transition: transform .3s ease, opacity .3s ease; }
+  .dock .btn { width: 100%; }
   .dock.is-hidden { transform: translateY(140%); opacity: 0; pointer-events: none; }
 
-  /* Journey progress (desktop) */
-  .progress {
-    position: fixed; right: 24px; top: 50%; transform: translateY(-50%);
-    z-index: 15; list-style: none; padding: 0; margin: 0;
-    display: grid; gap: 14px;
-  }
-  .progress a {
-    display: block; width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,.22); transition: background-color .3s ease, transform .3s ease;
-  }
-  .progress a:hover { background: var(--ash); }
-  .progress a[aria-current="true"] { background: var(--iris); transform: scale(1.35); }
-
   /* ---------- Responsive ---------- */
-  @media (max-width: 900px) {
-    .nav__links { display: none; }
+  @media (max-width: 1024px) {
+    .pill ul { display: none; }
+    .pill { padding: 6px; margin: 0 0 0 auto; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .services__grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 860px) {
+    .nav__inner { height: 72px; gap: 12px; }
     .nav .btn { display: none; }
-    .lang { margin-left: auto; }
-    .chapter { min-height: auto; padding: 96px 0; }
-    .chapter.hero { min-height: 100svh; padding-top: 120px; align-items: flex-end; padding-bottom: 120px; }
-    .chapter__inner, .hero .chapter__inner, .finale .chapter__inner { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .display { font-size: clamp(34px, 12.2vw, 72px); }
-    .btn--lg { width: 100%; justify-content: center; white-space: normal; text-align: center; }
-    .chapter__text, .chapter[data-side="left"] .chapter__text { grid-column: 1; }
-    .progress { display: none; }
+    .hero__grid, .pain__grid, .guide .card, .head, .faq__grid { grid-template-columns: minmax(0, 1fr); }
+    .outcomes { grid-template-columns: 1fr; }
+    .block { border-radius: 40px 40px 0 0; }
+    .block--round { border-radius: 40px; }
+    .specimen { border-radius: 48px 48px 24px 24px; }
     .dock { display: block; }
     .footer__inner { padding-bottom: 110px; }
-    #field { opacity: .9; }
-    /* Particles are brighter on phones now, so keep the text readable on top of them. */
-    .chapter__text { text-shadow: 0 0 14px #000, 0 0 4px #000; }
+    .btn--lg { width: 100%; }
+    /* Scale display type with the screen so long words like COTIZACIÓN never split */
+    .display { font-size: clamp(38px, 15vw, 96px); }
+    .display--md { font-size: clamp(34px, 12.5vw, 72px); }
+    .card .display--md { font-size: clamp(30px, 10.5vw, 64px); }
+    section { scroll-margin-top: 80px; }
   }
-  @media (max-width: 480px) {
-    .nav__inner { gap: 12px; }
-    .logo { gap: 8px; }
+  @media (max-width: 560px) {
+    .pains { grid-template-columns: 1fr; }
+    .pains li { min-height: 0; }
+    .steps { grid-template-columns: 1fr; }
     .logo img { height: 36px; }
     .wordmark { font-size: 14px; letter-spacing: 0; }
-    .display { letter-spacing: -0.035em; }
+    .specimen div { grid-template-columns: 1fr; gap: 2px; }
   }
-
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; }
@@ -339,24 +309,33 @@
 <body>
 <a class="skip" href="#inicio">Saltar al contenido</a>
 
-<canvas id="field" aria-hidden="true"></canvas>
+<!-- Mayan numerals 1-4: a glyph-block cartouche with one dot per unit -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa-icon" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></symbol>
+  <symbol id="maya-1" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="28" r="5" fill="currentColor"/></symbol>
+  <symbol id="maya-2" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="28" r="5" fill="currentColor"/><circle cx="35" cy="28" r="5" fill="currentColor"/></symbol>
+  <symbol id="maya-3" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="28" r="5" fill="currentColor"/><circle cx="28" cy="28" r="5" fill="currentColor"/><circle cx="41" cy="28" r="5" fill="currentColor"/></symbol>
+  <symbol id="maya-4" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="28" r="4.5" fill="currentColor"/><circle cx="22.3" cy="28" r="4.5" fill="currentColor"/><circle cx="33.7" cy="28" r="4.5" fill="currentColor"/><circle cx="45" cy="28" r="4.5" fill="currentColor"/></symbol>
+</svg>
 
 <header class="nav" id="nav">
-  <div class="nav__inner">
+  <div class="wrap nav__inner">
     <a class="logo" href="#inicio" aria-label="Pixan Tech, ir al inicio">
-      <img src="assets/pixan-emblem.png" alt="" width="59" height="44">
+      <img src="assets/pixan-emblem-black.png" alt="" width="59" height="44">
       <span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span>
     </a>
-    <ul class="nav__links">
-      <li><a href="#camino" data-nav>El camino</a></li>
-      <li><a href="#servicios" data-nav>Servicios</a></li>
-      <li><a href="#metodo" data-nav>Método</a></li>
-    </ul>
-    <div class="lang" role="group" aria-label="Idioma">
-      <button type="button" data-lang="es" aria-pressed="true" lang="es" title="Español">ES</button>
-      <span aria-hidden="true">/</span>
-      <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
-    </div>
+    <nav class="pill" aria-label="Secciones">
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Idioma">
+        <button type="button" data-lang="es" aria-pressed="true" lang="es" title="Español">ES</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      </div>
+    </nav>
     <a class="btn" data-wa="general" href="#contacto">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
       Cotizar por WhatsApp
@@ -364,25 +343,14 @@
   </div>
 </header>
 
-<ol class="progress" aria-label="Capítulos del recorrido">
-  <li><a href="#inicio" aria-label="Inicio"></a></li>
-  <li><a href="#camino" aria-label="El punto de partida"></a></li>
-  <li><a href="#guia" aria-label="El guía"></a></li>
-  <li><a href="#servicios" aria-label="Servicios"></a></li>
-  <li><a href="#metodo" aria-label="Método"></a></li>
-  <li><a href="#resultado" aria-label="La transformación"></a></li>
-  <li><a href="#preguntas" aria-label="Preguntas frecuentes"></a></li>
-  <li><a href="#contacto" aria-label="Contacto"></a></li>
-</ol>
-
 <main>
-  <!-- Hero: the call to adventure -->
-  <section class="chapter hero" id="inicio" data-shape="tikal" data-side="right">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Para empresas que quieren crecer con tecnología</span>
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero__grid">
+      <div>
+        <span class="tag mono">Para empresas que quieren crecer con tecnología</span>
         <h1 class="display">Menos trabajo manual. Más control de tu negocio.</h1>
-        <p class="lead muted">Implemento la infraestructura, los sistemas y los procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.</p>
+        <p class="lead">Implemento la infraestructura, los sistemas y los procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.</p>
         <div class="actions">
           <a class="btn btn--lg" data-wa="general" href="#contacto">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
@@ -390,132 +358,159 @@
           </a>
           <a class="ghost" href="#servicios">Ver servicios</a>
         </div>
-        <p class="note">Primera asesoría sin costo. Te respondo personalmente.</p>
+        <p class="note mono">Primera asesoría sin costo. Te respondo personalmente.</p>
       </div>
+      <figure class="specimen" style="margin:0">
+        <img src="assets/pixan-emblem-black.png" alt="Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente" width="589" height="440">
+        <dl>
+          <div><dt>Infraestructura</dt><dd>Redes, servidores, nube y respaldos</dd></div>
+          <div><dt>Productos digitales</dt><dd>Sitios web, sistemas y aplicaciones</dd></div>
+          <div><dt>Procesos</dt><dd>Diagnóstico, automatización y capacitación</dd></div>
+        </dl>
+        <figcaption class="mono">Pixan Tech, Guatemala</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- Chapter 1: the ordinary world -->
-  <section class="chapter" id="camino" data-shape="chaos" data-side="left">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Capítulo uno: el punto de partida</span>
-        <h2 class="h2">¿Tu empresa todavía funciona así?</h2>
-        <p class="lead muted">Horas copiando datos entre hojas de cálculo. Sistemas que no se hablan entre sí. Procesos que se detienen cuando falta una persona. Herramientas que pagas y nadie usa.</p>
-        <p class="lead muted">Cada día así te cuesta dinero: en horas perdidas, en errores y en clientes que se van con quien responde más rápido.</p>
-        <a class="cta-link" data-wa="caso" href="#contacto">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-          Cuéntame tu caso por WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 2: meeting the guide -->
-  <section class="chapter" id="guia" data-shape="calendar" data-side="right">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Capítulo dos: el guía</span>
-        <h2 class="h2">No necesitas más herramientas. Necesitas un plan que funcione.</h2>
-        <p class="lead muted">Analizo cómo opera tu empresa, te digo qué conviene digitalizar primero según tu presupuesto y lo implemento de principio a fin.</p>
-        <p class="lead muted">Tienes un solo responsable para todo: sin coordinar a cinco proveedores y sin jerga técnica. Recibes propuestas claras, con precio y plazos.</p>
-        <a class="cta-link" data-wa="precio" href="#contacto">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-          Pregúntame cuánto costaría tu proyecto
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 3: the tools for the road -->
-  <section class="chapter" id="servicios" data-shape="numerals" data-side="left">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Capítulo tres: lo que puedo hacer por ti</span>
-        <h2 class="h2">Elige por dónde empezar.</h2>
-        <ul class="services">
-          <li class="service">
-            <h3 class="h3">Infraestructura digital</h3>
-            <p>Que tu operación no se detenga. Redes, servidores, nube y respaldos configurados para que todo funcione, esté protegido y crezca contigo.</p>
-            <p class="ideal"><strong>Ideal si</strong> se te cae el internet, temes perder información o tu equipo está creciendo.</p>
-            <ul class="tags">
-              <li>Redes y servidores</li>
-              <li>Nube</li>
-              <li>Respaldos y seguridad</li>
-              <li>Soporte</li>
-            </ul>
-            <a class="cta-link" data-wa="infra" href="#contacto">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-              Cotizar infraestructura
-            </a>
-          </li>
-          <li class="service">
-            <h3 class="h3">Productos digitales</h3>
-            <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
-            <p class="ideal"><strong>Ideal si</strong> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.</p>
-            <ul class="tags">
-              <li>Sitios web</li>
-              <li>Sistemas internos</li>
-              <li>Bases de datos</li>
-              <li>Integraciones</li>
-            </ul>
-            <a class="cta-link" data-wa="producto" href="#contacto">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-              Cotizar un sitio o sistema
-            </a>
-          </li>
-          <li class="service">
-            <h3 class="h3">Adopción digital y mejora de procesos</h3>
-            <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
-            <p class="ideal"><strong>Ideal si</strong> ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.</p>
-            <ul class="tags">
-              <li>Diagnóstico</li>
-              <li>Automatización</li>
-              <li>Capacitación</li>
-              <li>Indicadores</li>
-            </ul>
-            <a class="cta-link" data-wa="procesos" href="#contacto">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-              Pedir una asesoría
-            </a>
-          </li>
+  <!-- Chapter 1: the starting point (inverted dome) -->
+  <section class="pain block on-dark" id="camino">
+    <div class="wrap">
+      <span class="label mono">Capítulo uno: el punto de partida</span>
+      <h2 class="display display--md">¿Tu empresa todavía funciona así?</h2>
+      <div class="pain__grid">
+        <ul class="pains">
+          <li>Horas copiando datos entre hojas de cálculo.</li>
+          <li>Sistemas que no se hablan entre sí.</li>
+          <li>Procesos que se detienen cuando falta una persona.</li>
+          <li>Herramientas que pagas y nadie usa.</li>
         </ul>
+        <div>
+          <p class="lead">Cada día así te cuesta dinero: en horas perdidas, en errores y en clientes que se van con quien responde más rápido.</p>
+          <a class="cta-link" data-wa="caso" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+            Cuéntame tu caso por WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Chapter 4: the road of trials -->
-  <section class="chapter" id="metodo" data-shape="helix" data-side="right">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Capítulo cuatro: el recorrido</span>
-        <h2 class="h2">Así empezamos a trabajar.</h2>
-        <ol class="steps">
-          <li class="step">
-            <div>
-              <h3>Me escribes por WhatsApp</h3>
-              <p>Me cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div>
-              <h3>Conversación inicial sin costo</h3>
-              <p>Entiendo qué necesitas y te doy un primer rango de precio.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div>
-              <h3>Propuesta clara</h3>
-              <p>Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.</p>
-            </div>
-          </li>
-          <li class="step">
-            <div>
-              <h3>Implementación y acompañamiento</h3>
-              <p>Trabajo por etapas para que veas avances pronto, capacito a tu equipo y me quedo hasta que todo funcione.</p>
-            </div>
-          </li>
-        </ol>
+  <div class="on-light" style="background:var(--canvas)">
+  <!-- Chapter 2: the guide -->
+  <section class="guide" id="guia">
+    <div class="wrap">
+      <div class="card">
+        <div>
+          <span class="label mono">Capítulo dos: el guía</span>
+          <h2 class="display display--md">No necesitas más herramientas. Necesitas un plan que funcione.</h2>
+        </div>
+        <div>
+          <p class="lead">Analizo cómo opera tu empresa, te digo qué conviene digitalizar primero según tu presupuesto y lo implemento de principio a fin.</p>
+          <p class="lead">Tienes un solo responsable para todo: sin coordinar a cinco proveedores y sin jerga técnica. Recibes propuestas claras, con precio y plazos.</p>
+          <a class="cta-link" data-wa="precio" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+            Pregúntame cuánto costaría tu proyecto
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3: services -->
+  <section class="services" id="servicios">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="label mono">Capítulo tres: lo que puedo hacer por ti</span>
+          <h2 class="display display--md">Elige por dónde empezar.</h2>
+        </div>
+        <p class="mono">Numerado con numerales mayas: cada punto vale uno.</p>
+      </div>
+      <ul class="services__grid">
+        <li class="card service">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-1"/></svg><span class="mono">Servicio 1</span></div>
+          <h3 class="h3">Infraestructura digital</h3>
+          <p>Que tu operación no se detenga. Redes, servidores, nube y respaldos configurados para que todo funcione, esté protegido y crezca contigo.</p>
+          <p class="ideal"><strong>Ideal si</strong> se te cae el internet, temes perder información o tu equipo está creciendo.</p>
+          <ul class="tags">
+            <li>Redes y servidores</li>
+            <li>Nube</li>
+            <li>Respaldos y seguridad</li>
+            <li>Soporte</li>
+          </ul>
+          <a class="cta-link" data-wa="infra" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+            Cotizar infraestructura
+          </a>
+        </li>
+        <li class="card service">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Servicio 2</span></div>
+          <h3 class="h3">Productos digitales</h3>
+          <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
+          <p class="ideal"><strong>Ideal si</strong> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.</p>
+          <ul class="tags">
+            <li>Sitios web</li>
+            <li>Sistemas internos</li>
+            <li>Bases de datos</li>
+            <li>Integraciones</li>
+          </ul>
+          <a class="cta-link" data-wa="producto" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+            Cotizar un sitio o sistema
+          </a>
+        </li>
+        <li class="card service">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-3"/></svg><span class="mono">Servicio 3</span></div>
+          <h3 class="h3">Adopción digital y mejora de procesos</h3>
+          <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
+          <p class="ideal"><strong>Ideal si</strong> ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.</p>
+          <ul class="tags">
+            <li>Diagnóstico</li>
+            <li>Automatización</li>
+            <li>Capacitación</li>
+            <li>Indicadores</li>
+          </ul>
+          <a class="cta-link" data-wa="procesos" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+            Pedir una asesoría
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Chapter 4: method -->
+  <section class="method" id="metodo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="label mono">Capítulo cuatro: el recorrido</span>
+          <h2 class="display display--md">Así empezamos a trabajar.</h2>
+        </div>
+      </div>
+      <ol class="steps">
+        <li><div class="card">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-1"/></svg><span class="mono">Paso 1</span></div>
+          <h3 class="h3">Me escribes por WhatsApp</h3>
+          <p>Me cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.</p>
+        </div></li>
+        <li><div class="card">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Paso 2</span></div>
+          <h3 class="h3">Conversación inicial sin costo</h3>
+          <p>Entiendo qué necesitas y te doy un primer rango de precio.</p>
+        </div></li>
+        <li><div class="card">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-3"/></svg><span class="mono">Paso 3</span></div>
+          <h3 class="h3">Propuesta clara</h3>
+          <p>Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.</p>
+        </div></li>
+        <li><div class="card">
+          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-4"/></svg><span class="mono">Paso 4</span></div>
+          <h3 class="h3">Implementación y acompañamiento</h3>
+          <p>Trabajo por etapas para que veas avances pronto, capacito a tu equipo y me quedo hasta que todo funcione.</p>
+        </div></li>
+      </ol>
+      <div class="after">
         <a class="cta-link" data-wa="paso1" href="#contacto">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
           Dar el primer paso ahora
@@ -524,17 +519,17 @@
     </div>
   </section>
 
-  <!-- Chapter 5: the return with the elixir -->
-  <section class="chapter" id="resultado" data-shape="greca" data-side="left">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Capítulo cinco: la transformación</span>
-        <h2 class="h2">Imagina tu empresa dentro de unos meses.</h2>
+  <!-- Chapter 5: transformation (inverted, rounded) -->
+  <section class="outcomes-wrap" id="resultado">
+    <div class="wrap">
+      <div class="block block--round on-dark">
+        <span class="label mono">Capítulo cinco: la transformación</span>
+        <h2 class="display display--md">Imagina tu empresa dentro de unos meses.</h2>
         <ul class="outcomes">
-          <li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 11 L6 1 L11 11 Z" fill="none" stroke="#ffb829" stroke-width="1.4"/></svg>Toda tu información en un solo lugar, al día y a la mano.</li>
-          <li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 11 L6 1 L11 11 Z" fill="none" stroke="#8052ff" stroke-width="1.4"/></svg>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
-          <li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 11 L6 1 L11 11 Z" fill="none" stroke="#15846e" stroke-width="1.4"/></svg>Menos errores y menos dependencia de una sola persona.</li>
-          <li><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 11 L6 1 L11 11 Z" fill="none" stroke="#ffb829" stroke-width="1.4"/></svg>Decisiones con datos reales, no con suposiciones.</li>
+          <li>Toda tu información en un solo lugar, al día y a la mano.</li>
+          <li>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
+          <li>Menos errores y menos dependencia de una sola persona.</li>
+          <li>Decisiones con datos reales, no con suposiciones.</li>
         </ul>
         <a class="cta-link" data-wa="general" href="#contacto">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
@@ -544,56 +539,56 @@
     </div>
   </section>
 
-  <!-- Objections: what stops people from writing -->
-  <section class="chapter" id="preguntas" data-shape="kin" data-side="right">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Antes de escribirme</span>
-        <h2 class="h2">Lo que todos preguntan.</h2>
-        <div class="faq">
-          <details open>
-            <summary>¿Cuánto cuesta?</summary>
-            <p>Depende de lo que necesites, por eso no vendo paquetes genéricos que terminas pagando de más. Escríbeme con tu caso y en la primera conversación te doy un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.</p>
-            <a class="cta-link" data-wa="precio" href="#contacto">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-              Pedir un rango de precio
-            </a>
-          </details>
-          <details>
-            <summary>¿Mi empresa es muy pequeña para esto?</summary>
-            <p>No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.</p>
-          </details>
-          <details>
-            <summary>¿Cuánto tiempo toma?</summary>
-            <p>Depende del alcance. Trabajo por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indico los plazos de cada una.</p>
-          </details>
-          <details>
-            <summary>Ya tengo sistemas. ¿Tengo que cambiar todo?</summary>
-            <p>No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.</p>
-          </details>
-          <details>
-            <summary>¿Qué pasa después de la entrega?</summary>
-            <p>Capacito a tu equipo y te ofrezco soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.</p>
-          </details>
-        </div>
+  <!-- FAQ -->
+  <section class="faq" id="preguntas">
+    <div class="wrap faq__grid">
+      <div>
+        <span class="label mono">Antes de escribirme</span>
+        <h2 class="display display--md">Lo que todos preguntan.</h2>
+      </div>
+      <div class="card">
+        <details open>
+          <summary>¿Cuánto cuesta?</summary>
+          <p>Depende de lo que necesites, por eso no vendo paquetes genéricos que terminas pagando de más. Escríbeme con tu caso y en la primera conversación te doy un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.</p>
+          <a class="cta-link" data-wa="precio" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
+            Pedir un rango de precio
+          </a>
+        </details>
+        <details>
+          <summary>¿Mi empresa es muy pequeña para esto?</summary>
+          <p>No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto tiempo toma?</summary>
+          <p>Depende del alcance. Trabajo por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indico los plazos de cada una.</p>
+        </details>
+        <details>
+          <summary>Ya tengo sistemas. ¿Tengo que cambiar todo?</summary>
+          <p>No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.</p>
+        </details>
+        <details>
+          <summary>¿Qué pasa después de la entrega?</summary>
+          <p>Capacito a tu equipo y te ofrezco soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- Finale: the call -->
-  <section class="chapter finale" id="contacto" data-shape="nahuales" data-side="center">
-    <div class="chapter__inner">
-      <div class="chapter__text">
-        <span class="label">Tu siguiente capítulo</span>
+  <!-- Finale -->
+  <section class="finale" id="contacto">
+    <div class="block on-dark">
+      <div class="wrap">
+        <span class="label mono">Tu siguiente capítulo</span>
         <h2 class="display">Tu cotización empieza con un mensaje.</h2>
-        <p class="lead muted">Escríbeme por WhatsApp, cuéntame qué necesitas y te digo cómo lo resolvería y cuánto costaría. La primera conversación no tiene costo.</p>
+        <p class="lead">Escríbeme por WhatsApp, cuéntame qué necesitas y te digo cómo lo resolvería y cuánto costaría. La primera conversación no tiene costo.</p>
         <div class="actions">
-          <a class="btn btn--lg" data-wa="general" href="#contacto">
+          <a class="btn btn--light btn--lg" data-wa="general" href="#contacto">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
             Pedir mi cotización por WhatsApp
           </a>
         </div>
-        <p class="topics-label">O toca un tema y el mensaje se escribe solo:</p>
+        <p class="topics-label mono">O toca un tema y el mensaje se escribe solo:</p>
         <ul class="topics">
           <li><a data-wa="sitio" href="#contacto">Quiero un sitio web</a></li>
           <li><a data-wa="sistema" href="#contacto">Necesito un sistema a la medida</a></li>
@@ -603,16 +598,17 @@
       </div>
     </div>
   </section>
+  </div>
 </main>
 
-<footer class="footer">
-  <div class="footer__inner">
+<footer class="footer on-dark">
+  <div class="wrap footer__inner">
     <img class="footer__logo" src="assets/pixan-logo.png" alt="Pixan Tech, infraestructura y productos digitales" width="597" height="556" loading="lazy">
     <div class="footer__meta">
       <a class="footer__wa" data-wa="general" href="#contacto" aria-label="Escríbeme por WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
       </a>
-      <span>© <span id="year">2026</span> Pixan Tech</span>
+      <span class="mono">© <span id="year">2026</span> Pixan Tech</span>
     </div>
   </div>
 </footer>
@@ -624,11 +620,26 @@
   </a>
 </div>
 
-<!-- Shared WhatsApp glyph -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="wa-icon" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></symbol>
-</svg>
-
+<script>
+/* Strings that only exist in this editorial version; merged into the shared EN dictionary below. */
+const EXTRA_EN = {
+  'Secciones': 'Sections',
+  'Preguntas': 'FAQ',
+  'Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente': 'Pixan Tech emblem: a Mayan figure riding a rocket with a serpent',
+  'Infraestructura': 'Infrastructure',
+  'Redes, servidores, nube y respaldos': 'Networks, servers, cloud and backups',
+  'Sitios web, sistemas y aplicaciones': 'Websites, systems and apps',
+  'Procesos': 'Processes',
+  'Diagnóstico, automatización y capacitación': 'Assessment, automation and training',
+  'Horas copiando datos entre hojas de cálculo.': 'Hours copying data between spreadsheets.',
+  'Sistemas que no se hablan entre sí.': "Systems that don't talk to each other.",
+  'Procesos que se detienen cuando falta una persona.': 'Processes that stop when one person is out.',
+  'Herramientas que pagas y nadie usa.': 'Tools you pay for that nobody uses.',
+  'Numerado con numerales mayas: cada punto vale uno.': 'Numbered with Mayan numerals: each dot is worth one.',
+  'Servicio 1': 'Service 1', 'Servicio 2': 'Service 2', 'Servicio 3': 'Service 3',
+  'Paso 1': 'Step 1', 'Paso 2': 'Step 2', 'Paso 3': 'Step 3', 'Paso 4': 'Step 4'
+};
+</script>
 <script>
 /* ===== Contact config: edit here only ===== */
 const WHATSAPP = {
@@ -676,6 +687,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ===== Translation: Spanish is written in the HTML; this maps each Spanish string to English.
    If you edit a Spanish text in the page, update its line here too. ===== */
 const EN = {
+  ...EXTRA_EN,
   // Head
   'Pixan Tech | Infraestructura, sistemas y sitios web para empresas en Guatemala': 'Pixan Tech | Infrastructure, systems and websites for businesses in Guatemala',
   'Infraestructura, sistemas a la medida, sitios web y asesoría en procesos digitales para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.': 'Infrastructure, custom systems, websites and digital process advisory for businesses in Guatemala. First consultation free: get a quote on WhatsApp.',
@@ -857,314 +869,6 @@ const EN = {
   syncDock();
 })();
 
-/* ===== Constellation: one particle field that changes shape per chapter ===== */
-(function constellation() {
-  const canvas = document.getElementById('field');
-  const ctx = canvas.getContext('2d');
-  // "Calm" mode (reduced-motion setting, often switched on by battery saver on phones): nothing spins or
-  // wobbles on its own, but figures still glide into each other and sway as you scroll. Never fully frozen.
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Dark green palette: mostly deep jungle tones, a few lighter jade sparks so the figures still read on black.
-  const COLORS = ['#0e5a45', '#0f6b4f', '#15846e', '#15846e', '#1b7a4c', '#237a4b', '#2e8b57', '#2e8b57', '#3a9d6a', '#1fb596'];
-
-  let W = 0, H = 0, DPR = 1, mobile = false;
-  let particles = [];
-  let shape = 'tikal', side = 'right';
-  let angle = 0, mouseX = 0, mouseY = 0;
-
-  const rand = (a, b) => a + Math.random() * (b - a);
-  const gauss = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
-
-  /* ---- Figure builder: Mayan figures are drawn as lines, outlines and filled areas,
-     then particles are sampled along them. Coordinates: x right, y down, roughly -1..1. ---- */
-  function figure(draw, fillShare) {
-    const segs = [], fills = [];
-    const g = {
-      line(x1, y1, x2, y2) { segs.push([x1, y1, x2, y2, Math.hypot(x2 - x1, y2 - y1)]); },
-      poly(pts, closed) {
-        for (let i = 1; i < pts.length; i++) g.line(pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]);
-        if (closed) g.line(pts[pts.length - 1][0], pts[pts.length - 1][1], pts[0][0], pts[0][1]);
-      },
-      rect(x0, y0, x1, y1) { g.poly([[x0, y0], [x1, y0], [x1, y1], [x0, y1]], true); },
-      circle(cx, cy, r, n = 48) {
-        const pts = [];
-        for (let i = 0; i < n; i++) pts.push([cx + Math.cos(i / n * Math.PI * 2) * r, cy + Math.sin(i / n * Math.PI * 2) * r]);
-        g.poly(pts, true);
-      },
-      fillRect(x0, y0, x1, y1) { fills.push({ r: [x0, y0, x1, y1], a: (x1 - x0) * (y1 - y0) }); },
-      fillDisc(cx, cy, r) { fills.push({ d: [cx, cy, r], a: Math.PI * r * r }); }
-    };
-    draw(g);
-    const segTotal = segs.reduce((s, x) => s + x[4], 0);
-    const fillTotal = fills.reduce((s, x) => s + x.a, 0);
-    const pick = (list, total, key) => {
-      let r = Math.random() * total;
-      for (const it of list) { r -= key(it); if (r <= 0) return it; }
-      return list[list.length - 1];
-    };
-    return () => {
-      let x, y;
-      if (fills.length && Math.random() < fillShare) {
-        const f = pick(fills, fillTotal, it => it.a);
-        if (f.r) { x = rand(f.r[0], f.r[2]); y = rand(f.r[1], f.r[3]); }
-        else { const a = Math.random() * Math.PI * 2, r = f.d[2] * Math.sqrt(Math.random()); x = f.d[0] + Math.cos(a) * r; y = f.d[1] + Math.sin(a) * r; }
-      } else {
-        const s = pick(segs, segTotal, it => it[4]), t = Math.random();
-        x = s[0] + (s[2] - s[0]) * t + gauss() * .012;
-        y = s[1] + (s[3] - s[1]) * t + gauss() * .012;
-      }
-      return [x, y, gauss() * .07];
-    };
-  }
-
-  // Temple I of Tikal: nine stepped tiers, central stairway, temple and roof comb.
-  const tikal = figure(g => {
-    const th = .15, oy = .08;
-    let top = 1;
-    for (let i = 0; i < 8; i++) {
-      const yb = 1 - i * th + oy, yt = yb - th, wb = .95 - i * .075, wt = wb - .035;
-      g.poly([[-wb, yb], [-wt, yt], [wt, yt], [wb, yb]]);
-      g.fillRect(-wt, yt + .03, wt, yb - .03);
-      top = yt;
-    }
-    g.line(-.13, 1 + oy, -.13, top); g.line(.13, 1 + oy, .13, top);
-    for (let y = 1 + oy; y > top; y -= .06) g.line(-.13, y, .13, y);
-    g.rect(-.3, top - .26, .3, top);
-    g.rect(-.08, top - .16, .08, top);
-    g.poly([[-.22, top - .26], [-.17, top - .62], [.17, top - .62], [.22, top - .26]]);
-    g.line(-.15, top - .38, .15, top - .38);
-    g.line(-.14, top - .5, .14, top - .5);
-  }, .18);
-
-  // Tzolk'in wheel: 20 day signs on the outer ring, 13 numbers inside, the four directions at the centre.
-  const calendar = figure(g => {
-    g.circle(0, 0, 1, 72); g.circle(0, 0, .84, 64); g.circle(0, 0, .5, 48); g.circle(0, 0, .2, 28);
-    for (let i = 0; i < 20; i++) {
-      const a = i / 20 * Math.PI * 2;
-      g.line(Math.cos(a) * .84, Math.sin(a) * .84, Math.cos(a), Math.sin(a));
-    }
-    for (let i = 0; i < 13; i++) {
-      const a = i / 13 * Math.PI * 2 - Math.PI / 2;
-      g.fillDisc(Math.cos(a) * .67, Math.sin(a) * .67, .045);
-    }
-    for (let i = 0; i < 4; i++) {
-      const a = Math.PI / 4 + i * Math.PI / 2;
-      g.line(Math.cos(a) * .2, Math.sin(a) * .2, Math.cos(a) * .5, Math.sin(a) * .5);
-    }
-  }, .3);
-
-  // Mayan numerals 8, 13 and 19 (bars are five, dots are one), each in its glyph block.
-  const numerals = figure(g => {
-    const numeral = (cx, bars, dots) => {
-      const bw = .22, bh = .075, gap = .06;
-      let y = .28;
-      for (let b = 0; b < bars; b++) { g.fillRect(cx - bw, y - bh, cx + bw, y); y -= bh + gap; }
-      for (let d = 0; d < dots; d++) g.fillDisc(cx - (dots - 1) * .055 + d * .11, y - .04, .042);
-      g.rect(cx - .3, -.42, cx + .3, .4);
-    };
-    numeral(-.72, 1, 3); numeral(0, 2, 3); numeral(.72, 3, 4);
-  }, .62);
-
-  // Step fret (xicalcoliuhqui): two interlocking square spirals joined by stairs, inside a band.
-  const greca = figure(g => {
-    const s = 1.6, unit = [[0, 0]];
-    let x = 0, y = 0;
-    const dirs = [[1, 0], [0, 1], [-1, 0], [0, -1]];
-    [.1, .1, .2, .2, .3, .3, .4].forEach((L, i) => { x += dirs[i % 4][0] * L; y += dirs[i % 4][1] * L; unit.push([x, y]); });
-    for (let i = 0; i < 4; i++) { x -= .12; unit.push([x, y]); y += .12; unit.push([x, y]); }
-    const a = unit.map(([px, py]) => [(px + .22) * s, (py - .2) * s]);
-    g.poly(a); g.poly(a.map(([px, py]) => [-px, -py]));
-    g.line(-1.05, -.82, 1.05, -.82); g.line(-1.05, .82, 1.05, .82);
-  }, 0);
-
-  // K'in, the sun glyph: cartouche, ring of beads and four-petal flower.
-  const kin = figure(g => {
-    g.circle(0, 0, 1, 72);
-    for (let i = 0; i < 16; i++) { const a = i / 16 * Math.PI * 2; g.fillDisc(Math.cos(a) * .87, Math.sin(a) * .87, .035); }
-    [[.33, 0], [-.33, 0], [0, .33], [0, -.33]].forEach(([cx, cy]) => g.circle(cx, cy, .27, 36));
-    g.fillDisc(0, 0, .12);
-  }, .28);
-
-  // Each generator returns a point in a unit-ish 3D space (roughly -1..1).
-  const SHAPES = {
-    tikal, calendar, numerals, greca, kin,
-    chaos() {
-      return [rand(-2.4, 2.4), rand(-1.6, 1.6), rand(-1, 1)];
-    },
-    helix() {
-      // Two intertwined strands climbing upward: a process moving forward.
-      const t = Math.random();
-      const a = t * Math.PI * 5 + (Math.random() < .5 ? 0 : Math.PI);
-      const r = .55 + gauss() * .06;
-      return [r * Math.cos(a), 1.2 - t * 2.4, r * Math.sin(a)];
-    },
-    nahuales() {
-      // 20 day-sign cartouches orbiting the contact block: [sign index, local x, local y].
-      const k = Math.floor(Math.random() * 20);
-      if (Math.random() < .75) {
-        const side = Math.floor(Math.random() * 4), t = rand(-1, 1);
-        return [k, ...[[t, -1], [1, t], [t, 1], [-1, t]][side]];
-      }
-      return [k, (Math.random() < .5 ? -.4 : .4) + gauss() * .12, gauss() * .15];
-    }
-  };
-
-  function resize() {
-    DPR = Math.min(window.devicePixelRatio || 1, 2);
-    // Size from the canvas itself (CSS uses the large viewport), so the phone's collapsing address bar never changes it.
-    const rect = canvas.getBoundingClientRect();
-    W = Math.round(rect.width); H = Math.round(rect.height);
-    mobile = W < 900;
-    canvas.width = W * DPR; canvas.height = H * DPR;
-    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    const count = mobile ? 520 : 1100;
-    if (particles.length !== count) build(count);
-    retarget(true);
-    kick();
-  }
-
-  function build(count) {
-    particles = [];
-    for (let i = 0; i < count; i++) {
-      particles.push({
-        x: rand(0, W), y: rand(0, H),
-        tx: 0, ty: 0, tz: 0,
-        size: rand(2.2, 5.5),
-        rot: rand(0, Math.PI * 2), spin: rand(-.012, .012),
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        alpha: rand(.45, 1),
-        ease: rand(.025, .06),
-        phase: rand(0, Math.PI * 2),
-        ambient: Math.random() < .12,
-        ax: Math.random(), ay: Math.random()
-      });
-    }
-  }
-
-  function retarget(snap) {
-    const gen = SHAPES[shape] || SHAPES.tikal;
-    particles.forEach(p => {
-      const [x, y, z] = gen();
-      p.tx = x; p.ty = y; p.tz = z;
-      if (snap) { const s = project(p); p.x = s.x; p.y = s.y; }
-    });
-  }
-
-  function center() {
-    if (mobile) {
-      return { cx: W * .5, cy: shape === 'tikal' ? H * .3 : H * .5, scale: Math.min(W, H) * .36 };
-    }
-    const cx = side === 'left' ? W * .27 : side === 'center' ? W * .5 : W * .73;
-    const scale = Math.min(W * .22, H * .34);
-    return { cx, cy: H * .52, scale };
-  }
-
-  function project(p) {
-    const { cx, cy, scale } = center();
-    if (p.ambient && shape !== 'chaos') {
-      return { x: p.ax * W, y: p.ay * H, k: .6 };
-    }
-    if (shape === 'nahuales') {
-      const a = p.tx / 20 * Math.PI * 2 + angle * 2;
-      const rx = mobile ? W * .46 : Math.min(W * .42, 620), ry = mobile ? H * .43 : H * .4;
-      const box = mobile ? 9 : 15;
-      return { x: cx + Math.cos(a) * rx + p.ty * box, y: cy + Math.sin(a) * ry + p.tz * box, k: .9 };
-    }
-    // The helix spins fully; flat Mayan figures only sway so they never turn edge-on.
-    const a = shape === 'helix' ? angle : shape === 'chaos' ? angle * .15 : Math.sin(angle * 3) * .35;
-    const cos = Math.cos(a), sin = Math.sin(a);
-    const x = p.tx * cos - p.tz * sin;
-    const z = p.tx * sin + p.tz * cos;
-    const tilt = .18 + mouseY * .12;
-    const y = p.ty * Math.cos(tilt) - z * Math.sin(tilt);
-    const zz = p.ty * Math.sin(tilt) + z * Math.cos(tilt);
-    const k = 2.6 / (2.6 + zz);
-    return { x: cx + (x + mouseX * .06) * scale * k, y: cy + y * scale * k, k };
-  }
-
-  function tri(x, y, s, r) {
-    ctx.beginPath();
-    for (let i = 0; i < 3; i++) {
-      const a = r + i * (Math.PI * 2 / 3);
-      const px = x + Math.cos(a) * s, py = y + Math.sin(a) * s;
-      i ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
-    }
-    ctx.closePath();
-    ctx.stroke();
-  }
-
-  let last = performance.now(), t = 0, running = false;
-  // Start the loop if it is idle (calm mode stops it once everything has settled, to save battery).
-  function kick() {
-    if (running) return;
-    running = true; last = performance.now();
-    requestAnimationFrame(frame);
-  }
-  function frame(now) {
-    const dt = Math.min((now - last) / 16.67, 3);
-    last = now; t += dt;
-    if (reduce) angle = window.scrollY * .0006; else angle += .0016 * dt;
-    ctx.clearRect(0, 0, W, H);
-    // A touch thicker and larger on phones, where 1px lines on a dense screen look faint.
-    ctx.lineWidth = mobile ? 1.4 : 1;
-    const grow = mobile ? 1.35 : 1;
-    let moved = 0;
-    for (const p of particles) {
-      const s = project(p);
-      const ease = reduce ? p.ease * .7 : p.ease;
-      const dx = (s.x - p.x) * ease * dt, dy = (s.y - p.y) * ease * dt;
-      p.x += dx; p.y += dy;
-      moved = Math.max(moved, Math.abs(dx) + Math.abs(dy));
-      if (!reduce) p.rot += p.spin * dt;
-      const wob = reduce ? 0 : Math.sin(t * .02 + p.phase) * 1.2;
-      // Chaos spreads behind the text, so it stays dimmer for readability.
-      const dim = shape === 'chaos' ? .5 : 1;
-      ctx.globalAlpha = dim * p.alpha * (p.ambient && shape !== 'chaos' ? .35 : Math.min(1, .35 + s.k * .55));
-      ctx.strokeStyle = p.color;
-      // Figures with fine detail use slightly smaller particles so their lines stay readable.
-      const fine = shape === 'nahuales' ? .55 : shape === 'helix' || shape === 'chaos' ? 1 : .8;
-      tri(p.x + wob, p.y - wob, grow * p.size * (p.ambient ? .7 : s.k * fine), p.rot);
-    }
-    ctx.globalAlpha = 1;
-    if (!reduce || moved > .05) requestAnimationFrame(frame); else running = false;
-  }
-
-  // Switch shape when a chapter crosses the middle of the viewport.
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const next = e.target.dataset.shape, nextSide = e.target.dataset.side;
-      document.querySelectorAll('.progress a, [data-nav]').forEach(a =>
-        a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'));
-      if (next !== shape || nextSide !== side) {
-        shape = next; side = nextSide;
-        retarget(false);
-        kick();
-      }
-    });
-  }, { rootMargin: '-45% 0px -45% 0px' });
-  document.querySelectorAll('.chapter[data-shape]').forEach(s => io.observe(s));
-
-  if (!reduce) {
-    window.addEventListener('pointermove', e => {
-      mouseX = (e.clientX / W - .5) * 2;
-      mouseY = (e.clientY / H - .5) * 2;
-    }, { passive: true });
-  }
-
-  // In calm mode the figures sway with the scroll position, so wake the loop when the page moves.
-  window.addEventListener('scroll', kick, { passive: true });
-
-  // Rebuild only when the width changes (rotation, window resize). Height-only resizes are the phone's
-  // address bar showing or hiding while scrolling, and must not reshuffle the particles.
-  let rt, lastW = window.innerWidth;
-  window.addEventListener('resize', () => {
-    if (window.innerWidth === lastW) return;
-    lastW = window.innerWidth;
-    clearTimeout(rt); rt = setTimeout(resize, 120);
-  });
-  resize();
-})();
 </script>
 </body>
 </html>
