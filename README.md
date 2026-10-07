@@ -1,2 +1,2 @@
 # pixantech
-landing for offering services technology services
+landing for offering technology services
