@@ -2,844 +2,1108 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala</title>
 <meta name="description" content="Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
-<meta name="theme-color" content="#000000">
-<meta property="og:title" content="Pixan Tech">
-<meta property="og:description" content="Menos trabajo manual, más control de tu negocio. Cotiza tu proyecto por WhatsApp.">
+<meta name="theme-color" content="#14201c">
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.pixantech.net/">
+<meta property="og:title" content="Pixan Tech | Menos trabajo manual. Más control de tu negocio.">
+<meta property="og:description" content="Sistemas a la medida, sitios web y mejora de procesos para empresas en Guatemala. Primera asesoría sin costo.">
+<meta property="og:image" content="https://www.pixantech.net/assets/og-image.jpg">
+<meta property="og:locale" content="es_GT">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
-<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* The whole page speaks the language of the dark "pain" block: black canvas, graphite cards,
-     condensed uppercase display, mono labels, mint links, tiny yellow sparks. */
-  :root {
-    --black: #000000;
-    --white: #ffffff;
-    --graphite: #2f2f2f;
-    --slate: #444444;
-    --smoke: #979797;
-    --ash: #c6c6c6;
-    --mint: #d1ffca;
-    --volt: #fff100;
+:root{
+  --paper:#f3f5f1;
+  --paper-2:#e3eae4;
+  --ink:#14201c;
+  --ink-2:#1d2c27;
+  --stone:#56635e;
+  --line:#d2dad5;
+  --jade:#1f6b53;
+  --jade-ink:#174f3e;
+  --jade-soft:#d9e7df;
+  --glow:#4fd1a1;        /* jade luminoso: el mismo acento, usado solo sobre fondos oscuros */
+  --pending:#b4442d;
+  --on-ink:#e9efeb;
+  --on-ink-mute:#a4b3ac;
+  --radius-s:6px;
+  --radius-m:14px;
+  --radius-l:28px;
+  --wrap:1200px;
+  --display:"Archivo", "Arial Narrow", sans-serif;
+  --body:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-stretch:82%;font-weight:750;line-height:1.02;letter-spacing:-.01em;word-spacing:.04em;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:var(--radius-s);z-index:30;text-decoration:none}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:4px}
 
-    --cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+/* Maya numerals: dots = 1, bars = 5 */
+.maya{display:inline-flex;flex-direction:column;align-items:center;gap:4px;justify-self:start;align-self:start}
+.maya .dots{display:flex;gap:5px}
+.maya .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
+.maya .bar{width:34px;height:7px;border-radius:2px;background:currentColor}
+.maya.lg .dot{width:11px;height:11px}
+.maya.lg .bar{width:46px;height:9px}
+.maya.lg .dots{gap:7px}
 
-    --max: 1200px;
-    --gutter: clamp(16px, 4vw, 40px);
-    --section: clamp(72px, 9vw, 112px);
-  }
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--body);padding:16px 22px;border-radius:999px;text-decoration:none;transition:background-color .2s var(--ease),transform .2s var(--ease),color .2s var(--ease)}
+.btn:active{transform:translateY(1px) scale(.99)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--jade);color:#fff}
+.btn-primary:hover{background:var(--jade-ink)}
+.btn-light{background:var(--paper);color:var(--ink)}
+.btn-light:hover{background:#fff}
+.link{font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px;transition:color .2s}
+.link:hover{color:var(--jade)}
 
-  *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    margin: 0; background: var(--black); color: var(--white);
-    font: 400 16px/1.45 var(--sans); letter-spacing: -0.011em;
-    -webkit-font-smoothing: antialiased; overflow-x: hidden;
-  }
-  img, svg { display: block; }
-  a { color: inherit; }
-  p { margin: 0 0 16px; }
-  h1, h2, h3 { margin: 0; font-weight: inherit; }
-  :focus-visible { outline: 2px solid var(--volt); outline-offset: 3px; border-radius: 4px; }
-  ::selection { background: var(--volt); color: var(--black); }
+/* Header */
+.site-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.site-header.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.05rem/1 var(--display);font-stretch:85%;letter-spacing:.02em}
+.brand img{width:44px;height:auto}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-weight:500;color:var(--stone);transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current="true"]{color:var(--ink)}
+.nav .btn{padding:12px 18px;font-size:.95rem}
+.nav-links a.btn,.nav-links a.btn:hover{color:#fff}
+@media (max-width:820px){.nav-links li:not(:last-child){display:none}}
 
-  .skip { position: absolute; left: 16px; top: -60px; z-index: 100; background: var(--white); color: var(--black); padding: 10px 16px; border-radius: 8px; text-decoration: none; }
-  .skip:focus { top: 16px; }
-  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+/* Hero */
+.hero{padding:clamp(36px,5vw,64px) 0 clamp(64px,9vw,112px)}
+.hero-top{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,72px);align-items:end;margin-bottom:clamp(32px,4.5vw,56px)}
+.hero h1{font-size:clamp(2.8rem,6.2vw,5.4rem);font-stretch:78%;font-weight:800;word-spacing:.06em}
+.hero h1 span{display:block;color:var(--jade)}
+.hero .lead{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--stone);max-width:40ch;margin:0 0 28px}
+@media (max-width:900px){.hero-top{grid-template-columns:1fr;align-items:start}}
 
-  /* ---------- Type ---------- */
-  .display {
-    font-family: var(--cond); font-weight: 700; text-transform: uppercase;
-    font-size: clamp(56px, 10.4vw, 130px); line-height: .9; letter-spacing: -0.02em;
-  }
-  .display--md { font-size: clamp(48px, 6.6vw, 80px); }
-  .h3 {
-    font-weight: 500; text-transform: uppercase;
-    font-size: clamp(22px, 2.4vw, 28px); line-height: 1.1; letter-spacing: -0.02em;
-    overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto;
-  }
-  .lead { font-size: clamp(17px, 1.5vw, 20px); line-height: 1.35; max-width: 540px; color: var(--smoke); }
-  .mono { font-family: var(--mono); font-size: 12px; line-height: 1.6; letter-spacing: -0.03em; }
-  .label { display: block; margin-bottom: 24px; color: var(--smoke); }
+/* Live 3D scene: jade block over a rippling stone floor (Three.js) */
+.scene{position:relative;height:clamp(340px,44vw,520px);border-radius:var(--radius-l);overflow:hidden;clip-path:inset(0 round var(--radius-l));isolation:isolate;background:radial-gradient(70% 90% at 50% 30%,#123327 0%,#0b1814 45%,#060c0a 100%)}
+.scene::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(79,209,161,.12);border-radius:inherit}
+.scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .8s var(--ease)}
+.scene.live canvas{opacity:1}
+.scene-fallback{position:absolute;left:50%;top:50%;width:min(420px,70%);transform:translate(-50%,-50%);border-radius:24px;transition:opacity .6s}
+.scene.live .scene-fallback{opacity:0}
+.scene-areas{position:absolute;left:clamp(16px,2.5vw,28px);bottom:clamp(16px,2.5vw,28px);display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;z-index:1}
+@media (max-width:640px){.scene-areas{display:none}}
+.scene-areas li{font-size:.9rem;font-weight:500;color:var(--on-ink);padding:9px 14px;border-radius:999px;background:rgba(10,24,19,.55);border:1px solid rgba(79,209,161,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
+.hero-note{margin-top:22px;font-size:.95rem;color:var(--stone);display:flex;align-items:center;gap:8px}
+.hero-note::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 4px var(--jade-soft)}
 
-  /* ---------- Buttons and links (press feedback, exact properties) ---------- */
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    background: var(--white); color: var(--black);
-    border-radius: 8px; padding: 16px 24px;
-    font: 500 16px/1.2 var(--sans); letter-spacing: -0.01em; text-decoration: none;
-    transition: background-color 150ms ease, transform 160ms var(--ease-out);
-  }
-  .btn:active { transform: scale(0.97); }
-  .btn svg { width: 18px; height: 18px; flex: none; }
-  .btn--lg { padding: 20px 28px; font-size: 17px; }
-  .ghost {
-    display: inline-flex; align-items: center; padding: 14px 16px;
-    border: 1.5px solid var(--slate); border-radius: 4px; color: var(--ash);
-    font: 500 16px/1.2 var(--sans); text-decoration: none;
-    transition: border-color 150ms ease, color 150ms ease, transform 160ms var(--ease-out);
-  }
-  .ghost:active { transform: scale(0.97); }
-  .cta-link {
-    display: inline-flex; align-items: center; gap: 8px; margin-top: 8px;
-    background: var(--mint); color: var(--black);
-    padding: 8px 14px; border-radius: 64px;
-    font: 500 15px/1.2 var(--sans); text-decoration: none;
-    transition: background-color 150ms ease, transform 160ms var(--ease-out);
-  }
-  .cta-link:active { transform: scale(0.97); }
-  .cta-link svg { width: 16px; height: 16px; flex: none; }
-  @media (hover: hover) and (pointer: fine) {
-    .btn:hover { background: var(--mint); }
-    .ghost:hover { border-color: var(--ash); color: var(--white); }
-    .cta-link:hover, .topics a:hover, .footer__wa:hover { background: var(--volt); }
-  }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 40px; }
-  .note { margin: 16px 0 0; color: var(--smoke); }
-  .note::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--volt); margin-right: 8px; transform: translateY(-1px); }
+/* Sections */
+section{scroll-margin-top:80px}
+.chapter{padding:clamp(72px,10vw,128px) 0}
+.chapter-head{display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,3vw,32px);align-items:start;margin-bottom:clamp(36px,5vw,56px)}
+.chapter-head .maya{color:var(--jade);padding-top:10px}
+.chapter-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem);max-width:18ch}
+.chapter-body{margin-left:calc(72px + clamp(16px,3vw,32px))}
+.tint{background:var(--paper-2)}
+@media (max-width:720px){.chapter-head{grid-template-columns:1fr}.chapter-head .maya{padding-top:0}.chapter-body{margin-left:0}}
 
-  /* ---------- Nav ---------- */
-  .nav { position: sticky; top: 0; z-index: 20; background: rgba(0,0,0,.86); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid transparent; transition: border-color 200ms ease; }
-  .nav.is-scrolled { border-bottom-color: var(--graphite); }
-  .nav__inner { height: 88px; display: flex; align-items: center; gap: 24px; }
-  .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-  .logo img { height: 40px; width: auto; }
-  .wordmark { font-family: 'Montserrat', var(--sans); font-size: 17px; letter-spacing: .02em; white-space: nowrap; }
-  .wordmark b { font-weight: 700; }
-  .pill { margin: 0 auto; display: flex; align-items: center; gap: 24px; background: var(--graphite); border-radius: 48px; padding: 8px 8px 8px 24px; }
-  .pill ul { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; }
-  .pill a { color: var(--ash); text-decoration: none; font-weight: 500; }
-  @media (hover: hover) and (pointer: fine) { .pill a:hover { color: var(--white); } }
-  .lang { display: flex; background: var(--black); border-radius: 48px; padding: 3px; }
-  .lang button { border: 0; background: none; cursor: pointer; border-radius: 48px; font: 400 12px/1 var(--mono); padding: 8px 10px; color: var(--smoke); transition: background-color 150ms ease, color 150ms ease; }
-  .lang button[aria-pressed="true"] { background: var(--white); color: var(--black); }
-  .nav .btn { transition: background-color 150ms ease, transform 160ms var(--ease-out), opacity 200ms ease, visibility 200ms; }
-  .nav.cta-hidden .btn { opacity: 0; visibility: hidden; }
+/* 1. Problem */
+.pains{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start}
+.pain-list{list-style:none;margin:0;padding:0;counter-reset:p}
+.pain-list li{font-family:var(--display);font-stretch:85%;font-weight:600;font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.2;padding:20px 0;border-top:1px solid var(--line)}
+.pain-list li:last-child{border-bottom:1px solid var(--line)}
+.cost{font-size:1.15rem;max-width:40ch}
+.cost strong{font-weight:600}
+.cost + .link{display:inline-block;margin-top:28px}
 
-  /* ---------- Surfaces ---------- */
-  .card { background: var(--graphite); border-radius: 32px; padding: clamp(24px, 4vw, 48px); }
-  section { padding: var(--section) 0 0; scroll-margin-top: 96px; }
-  .rule { border-top: 1px solid var(--graphite); }
+/* 2. Guide */
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px)}
+.guide p{max-width:44ch}
+.guide p + p{margin-top:18px}
+.promise{border-left:3px solid var(--jade);padding-left:24px}
+.promise ul{list-style:none;padding:0;margin:20px 0 28px}
+.promise li{padding:8px 0 8px 28px;position:relative}
+.promise li::before{content:"";position:absolute;left:0;top:18px;width:12px;height:2px;background:var(--jade)}
 
-  /* ---------- Image slots: show the photo when the file exists; otherwise a labelled frame ---------- */
-  .slot { position: relative; margin: 0; overflow: hidden; background: var(--graphite); }
-  .slot img { width: 100%; height: 100%; object-fit: cover; }
-  .slot__hint { display: none; }
-  .slot.is-empty img { display: none; }
-  .slot.is-empty .slot__hint {
-    position: absolute; inset: 12px; display: grid; place-content: center; gap: 6px; text-align: center;
-    border: 1.5px dashed var(--slate); border-radius: inherit; color: var(--smoke);
-  }
-  .slot__hint strong { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ash); letter-spacing: -0.01em; }
-  .slot--portrait { aspect-ratio: 4 / 5; border-radius: 32px; }
-  .slot--shot { aspect-ratio: 16 / 10; border-radius: 20px; margin-bottom: 28px; }
-  .card .slot { background: var(--black); }
-  /* Readable demo label on top of demo screenshots (hidden while the slot is empty) */
-  .slot__demo { position: absolute; left: 12px; bottom: 12px; padding: 4px 10px; border-radius: 999px; background: var(--volt); color: var(--black); }
-  .slot.is-empty .slot__demo { display: none; }
+/* 3. Services */
+.services{display:grid;gap:clamp(20px,3vw,28px)}
+.service{display:grid;grid-template-columns:auto 1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start;background:#fff;border-radius:var(--radius-m);padding:clamp(28px,4vw,48px);box-shadow:0 1px 0 rgba(20,32,28,.04),0 18px 40px -28px rgba(20,32,28,.25)}
+.service .maya{color:var(--jade)}
+.service h3{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:14px}
+.service p{color:var(--stone);max-width:42ch}
+.ideal{margin-top:18px;font-size:.98rem}
+.ideal b{color:var(--ink);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.tags li{font-size:.9rem;font-weight:500;padding:7px 12px;border-radius:var(--radius-s);background:var(--paper)}
+.legend{margin-top:20px;font-size:.9rem;color:var(--stone)}
+@media (max-width:900px){.service{grid-template-columns:1fr}}
 
-  /* ---------- Hero ---------- */
-  .hero { padding-top: clamp(24px, 4vw, 56px); }
-  .hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: end; }
-  .tag { display: inline-block; background: var(--mint); color: var(--black); border-radius: 64px; padding: 8px 16px; margin-bottom: 24px; }
-  .hero .display { margin-bottom: 32px; }
-  .specimen { margin: 0; background: var(--graphite); border-radius: 64px 64px 24px 24px; padding: 40px 32px 24px; }
-  .specimen img { width: 100%; height: auto; max-width: 400px; margin: 0 auto 24px; }
-  .specimen dl { margin: 0; }
-  .specimen div { display: grid; grid-template-columns: 1fr 1.3fr; gap: 16px; padding: 12px 0; border-top: 1px solid var(--slate); }
-  .specimen dt { font-weight: 500; text-transform: uppercase; font-size: 14px; }
-  .specimen dd { margin: 0; color: var(--smoke); }
-  .specimen figcaption { margin-top: 12px; color: var(--smoke); }
+/* Sample-content marker: discreet, but present on every illustrative block until replaced. */
+.sample{position:relative}
+.sample::after{content:"Ejemplo";position:absolute;top:10px;right:10px;z-index:2;font:600 .68rem/1 var(--body);letter-spacing:.03em;color:var(--pending);background:#fbefeb;border:1px solid #efc9bf;padding:4px 7px;border-radius:4px;pointer-events:none}
 
-  /* ---------- Pain (the reference block) ---------- */
-  .pain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px; margin-top: 48px; align-items: start; }
-  .pains { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .pains li { background: var(--graphite); border-radius: 24px; padding: 24px; min-height: 150px; font-size: 20px; line-height: 1.2; display: flex; align-items: flex-end; }
+/* Case thumbnails drawn in CSS (no stock images). */
+.case-media.mock-orders{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:clamp(14px,2.5vw,28px);background:linear-gradient(160deg,#173a2e,#0f2a21);color:var(--on-ink)}
+.mo-bar{display:flex;gap:6px;margin-bottom:6px}
+.mo-bar i{width:9px;height:9px;border-radius:50%;background:rgba(233,239,235,.25)}
+.mo-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:rgba(255,255,255,.06);border-radius:8px;padding:11px 14px;font-size:.88rem}
+.mo-row span{color:var(--on-ink-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mo-row em{font-style:normal;font-size:.78rem;padding:4px 8px;border-radius:99px;background:rgba(233,239,235,.12)}
+.mo-row em.ok{background:rgba(79,209,161,.18);color:var(--glow)}
+.mo-row em.warn{background:rgba(232,140,110,.18);color:#f0a58c}
+.case-media.mock-calendar{padding:18px}
+.mc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:100%}
+.mc-grid i{aspect-ratio:1.4;border-radius:5px;background:rgba(31,107,83,.12)}
+.mc-grid i.on{background:var(--jade)}
+.case-media.mock-report{padding:22px 18px;color:var(--jade)}
+.mock-report svg{width:100%;height:100%}
 
-  /* ---------- Guide: your photo beside the promise ---------- */
-  .guide__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px 64px; align-items: center; }
+/* Recent work */
+.work{padding:clamp(72px,9vw,112px) 0}
+.work-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px;margin-bottom:clamp(32px,4vw,48px)}
+.work-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.work-head p{color:var(--stone);max-width:36ch}
+.cases{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:auto auto;gap:clamp(18px,2.5vw,28px)}
+.case{display:flex;flex-direction:column;gap:10px}
+.case-main{grid-row:span 2;align-self:start;background:#fff;border-radius:var(--radius-m);padding:clamp(18px,2.4vw,28px);box-shadow:0 18px 40px -28px rgba(20,32,28,.3)}
+.case-media{aspect-ratio:16/10;border-radius:10px;background:linear-gradient(135deg,var(--paper-2),#d3ddd6);display:grid;place-items:center;color:var(--stone);font-size:.9rem;margin-bottom:8px;overflow:hidden}
+.case:not(.case-main){background:#fff;border-radius:var(--radius-m);padding:clamp(16px,2vw,22px);box-shadow:0 18px 40px -30px rgba(20,32,28,.3)}
+.case-main .case-media{aspect-ratio:16/9}
+.case-client{font-size:.88rem;color:var(--jade);font-weight:600}
+.case h3{font-size:clamp(1.25rem,2vw,1.6rem);font-stretch:88%}
+.case-result{color:var(--stone)}
+.case-result b{color:var(--ink);font-weight:600}
+.case blockquote{margin:12px 0 0;padding:16px 0 0;border-top:1px solid var(--line);font-family:var(--display);font-stretch:90%;font-size:1.2rem;line-height:1.35}
+.case blockquote footer{font-family:var(--body);font-size:.9rem;color:var(--stone);margin-top:8px}
+@media (max-width:820px){.cases{grid-template-columns:1fr}.case-main{grid-row:auto}}
 
-  /* ---------- Section heads ---------- */
-  .head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; align-items: end; margin-bottom: 40px; }
-  .head p { color: var(--smoke); max-width: 440px; margin: 0; }
+/* Founders */
+.about-head{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)}
+.about-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.about-head p{color:var(--stone);font-size:1.1rem;max-width:46ch}
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.5vw,28px)}
+.founder{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;background:#fff;border-radius:var(--radius-m);padding:clamp(22px,3vw,36px);box-shadow:0 18px 40px -30px rgba(20,32,28,.3)}
+.monogram{width:clamp(76px,8vw,104px);aspect-ratio:1;border-radius:22px;display:grid;place-items:center;font:800 clamp(1.6rem,2.6vw,2.2rem)/1 var(--display);font-stretch:80%;letter-spacing:.02em;color:var(--glow);background:radial-gradient(120% 120% at 30% 20%,#1d4a3a,#0b1814)}
+.monogram.alt{background:radial-gradient(120% 120% at 70% 20%,#245c47,#0b1814)}
+.founder h3{font-size:clamp(1.4rem,2.2vw,1.75rem);font-stretch:85%}
+.role{color:var(--jade);font-weight:600;font-size:.95rem;margin:6px 0 14px}
+.founder p:last-child{color:var(--stone);max-width:44ch}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:clamp(28px,4vw,44px) 0 0;padding-top:28px;border-top:1px solid var(--line)}
+.facts dt{font:800 clamp(2rem,3.6vw,2.8rem)/1 var(--display);font-stretch:80%;color:var(--jade);font-variant-numeric:tabular-nums}
+.facts dd{margin:8px 0 0;color:var(--stone);font-size:.95rem;max-width:26ch}
+@media (max-width:900px){.about-head,.founders{grid-template-columns:1fr}}
+@media (max-width:560px){.founder{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
 
-  /* Mayan numerals */
-  .glyph { width: 56px; height: 56px; color: var(--mint); }
-  .marker { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
-  .marker .mono { color: var(--smoke); }
+/* Price hints in the FAQ */
+.price-hints{list-style:none;margin:16px 0 4px;padding:6px 16px;background:var(--paper-2);border-radius:10px;max-width:440px}
+.price-hints li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+.price-hints li:last-child{border-bottom:0}
+.price-hints b{font-weight:600;font-variant-numeric:tabular-nums}
 
-  /* ---------- Services: project screenshot on top of each card ---------- */
-  .services__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .service { display: flex; flex-direction: column; padding: 16px 16px clamp(24px, 3vw, 32px); }
-  .service > :not(.slot) { margin-left: clamp(8px, 2vw, 16px); margin-right: clamp(8px, 2vw, 16px); }
-  .service .h3 { margin-bottom: 16px; }
-  .service > p { color: var(--smoke); }
-  .ideal strong { display: inline-block; font-weight: 500; background: var(--mint); color: var(--black); border-radius: 64px; padding: 2px 10px; margin-right: 4px; }
-  .ideal { color: var(--ash) !important; }
-  .tags { list-style: none; padding: 0; margin: 20px 0 28px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .tags li { background: var(--black); border-radius: 64px; padding: 6px 12px; font-size: 14px; color: var(--ash); }
-  .service .cta-link { margin-top: auto; align-self: flex-start; }
+/* Dark sections share the luminous jade for focus and hover. */
+.demo-section :focus-visible,.final :focus-visible,.site-footer :focus-visible{outline-color:var(--glow)}
+.demo-note .link:hover{color:var(--glow)}
+.topics a:hover{background:transparent;color:var(--glow);border-color:var(--glow)}
+.final h2{text-wrap:balance}
 
-  /* ---------- Method ---------- */
-  .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-  .steps .card { padding: 28px; height: 100%; }
-  .steps h3 { font-size: 20px; margin-bottom: 12px; }
-  .steps p { color: var(--smoke); margin: 0; }
-  .after { margin-top: 24px; }
+/* Live demo */
+.demo-section{background:var(--ink);color:var(--on-ink);padding:clamp(72px,10vw,128px) 0;position:relative;overflow:hidden}
+.demo-section::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 0%,rgba(61,150,118,.22),transparent 70%);pointer-events:none}
+.demo-head{position:relative;max-width:640px;margin-bottom:clamp(36px,5vw,56px)}
+.demo-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.demo-head p{color:var(--on-ink-mute);font-size:1.1rem;margin-top:18px}
+.device{perspective:1400px;position:relative}
+.app{background:#fff;color:var(--ink);border-radius:var(--radius-m);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6),0 0 0 1px rgba(233,239,235,.08);transform-origin:50% 100%}
+@media (prefers-reduced-motion:no-preference){
+  .app{transform:rotateX(14deg) translateY(30px) scale(.97);opacity:.4;transition:transform 1.1s var(--ease),opacity .8s var(--ease)}
+  .device.in .app{transform:none;opacity:1}
+}
+.app-bar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line);background:#fafbf9}
+.app-name{display:flex;flex-direction:column;line-height:1.25}
+.app-name b{font-weight:600}
+.app-name small{color:var(--stone);font-size:.8rem}
+.app-tabs{display:flex;gap:4px;background:var(--paper-2);padding:4px;border-radius:10px}
+.app-tabs button{font:500 .92rem/1 var(--body);border:0;background:transparent;color:var(--stone);padding:9px 14px;border-radius:7px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background-color .2s,color .2s}
+.app-tabs button:hover{color:var(--ink)}
+.app-tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(20,32,28,.12)}
+.badge{font-size:.72rem;font-weight:600;background:#b4442d;color:#fff;border-radius:999px;padding:2px 7px;font-variant-numeric:tabular-nums}
+.badge.ok{background:var(--jade)}
+.app-body{padding:clamp(18px,2.5vw,28px);min-height:430px}
+@media (max-width:760px){.app-body{min-height:0}}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.kpi span{font-size:.85rem;color:var(--stone)}
+.kpi b{font:700 1.5rem/1.1 var(--display);font-stretch:88%;font-variant-numeric:tabular-nums}
+.kpi em{font-style:normal;font-size:.8rem;font-weight:500}
+.up{color:var(--jade)}.down{color:#b4442d}
+.split{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.chart{margin:0;border:1px solid var(--line);border-radius:10px;padding:16px}
+.chart figcaption,.feed-title{font-size:.85rem;color:var(--stone);margin:0 0 12px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:170px}
+.bars .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.bars .b{width:100%;background:var(--jade-soft);border-radius:5px 5px 2px 2px;height:0;transition:height .9s var(--ease),background-color .2s}
+.bars .col:last-child .b{background:var(--jade)}
+.bars .col:hover .b{background:var(--jade)}
+.bars small{font-size:.75rem;color:var(--stone)}
+.feed{border:1px solid var(--line);border-radius:10px;padding:16px}
+.feed ul{list-style:none;margin:0;padding:0}
+.feed li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:.9rem}
+.feed li span{color:var(--stone);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.feed b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.stock{width:100%;border-collapse:collapse;font-size:.95rem}
+.stock th{text-align:left;font-weight:500;font-size:.82rem;color:var(--stone);padding:0 10px 10px}
+.stock td{padding:12px 10px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.stock tr.low td:nth-child(2){color:#b4442d;font-weight:600}
+.stock td:last-child{text-align:right}
+.stock button{font:500 .85rem/1 var(--body);border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:7px;cursor:pointer;transition:background-color .2s,border-color .2s}
+.stock button:hover{border-color:var(--jade);background:var(--jade-soft)}
+.stock .ok-tag{font-size:.85rem;color:var(--jade);font-weight:500}
+.report{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
+.hbars{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.hbars li{display:grid;grid-template-columns:110px 1fr 84px;gap:10px;align-items:center;font-size:.9rem}
+.hbars .track{height:10px;background:var(--paper-2);border-radius:99px;overflow:hidden}
+.hbars .fill{height:100%;width:0;background:var(--jade);border-radius:99px;transition:width .9s var(--ease)}
+.hbars b{font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.export{border:1px solid var(--line);border-radius:10px;padding:16px}
+.export .btn{width:100%;justify-content:center}
+.status{font-size:.88rem;color:var(--stone);margin-top:12px;min-height:1.4em}
+.demo-note{position:relative;margin-top:32px;color:var(--on-ink-mute)}
+.demo-note .link{color:var(--on-ink)}
+@media (max-width:760px){.kpis{grid-template-columns:1fr 1fr}.kpi:last-child{grid-column:span 2}.split,.report{grid-template-columns:1fr}.hbars li{grid-template-columns:90px 1fr 74px}.app-tabs{width:100%}.app-tabs button{flex:1;justify-content:center}.stock th:nth-child(3),.stock td:nth-child(3){display:none}}
 
-  /* ---------- Outcomes ---------- */
-  .outcomes { list-style: none; margin: 48px 0 40px; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 64px; }
-  .outcomes li { display: grid; grid-template-columns: 16px 1fr; gap: 16px; align-items: baseline; padding: 20px 0; border-top: 1px solid var(--graphite); font-size: clamp(18px, 1.8vw, 22px); line-height: 1.25; }
-  .outcomes li::before { content: ""; width: 10px; height: 10px; background: var(--volt); transform: translateY(-2px); }
+/* Ways of working */
+.modes-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)}
+.modes-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.modes-head p{color:var(--stone);max-width:40ch}
+.modes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1.15fr 1fr;border-top:1px solid var(--line)}
+.mode{padding:32px clamp(20px,3vw,36px) 36px;display:flex;flex-direction:column;gap:14px}
+.mode + .mode{border-left:1px solid var(--line)}
+@media (min-width:901px){.mode:first-child{padding-left:0}}
+.mode h3{font-size:1.7rem;font-stretch:85%}
+.mode p{color:var(--stone)}
+.mode .fit{color:var(--ink);font-weight:500;margin-top:auto}
+.mode .link,.mode .btn{align-self:flex-start}
+.mode.featured{background:#fff;border-radius:0 0 var(--radius-m) var(--radius-m);box-shadow:0 18px 40px -28px rgba(20,32,28,.3)}
+@media (max-width:900px){.modes-head{grid-template-columns:1fr}.modes{grid-template-columns:1fr}.mode + .mode{border-left:0;border-top:1px solid var(--line)}.mode.featured{border-radius:var(--radius-m)}}
 
-  /* ---------- FAQ ---------- */
-  .faq__grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 40px 64px; align-items: start; }
-  .faq .card { padding: 8px clamp(20px, 3vw, 40px); }
-  .faq details { border-top: 1px solid var(--slate); }
-  .faq details:first-child { border-top: 0; }
-  .faq summary {
-    list-style: none; cursor: pointer; padding: 24px 0;
-    display: grid; grid-template-columns: 1fr 28px; gap: 16px; align-items: center;
-    font-weight: 500; font-size: clamp(18px, 1.8vw, 20px); text-transform: uppercase; letter-spacing: -0.01em;
-  }
-  .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after {
-    content: ""; width: 28px; height: 28px; border-radius: 50%;
-    background: linear-gradient(var(--black), var(--black)) center / 12px 2px no-repeat, linear-gradient(var(--black), var(--black)) center / 2px 12px no-repeat, var(--mint);
-    transition: transform 200ms var(--ease-out);
-  }
-  .faq details[open] summary::after { transform: rotate(45deg); }
-  .faq details p { color: var(--smoke); max-width: 560px; }
-  .faq details .cta-link { margin: 0 0 24px; }
-  .faq details > p:last-child { margin-bottom: 24px; }
+/* 4. Process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:var(--line)}
+.step{padding-right:clamp(16px,2.5vw,32px);position:relative}
+.step .marker{height:56px;display:flex;align-items:center}
+.step .maya{background:var(--paper);padding:6px 10px 6px 0;color:var(--jade);position:relative}
+.step h3{font-size:1.35rem;font-stretch:88%;margin:18px 0 10px}
+.step p{color:var(--stone);font-size:.98rem}
+.steps + .btn{margin-top:48px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;row-gap:40px}.steps::before{display:none}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
 
-  /* ---------- Finale ---------- */
-  .finale .card { border-radius: 64px 64px 32px 32px; padding: clamp(56px, 8vw, 104px) clamp(24px, 5vw, 64px) clamp(48px, 6vw, 80px); text-align: center; }
-  .finale .display { margin: 0 auto 32px; max-width: 980px; }
-  .finale .lead { margin: 0 auto; }
-  .finale .actions { justify-content: center; }
-  .topics-label { margin: 40px 0 12px; color: var(--smoke); }
-  .topics { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-  .topics a { display: inline-block; background: var(--mint); color: var(--black); text-decoration: none; border-radius: 64px; padding: 10px 18px; font-weight: 500; font-size: 15px; transition: background-color 150ms ease, transform 160ms var(--ease-out); }
-  .topics a:active { transform: scale(0.97); }
+/* 5. Transformation */
+.future{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
+.future li{list-style:none;padding:28px 28px 28px 0;border-bottom:1px solid var(--line);font-size:1.15rem;display:flex;gap:16px}
+.future li:nth-child(odd){border-right:1px solid var(--line)}
+.future li:nth-child(even){padding-left:28px}
+.future svg{flex:none;width:24px;height:24px;color:var(--jade);margin-top:3px}
+.future{padding:0;margin:0}
+.future + .btn{margin-top:40px}
+@media (max-width:720px){.future{grid-template-columns:1fr}.future li:nth-child(odd){border-right:0}.future li:nth-child(even){padding-left:0}}
 
-  /* ---------- Footer ---------- */
-  .footer { margin-top: var(--section); }
-  .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding-top: 32px; padding-bottom: 40px; border-top: 1px solid var(--graphite); color: var(--smoke); }
-  .footer__brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--white); }
-  .footer__brand img { height: 40px; width: auto; }
-  .footer__meta { display: flex; align-items: center; gap: 16px; }
-  .footer__wa { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--mint); color: var(--black); transition: background-color 150ms ease, transform 160ms var(--ease-out); }
-  .footer__wa:active { transform: scale(0.97); }
-  .footer__wa svg { width: 20px; height: 20px; }
+/* FAQ */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,80px);align-items:start}
+.faq h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.faq-intro p{color:var(--stone);margin-top:18px;max-width:30ch}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font:600 1.2rem/1.3 var(--display);font-stretch:88%}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{flex:none;width:28px;height:28px;border-radius:50%;background:var(--paper-2);position:relative;transition:background-color .2s,transform .25s var(--ease)}
+.faq summary .plus::before,.faq summary .plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--ink);transform:translate(-50%,-50%)}
+.faq summary .plus::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .25s var(--ease)}
+.faq details[open] .plus{background:var(--jade-soft)}
+.faq details[open] .plus::after{transform:translate(-50%,-50%) rotate(0)}
+.faq summary:hover .plus{background:var(--jade-soft)}
+.faq .answer{padding:0 48px 26px 0;color:var(--stone);max-width:60ch}
+.faq .answer .link{display:inline-block;margin-top:14px;color:var(--ink)}
+@media (max-width:820px){.faq{grid-template-columns:1fr}}
 
-  /* ---------- Mobile dock ---------- */
-  .dock { position: fixed; left: 16px; right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30; display: none; transition: transform 250ms var(--ease-out), opacity 250ms ease; }
-  .dock .btn { width: 100%; }
-  .dock.is-hidden { transform: translateY(calc(100% + 24px)); opacity: 0; pointer-events: none; transition-duration: 150ms; }
+/* Final CTA */
+.final{background:var(--ink);color:var(--on-ink);padding:clamp(80px,11vw,140px) 0 clamp(64px,8vw,96px);position:relative;overflow:hidden}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 80% 20%,rgba(61,150,118,.22),transparent 70%);pointer-events:none}
+.final-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(32px,6vw,80px);align-items:end;position:relative}
+.final h2{font-size:clamp(2.6rem,6.4vw,5rem);font-stretch:78%;font-weight:800}
+.final p{color:var(--on-ink-mute);font-size:1.15rem;max-width:44ch;margin:24px 0 36px}
+.final img{width:100%;max-width:300px;opacity:.95;justify-self:end}
+.topics{margin-top:44px;position:relative}
+.topics p{margin:0 0 14px;font-size:.95rem;color:var(--on-ink-mute)}
+.topics ul{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.topics a{display:inline-block;text-decoration:none;font-weight:500;padding:11px 16px;border-radius:999px;border:1px solid rgba(233,239,235,.22);transition:background-color .2s,border-color .2s,color .2s}
+.topics a:hover{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
+@media (max-width:820px){.final-grid{grid-template-columns:1fr}.final img{justify-self:start;max-width:200px}}
 
-  /* ---------- Responsive ---------- */
-  @media (max-width: 1024px) {
-    .pill ul { display: none; }
-    .pill { padding: 6px; margin: 0 0 0 auto; }
-    .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  @media (max-width: 860px) {
-    .nav__inner { height: 72px; gap: 12px; }
-    .nav .btn { display: none; }
-    .hero__grid, .pain__grid, .guide__grid, .head, .faq__grid { grid-template-columns: minmax(0, 1fr); }
-    .services__grid, .outcomes { grid-template-columns: minmax(0, 1fr); }
-    .guide__grid .slot--portrait { max-width: 420px; }
-    .specimen { border-radius: 48px 48px 24px 24px; }
-    .finale .card { border-radius: 40px 40px 24px 24px; }
-    .dock { display: block; }
-    .footer__inner { padding-bottom: 110px; }
-    .btn--lg { width: 100%; }
-    section { scroll-margin-top: 80px; }
-    /* Display type scales with the screen so long words never split */
-    .display { font-size: clamp(38px, 15vw, 96px); }
-    .display--md { font-size: clamp(34px, 12.5vw, 72px); }
-    .card .display, .card .display--md { font-size: clamp(30px, 10.5vw, 64px); }
-  }
-  @media (max-width: 560px) {
-    .pains { grid-template-columns: 1fr; }
-    .pains li { min-height: 0; }
-    .steps { grid-template-columns: minmax(0, 1fr); }
-    .logo img { height: 34px; }
-    .wordmark { font-size: 14px; letter-spacing: 0; }
-    .specimen div { grid-template-columns: 1fr; gap: 2px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .btn:active, .ghost:active, .cta-link:active, .topics a:active, .footer__wa:active { transform: none; }
-    .dock.is-hidden { transform: none; }
-  }
+/* Footer */
+.site-footer{background:var(--ink);color:var(--on-ink-mute);border-top:1px solid rgba(233,239,235,.1);padding:36px 0;font-size:.95rem}
+.foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between}
+.foot .brand{color:var(--on-ink)}
+.foot ul{display:flex;flex-wrap:wrap;gap:24px;list-style:none;margin:0;padding:0}
+.foot a{text-decoration:none;transition:color .2s}
+.foot a:hover{color:var(--on-ink)}
+
+/* Floating WhatsApp (mobile) */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:25;width:56px;height:56px;border-radius:50%;background:var(--jade);color:#fff;display:none;place-items:center;box-shadow:0 10px 24px -8px rgba(23,79,62,.6);transition:transform .2s var(--ease)}
+.wa-float:active{transform:scale(.96)}
+.wa-float svg{width:28px;height:28px}
+@media (max-width:820px){.wa-float{display:grid}}
+
+/* Single orchestrated load reveal for the hero */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(14px);animation:rise .8s var(--ease) forwards}
+  .reveal.d1{animation-delay:.08s}.reveal.d2{animation-delay:.16s}.reveal.d3{animation-delay:.24s}.reveal.d4{animation-delay:.34s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+@media (max-width:900px){.pains,.guide{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<a class="skip" href="#inicio">Saltar al contenido</a>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="wa-icon" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.4z"/></symbol>
-  <symbol id="maya-1" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="28" cy="28" r="5" fill="currentColor"/></symbol>
-  <symbol id="maya-2" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="21" cy="28" r="5" fill="currentColor"/><circle cx="35" cy="28" r="5" fill="currentColor"/></symbol>
-  <symbol id="maya-3" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="15" cy="28" r="5" fill="currentColor"/><circle cx="28" cy="28" r="5" fill="currentColor"/><circle cx="41" cy="28" r="5" fill="currentColor"/></symbol>
-  <symbol id="maya-4" viewBox="0 0 56 56"><rect x="2" y="2" width="52" height="52" rx="16" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="28" r="4.5" fill="currentColor"/><circle cx="22.3" cy="28" r="4.5" fill="currentColor"/><circle cx="33.7" cy="28" r="4.5" fill="currentColor"/><circle cx="45" cy="28" r="4.5" fill="currentColor"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5 9.5 18 20 6.5"/></symbol>
 </svg>
 
-<header class="nav" id="nav">
-  <div class="wrap nav__inner">
-    <a class="logo" href="#inicio" aria-label="Pixan Tech, ir al inicio">
-      <img src="assets/pixan-emblem.png" alt="" width="54" height="40">
-      <span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span>
-    </a>
-    <nav class="pill" aria-label="Secciones">
-      <ul>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#metodo">Método</a></li>
-        <li><a href="#preguntas">Preguntas</a></li>
-      </ul>
-      <div class="lang" role="group" aria-label="Idioma">
-        <button type="button" data-lang="es" aria-pressed="true" lang="es" title="Español">ES</button>
-        <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
-      </div>
-    </nav>
-    <a class="btn" data-wa="general" href="#contacto">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-      Cotizar por WhatsApp
-    </a>
-  </div>
+<header class="site-header" id="top">
+  <nav class="wrap nav" aria-label="Principal">
+    <a class="brand" href="#inicio"><img src="assets/pixan-emblem-black.png" alt="" width="44" height="33">PIXAN TECH</a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#quien">Nosotros</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a class="btn btn-primary" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotizar</a></li>
+    </ul>
+  </nav>
 </header>
 
-<main>
-  <!-- Hero -->
+<main id="contenido">
   <section class="hero" id="inicio">
-    <div class="wrap hero__grid">
-      <div>
-        <span class="tag mono">Para empresas que quieren crecer con tecnología</span>
-        <h1 class="display">Menos trabajo manual. Más control de tu negocio.</h1>
-        <p class="lead">Creo los sistemas, sitios web y procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.</p>
-        <div class="actions">
-          <a class="btn btn--lg" data-wa="general" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Cotiza tu proyecto por WhatsApp
-          </a>
-          <a class="ghost" href="#servicios">Ver servicios</a>
+    <div class="wrap">
+      <div class="hero-top">
+        <h1 class="reveal">Menos trabajo manual. <span>Más control de tu negocio.</span></h1>
+        <div class="hero-copy">
+          <p class="lead reveal d1">Sitios web, sistemas a la medida y automatizaciones para empresas en Guatemala. Te decimos qué conviene hacer primero, cuánto cuesta y lo construimos de principio a fin.</p>
+          <div class="hero-actions reveal d2">
+            <a class="btn btn-primary" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotiza tu proyecto por WhatsApp</a>
+            <a class="link" href="#servicios">Ver servicios</a>
+          </div>
+          <p class="hero-note reveal d3">Primera asesoría sin costo. Te responden directamente los fundadores.</p>
         </div>
-        <p class="note mono">Primera asesoría sin costo. Te respondo personalmente.</p>
       </div>
-      <figure class="specimen">
-        <img src="assets/pixan-emblem.png" alt="Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente" width="589" height="440">
-        <dl>
-          <div><dt>Productos digitales</dt><dd>Sitios web, sistemas y aplicaciones</dd></div>
-          <div><dt>Procesos</dt><dd>Diagnóstico, automatización y capacitación</dd></div>
-          <div><dt>Adopción digital</dt><dd>Acompañamiento para que tu equipo use la tecnología</dd></div>
-        </dl>
-        <figcaption class="mono">Pixan Tech, Guatemala</figcaption>
-      </figure>
+      <div class="scene reveal d3" id="scene" role="img" aria-label="Pirámide maya de jade flotando sobre un suelo de piedra">
+        <img class="scene-fallback" src="assets/jade-maya-3d.jpg" alt="" width="880" height="880">
+        <canvas id="jade-canvas" aria-hidden="true"></canvas>
+        <ul class="scene-areas" aria-label="Áreas de trabajo">
+          <li>Productos digitales</li>
+          <li>Procesos</li>
+          <li>Adopción digital</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Chapter 1: the reference block, unchanged in structure -->
-  <section class="pain" id="camino">
+  <section class="chapter tint" aria-labelledby="c1">
     <div class="wrap">
-      <span class="label mono">Capítulo uno: el punto de partida</span>
-      <h2 class="display display--md">¿Tu empresa todavía funciona así?</h2>
-      <div class="pain__grid">
-        <ul class="pains">
+      <div class="chapter-head">
+        <span class="maya lg" role="img" aria-label="Capítulo 1"><span class="dots"><i class="dot"></i></span></span>
+        <h2 id="c1">¿Tu empresa todavía funciona así?</h2>
+      </div>
+      <div class="chapter-body pains">
+        <ul class="pain-list">
           <li>Horas copiando datos entre hojas de cálculo.</li>
           <li>Sistemas que no se hablan entre sí.</li>
           <li>Procesos que se detienen cuando falta una persona.</li>
           <li>Herramientas que pagas y nadie usa.</li>
         </ul>
         <div>
-          <p class="lead">Cada día así te cuesta dinero: en horas perdidas, en errores y en clientes que se van con quien responde más rápido.</p>
-          <a class="cta-link" data-wa="caso" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Cuéntame tu caso por WhatsApp
-          </a>
+          <p class="cost"><strong>Cada día así te cuesta dinero:</strong> en horas perdidas, en errores y en clientes que se van con quien responde más rápido.</p>
+          <a class="link" data-wa="Hola, quiero contarte cómo trabajamos hoy en mi empresa y ver qué podemos mejorar." href="#">Cuéntanos tu caso por WhatsApp</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Chapter 2: the guide, with your photo -->
-  <section id="guia">
-    <div class="wrap guide__grid">
-      <figure class="slot slot--portrait" data-slot>
-        <img src="assets/foto-guia.jpg" alt="Tu guía en Pixan Tech" loading="lazy" width="800" height="1000" onerror="this.parentNode.classList.add('is-empty')">
-        <figcaption class="slot__hint mono"><strong>Tu foto</strong>assets/foto-guia.jpg<br>800 × 1000 px</figcaption>
-      </figure>
-      <div>
-        <span class="label mono">Capítulo dos: el guía</span>
-        <h2 class="display display--md">No necesitas más herramientas. Necesitas un plan que funcione.</h2>
-        <p class="lead" style="margin-top:32px">Analizo cómo opera tu empresa, te digo qué conviene digitalizar primero según tu presupuesto y lo implemento de principio a fin.</p>
-        <p class="lead">Tienes un solo responsable para todo: sin coordinar a cinco proveedores y sin jerga técnica. Recibes propuestas claras, con precio y plazos.</p>
-        <a class="cta-link" data-wa="precio" href="#contacto">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-          Pregúntame cuánto costaría tu proyecto
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 3: services, each topped by a project screenshot -->
-  <section id="servicios">
+  <section class="chapter" aria-labelledby="c2">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <span class="label mono">Capítulo tres: lo que puedo hacer por ti</span>
-          <h2 class="display display--md">Elige por dónde empezar.</h2>
-        </div>
-        <p class="mono">Numerado con numerales mayas: cada punto vale uno.</p>
+      <div class="chapter-head">
+        <span class="maya lg" role="img" aria-label="Capítulo 2"><span class="dots"><i class="dot"></i><i class="dot"></i></span></span>
+        <h2 id="c2">Primero un plan claro. Después, la tecnología.</h2>
       </div>
-      <ul class="services__grid">
-        <li class="card service">
-          <figure class="slot slot--shot" data-slot>
-            <img src="assets/proyecto-1.jpg" alt="Demo de sistema de ventas e inventario, con datos ficticios" loading="lazy" width="1600" height="1000" onerror="this.parentNode.classList.add('is-empty')">
-            <span class="slot__demo mono">Demo con datos ficticios</span>
-            <figcaption class="slot__hint mono"><strong>Captura de proyecto</strong>assets/proyecto-1.jpg<br>1600 × 1000 px</figcaption>
-          </figure>
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-1"/></svg><span class="mono">Servicio 1</span></div>
-          <h3 class="h3">Productos digitales</h3>
-          <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
-          <p class="ideal"><strong>Ideal si</strong> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.</p>
-          <ul class="tags">
-            <li>Sitios web</li>
-            <li>Sistemas internos</li>
-            <li>Bases de datos</li>
-            <li>Integraciones</li>
+      <div class="chapter-body guide">
+        <div>
+          <p>Analizamos cómo opera tu empresa, te decimos qué conviene digitalizar primero según tu presupuesto y lo implementamos de principio a fin.</p>
+          <p>Trabajas directo con los dos fundadores: uno se encarga de la estrategia y el diseño, el otro de la programación y los datos. Un solo equipo, un solo interlocutor y cero jerga técnica.</p>
+        </div>
+        <div class="promise">
+          <p>Recibes propuestas claras:</p>
+          <ul>
+            <li>Alcance definido por escrito</li>
+            <li>Precio antes de empezar</li>
+            <li>Plazos por etapa</li>
           </ul>
-          <a class="cta-link" data-wa="producto" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Cotizar un sitio o sistema
-          </a>
-        </li>
-        <li class="card service">
-          <figure class="slot slot--shot" data-slot>
-            <img src="assets/proyecto-2.jpg" alt="Demo de tablero de procesos automatizados, con datos ficticios" loading="lazy" width="1600" height="1000" onerror="this.parentNode.classList.add('is-empty')">
-            <span class="slot__demo mono">Demo con datos ficticios</span>
-            <figcaption class="slot__hint mono"><strong>Captura de proyecto</strong>assets/proyecto-2.jpg<br>1600 × 1000 px</figcaption>
-          </figure>
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Servicio 2</span></div>
-          <h3 class="h3">Adopción digital y mejora de procesos</h3>
-          <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
-          <p class="ideal"><strong>Ideal si</strong> ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.</p>
-          <ul class="tags">
-            <li>Diagnóstico</li>
-            <li>Automatización</li>
-            <li>Capacitación</li>
-            <li>Indicadores</li>
-          </ul>
-          <a class="cta-link" data-wa="procesos" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Pedir una asesoría
-          </a>
-        </li>
-      </ul>
+          <a class="link" data-wa="Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito: " href="#">Pregúntanos cuánto costaría tu proyecto</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Chapter 4: method -->
-  <section id="metodo">
+  <section class="chapter tint" id="servicios" aria-labelledby="c3">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <span class="label mono">Capítulo cuatro: el recorrido</span>
-          <h2 class="display display--md">Así empezamos a trabajar.</h2>
+      <div class="chapter-head">
+        <span class="maya lg" role="img" aria-label="Capítulo 3"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span>
+        <h2 id="c3">Elige por dónde empezar.</h2>
+      </div>
+      <div class="services">
+        <article class="service">
+          <span class="maya lg" role="img" aria-label="Servicio 1"><span class="dots"><i class="dot"></i></span></span>
+          <div>
+            <h3>Productos digitales</h3>
+            <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
+            <p class="ideal"><b>Ideal si</b> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.</p>
+          </div>
+          <div>
+            <ul class="tags"><li>Sitios web</li><li>Sistemas internos</li><li>Bases de datos</li><li>Integraciones</li></ul>
+            <a class="btn btn-primary" data-wa="Hola, quiero cotizar un producto digital (sitio web, sistema o aplicación) para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotizar un sitio o sistema</a>
+          </div>
+        </article>
+        <article class="service">
+          <span class="maya lg" role="img" aria-label="Servicio 2"><span class="dots"><i class="dot"></i><i class="dot"></i></span></span>
+          <div>
+            <h3>Adopción digital y mejora de procesos</h3>
+            <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
+            <p class="ideal"><b>Ideal si</b> ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.</p>
+          </div>
+          <div>
+            <ul class="tags"><li>Diagnóstico</li><li>Automatización</li><li>Capacitación</li><li>Indicadores</li></ul>
+            <a class="btn btn-primary" data-wa="Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Pedir una asesoría</a>
+          </div>
+        </article>
+      </div>
+      <p class="legend chapter-body">Numerado con numerales mayas: cada punto vale uno.</p>
+    </div>
+  </section>
+
+  <section class="demo-section" id="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <div class="demo-head">
+        <h2 id="demo-title">Así se ve un sistema por dentro.</h2>
+        <p>Una demo que puedes tocar: ventas, inventario y reportes de una ferretería ficticia. Es el tipo de herramienta que construimos a la medida de cada empresa.</p>
+      </div>
+      <div class="device" id="device">
+        <div class="app" role="region" aria-label="Demo interactiva de un sistema de gestión">
+          <div class="app-bar">
+            <span class="app-name"><b>Ferretería El Volcán</b><small>Datos de ejemplo</small></span>
+            <div class="app-tabs" role="tablist" aria-label="Módulos">
+              <button role="tab" aria-selected="true" aria-controls="t-ventas" id="b-ventas">Ventas</button>
+              <button role="tab" aria-selected="false" aria-controls="t-inv" id="b-inv" tabindex="-1">Inventario <span class="badge" id="low-count">3</span></button>
+              <button role="tab" aria-selected="false" aria-controls="t-rep" id="b-rep" tabindex="-1">Reportes</button>
+            </div>
+          </div>
+
+          <div class="app-body" role="tabpanel" id="t-ventas" aria-labelledby="b-ventas">
+            <div class="kpis">
+              <div class="kpi"><span>Ventas de hoy</span><b>Q 8,436.50</b><em class="up">+12.4% vs. ayer</em></div>
+              <div class="kpi"><span>Pedidos</span><b>37</b><em class="up">+5</em></div>
+              <div class="kpi"><span>Ticket promedio</span><b>Q 228.01</b><em class="down">−2.1%</em></div>
+            </div>
+            <div class="split">
+              <figure class="chart">
+                <figcaption>Ventas de los últimos 7 días</figcaption>
+                <div class="bars" id="bars"></div>
+              </figure>
+              <div class="feed">
+                <p class="feed-title">Últimos pedidos</p>
+                <ul>
+                  <li><span>#1048 · Constructora Álvarez</span><b>Q 1,284.00</b></li>
+                  <li><span>#1047 · Mostrador</span><b>Q 96.50</b></li>
+                  <li><span>#1046 · Pinturas Xela</span><b>Q 642.75</b></li>
+                  <li><span>#1045 · Mostrador</span><b>Q 214.00</b></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="app-body" role="tabpanel" id="t-inv" aria-labelledby="b-inv" hidden>
+            <table class="stock">
+              <thead><tr><th>Producto</th><th>Existencia</th><th>Mínimo</th><th></th></tr></thead>
+              <tbody id="stock-rows"></tbody>
+            </table>
+          </div>
+
+          <div class="app-body" role="tabpanel" id="t-rep" aria-labelledby="b-rep" hidden>
+            <div class="report">
+              <figure class="chart">
+                <figcaption>Ventas por categoría · septiembre</figcaption>
+                <ul class="hbars" id="hbars"></ul>
+              </figure>
+              <div class="export">
+                <button class="btn btn-primary" id="export" type="button">Exportar a Excel</button>
+                <p class="status" id="export-status" role="status"></p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <p class="demo-note">¿Te imaginas algo así con los datos de tu empresa? <a class="link" data-wa="Hola, vi la demo en tu página y quiero algo así para mi empresa." href="#">Cuéntanos qué necesitas controlar</a></p>
+    </div>
+  </section>
+
+  <section class="chapter" id="metodo" aria-labelledby="c4">
+    <div class="wrap">
+      <div class="chapter-head">
+        <span class="maya lg" role="img" aria-label="Capítulo 4"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span>
+        <h2 id="c4">Así empezamos a trabajar.</h2>
       </div>
       <ol class="steps">
-        <li><div class="card">
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-1"/></svg><span class="mono">Paso 1</span></div>
-          <h3 class="h3">Me escribes por WhatsApp</h3>
-          <p>Me cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.</p>
-        </div></li>
-        <li><div class="card">
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-2"/></svg><span class="mono">Paso 2</span></div>
-          <h3 class="h3">Conversación inicial sin costo</h3>
-          <p>Entiendo qué necesitas y te doy un primer rango de precio.</p>
-        </div></li>
-        <li><div class="card">
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-3"/></svg><span class="mono">Paso 3</span></div>
-          <h3 class="h3">Propuesta clara</h3>
+        <li class="step">
+          <div class="marker"><span class="maya" role="img" aria-label="Paso 1"><span class="dots"><i class="dot"></i></span></span></div>
+          <h3>Nos escribes por WhatsApp</h3>
+          <p>Nos cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.</p>
+        </li>
+        <li class="step">
+          <div class="marker"><span class="maya" role="img" aria-label="Paso 2"><span class="dots"><i class="dot"></i><i class="dot"></i></span></span></div>
+          <h3>Conversación inicial sin costo</h3>
+          <p>Entendemos qué necesitas y te damos un primer rango de precio.</p>
+        </li>
+        <li class="step">
+          <div class="marker"><span class="maya" role="img" aria-label="Paso 3"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span></div>
+          <h3>Propuesta clara</h3>
           <p>Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.</p>
-        </div></li>
-        <li><div class="card">
-          <div class="marker"><svg class="glyph" aria-hidden="true"><use href="#maya-4"/></svg><span class="mono">Paso 4</span></div>
-          <h3 class="h3">Implementación y acompañamiento</h3>
-          <p>Trabajo por etapas para que veas avances pronto, capacito a tu equipo y me quedo hasta que todo funcione.</p>
-        </div></li>
+        </li>
+        <li class="step">
+          <div class="marker"><span class="maya" role="img" aria-label="Paso 4"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span></div>
+          <h3>Implementación y acompañamiento</h3>
+          <p>Trabajamos por etapas para que veas avances pronto, capacitamos a tu equipo y nos quedamos hasta que todo funcione.</p>
+        </li>
       </ol>
-      <div class="after">
-        <a class="cta-link" data-wa="paso1" href="#contacto">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-          Dar el primer paso ahora
-        </a>
-      </div>
+      <a class="btn btn-primary" data-wa="Hola, quiero agendar la conversación inicial sin costo." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Dar el primer paso ahora</a>
     </div>
   </section>
 
-  <!-- Chapter 5: transformation -->
-  <section id="resultado">
+  <section class="chapter tint modes-section" aria-labelledby="modes-title">
     <div class="wrap">
-      <span class="label mono">Capítulo cinco: la transformación</span>
-      <h2 class="display display--md">Imagina tu empresa dentro de unos meses.</h2>
-      <ul class="outcomes">
-        <li>Toda tu información en un solo lugar, al día y a la mano.</li>
-        <li>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
-        <li>Menos errores y menos dependencia de una sola persona.</li>
-        <li>Decisiones con datos reales, no con suposiciones.</li>
+      <div class="modes-head">
+        <h2 id="modes-title">Tres formas de trabajar con nosotros.</h2>
+        <p>Sin paquetes genéricos: el precio depende del alcance y lo recibes por escrito antes de empezar.</p>
+      </div>
+      <ol class="modes">
+        <li class="mode">
+          <h3>Diagnóstico</h3>
+          <p>Revisamos cómo opera tu empresa y te entregamos un plan por prioridades, con lo que conviene digitalizar primero y su costo estimado.</p>
+          <p class="fit">Para ti si no sabes por dónde empezar.</p>
+          <a class="link" data-wa="Hola, me interesa un diagnóstico de mi empresa." href="#">Pedir un diagnóstico</a>
+        </li>
+        <li class="mode featured">
+          <h3>Proyecto</h3>
+          <p>Un sitio web, sistema o automatización con alcance, precio y plazos cerrados por escrito. Entregas por etapas para que veas avances pronto.</p>
+          <p class="fit">Para ti si ya sabes qué necesitas.</p>
+          <a class="btn btn-primary" data-wa="Hola, quiero cotizar un proyecto para mi empresa. Esto es lo que necesito: " href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotizar un proyecto</a>
+        </li>
+        <li class="mode">
+          <h3>Acompañamiento</h3>
+          <p>Soporte, mejoras y capacitación después de la entrega, para que el sistema crezca con tu negocio y tu equipo lo use de verdad.</p>
+          <p class="fit">Para ti si quieres que todo siga funcionando.</p>
+          <a class="link" data-wa="Hola, me interesa el acompañamiento y soporte continuo para mi empresa." href="#">Preguntar por acompañamiento</a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!--
+    TESTIMONIOS: sección lista para cuando haya testimonios reales (nombre, cargo y empresa).
+    Para activarla, copia este bloque fuera del comentario y reemplaza el texto.
+  <section class="chapter quotes" aria-labelledby="quotes-title">
+    <div class="wrap">
+      <h2 id="quotes-title">Lo que dicen quienes ya trabajan así.</h2>
+      <figure class="quote">
+        <blockquote>Texto real del testimonio.</blockquote>
+        <figcaption><b>Nombre Apellido</b> · Cargo, Empresa</figcaption>
+      </figure>
+    </div>
+  </section>
+  -->
+
+  <section class="chapter" aria-labelledby="c5">
+    <div class="wrap">
+      <div class="chapter-head">
+        <span class="maya lg" role="img" aria-label="Capítulo 5"><span class="bar"></span></span>
+        <h2 id="c5">Imagina tu empresa dentro de unos meses.</h2>
+      </div>
+      <ul class="future">
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Toda tu información en un solo lugar, al día y a la mano.</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Menos errores y menos dependencia de una sola persona.</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Ventas, inventario y cobros al día en un solo tablero para decidir con números.</li>
       </ul>
-      <a class="cta-link" data-wa="general" href="#contacto">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-        Quiero esto para mi empresa
-      </a>
+      <a class="btn btn-primary" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Quiero esto para mi empresa</a>
     </div>
   </section>
-
-  <!-- FAQ -->
-  <section class="faq" id="preguntas">
-    <div class="wrap faq__grid">
-      <div>
-        <span class="label mono">Antes de escribirme</span>
-        <h2 class="display display--md">Lo que todos preguntan.</h2>
-      </div>
-      <div class="card">
-        <details open>
-          <summary>¿Cuánto cuesta?</summary>
-          <p>Depende de lo que necesites, por eso no vendo paquetes genéricos que terminas pagando de más. Escríbeme con tu caso y en la primera conversación te doy un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.</p>
-          <a class="cta-link" data-wa="precio" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Pedir un rango de precio
-          </a>
-        </details>
-        <details>
-          <summary>¿Mi empresa es muy pequeña para esto?</summary>
-          <p>No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.</p>
-        </details>
-        <details>
-          <summary>¿Cuánto tiempo toma?</summary>
-          <p>Depende del alcance. Trabajo por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indico los plazos de cada una.</p>
-        </details>
-        <details>
-          <summary>Ya tengo sistemas. ¿Tengo que cambiar todo?</summary>
-          <p>No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.</p>
-        </details>
-        <details>
-          <summary>¿Qué pasa después de la entrega?</summary>
-          <p>Capacito a tu equipo y te ofrezco soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Finale -->
-  <section class="finale" id="contacto">
+  <section class="chapter tint about" id="quien" aria-labelledby="about-title">
     <div class="wrap">
-      <div class="card">
-        <span class="label mono">Tu siguiente capítulo</span>
-        <h2 class="display">Tu cotización empieza con un mensaje.</h2>
-        <p class="lead">Escríbeme por WhatsApp, cuéntame qué necesitas y te digo cómo lo resolvería y cuánto costaría. La primera conversación no tiene costo.</p>
-        <div class="actions">
-          <a class="btn btn--lg" data-wa="general" href="#contacto">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-            Pedir mi cotización por WhatsApp
-          </a>
+      <div class="about-head">
+        <h2 id="about-title">Dos fundadores. Un mismo equipo de principio a fin.</h2>
+        <p>Pixan Tech une lo que casi siempre se contrata por separado: alguien que entiende cómo vende tu negocio y alguien que construye el sistema que lo hace posible.</p>
+      </div>
+      <div class="founders">
+        <article class="founder">
+          <div class="monogram" aria-hidden="true">AA</div>
+          <div>
+            <h3>Andrés Arrivillaga Shaw</h3>
+            <p class="role">Marketing y diseño</p>
+          </div>
+        </article>
+        <article class="founder">
+          <div class="monogram alt" aria-hidden="true">FG</div>
+          <div>
+            <h3>Fernando Gaitán Serrano</h3>
+            <p class="role">Programación y análisis de datos</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="preguntas" aria-labelledby="faq-title">
+    <div class="wrap faq">
+      <div class="faq-intro">
+        <h2 id="faq-title">Lo que todos preguntan.</h2>
+        <p>¿Tu duda no está aquí? Escríbenos y te responde uno de los fundadores.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>¿Cuánto cuesta?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="answer"><p>Depende de lo que necesites, por eso no vendemos paquetes genéricos que terminas pagando de más. Escríbenos con tu caso y en la primera conversación te damos un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.</p>
+          <a class="link" data-wa="Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito: " href="#">Pedir un rango de precio</a></div>
+        </details>
+        <details>
+          <summary>¿Mi empresa es muy pequeña para esto?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="answer"><p>No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.</p></div>
+        </details>
+        <details>
+          <summary>¿Cuánto tiempo toma?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="answer"><p>Depende del alcance. Trabajamos por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indicamos los plazos de cada una.</p></div>
+        </details>
+        <details>
+          <summary>Ya tengo sistemas. ¿Tengo que cambiar todo?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="answer"><p>No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué pasa después de la entrega?<span class="plus" aria-hidden="true"></span></summary>
+          <div class="answer"><p>Capacitamos a tu equipo y te damos soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="final-grid">
+        <div>
+          <h2 id="cta-title">¿Qué te gustaría dejar de hacer a mano?</h2>
+          <p>Cuéntanoslo por WhatsApp en un mensaje. Te respondemos con cómo lo resolveríamos y un rango de precio. La primera conversación no tiene costo.</p>
+          <a class="btn btn-light" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Pedir mi cotización por WhatsApp</a>
         </div>
-        <p class="topics-label mono">O toca un tema y el mensaje se escribe solo:</p>
-        <ul class="topics">
-          <li><a data-wa="sitio" href="#contacto">Quiero un sitio web</a></li>
-          <li><a data-wa="sistema" href="#contacto">Necesito un sistema a la medida</a></li>
-          <li><a data-wa="automatizar" href="#contacto">Automatizar tareas repetitivas</a></li>
-          <li><a data-wa="procesos" href="#contacto">Digitalizar mis procesos</a></li>
+        <img src="assets/pixan-emblem.png" alt="" width="589" height="440">
+      </div>
+      <div class="topics">
+        <p>O elige un tema y el mensaje se escribe solo:</p>
+        <ul>
+          <li><a data-wa="Hola, quiero cotizar un sitio web para mi empresa." href="#">Quiero un sitio web</a></li>
+          <li><a data-wa="Hola, necesito un sistema a la medida para mi empresa. ¿Cuánto costaría?" href="#">Necesito un sistema a la medida</a></li>
+          <li><a data-wa="Hola, quiero automatizar tareas repetitivas en mi empresa. ¿Cuánto costaría?" href="#">Automatizar tareas repetitivas</a></li>
+          <li><a data-wa="Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa." href="#">Digitalizar mis procesos</a></li>
         </ul>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap footer__inner">
-    <a class="footer__brand" href="#inicio" aria-label="Pixan Tech">
-      <img src="assets/pixan-emblem.png" alt="" width="54" height="40" loading="lazy">
-      <span class="wordmark" aria-hidden="true"><b>PIXAN</b> TECH</span>
-    </a>
-    <div class="footer__meta">
-      <a class="footer__wa" data-wa="general" href="#contacto" aria-label="Escríbeme por WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-      </a>
-      <span class="mono">© <span id="year">2026</span> Pixan Tech</span>
-    </div>
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="#inicio"><img src="assets/pixan-emblem.png" alt="" width="44" height="33">PIXAN TECH</a>
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+      <li><a data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#">WhatsApp +502 5825 3416</a></li>
+    </ul>
+    <p>© <span id="y">2026</span> Pixan Tech · Guatemala</p>
   </div>
 </footer>
 
-<div class="dock" id="dock">
-  <a class="btn" data-wa="general" href="#contacto">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#wa-icon"/></svg>
-    Cotizar por WhatsApp
-  </a>
-</div>
+<a class="wa-float" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 
 <script>
-/* Labels for the image slots, merged into the shared EN dictionary below. */
-const SLOT_EN = {
-  'Tu foto': 'Your photo',
-  'Captura de proyecto': 'Project screenshot',
-  'Demo con datos ficticios': 'Demo with fictional data',
-  'Tu guía en Pixan Tech': 'Your guide at Pixan Tech',
-  'Demo de sistema de ventas e inventario, con datos ficticios': 'Sales and inventory system demo with fictional data',
-  'Demo de tablero de procesos automatizados, con datos ficticios': 'Automated processes dashboard demo with fictional data'
-};
-</script>
-<script>
-/* Strings that only exist in this editorial version; merged into the shared EN dictionary below. */
-const EXTRA_EN = {
-  ...SLOT_EN,
-  'Secciones': 'Sections',
-  'Preguntas': 'FAQ',
-  'Emblema de Pixan Tech: figura maya sobre un cohete con una serpiente': 'Pixan Tech emblem: a Mayan figure riding a rocket with a serpent',
-  'Sitios web, sistemas y aplicaciones': 'Websites, systems and apps',
-  'Procesos': 'Processes',
-  'Adopción digital': 'Digital adoption',
-  'Acompañamiento para que tu equipo use la tecnología': 'Support so your team actually uses the technology',
-  'Diagnóstico, automatización y capacitación': 'Assessment, automation and training',
-  'Horas copiando datos entre hojas de cálculo.': 'Hours copying data between spreadsheets.',
-  'Sistemas que no se hablan entre sí.': "Systems that don't talk to each other.",
-  'Procesos que se detienen cuando falta una persona.': 'Processes that stop when one person is out.',
-  'Herramientas que pagas y nadie usa.': 'Tools you pay for that nobody uses.',
-  'Numerado con numerales mayas: cada punto vale uno.': 'Numbered with Mayan numerals: each dot is worth one.',
-  'Servicio 1': 'Service 1', 'Servicio 2': 'Service 2',
-  'Paso 1': 'Step 1', 'Paso 2': 'Step 2', 'Paso 3': 'Step 3', 'Paso 4': 'Step 4'
-};
-</script>
-<script>
-/* ===== Contact config: edit here only ===== */
-const WHATSAPP = {
-  countryCode: '502',          // Guatemala
-  number: '58253416',
-  // Each CTA has data-wa="<intent>" and opens WhatsApp with the matching pre-written message,
-  // so the visitor never faces a blank chat and you know right away what they want.
-  messages: {
-    es: {
-      general: 'Hola, vi tu página de Pixan Tech y quiero cotizar un proyecto para mi empresa.',
-      caso: 'Hola, quiero contarte cómo trabajamos hoy en mi empresa y ver qué podemos mejorar.',
-      precio: 'Hola, ¿me puedes dar un rango de precio? Esto es lo que necesito: ',
-      automatizar: 'Hola, quiero automatizar tareas repetitivas en mi empresa. ¿Cuánto costaría?',
-      producto: 'Hola, quiero cotizar un producto digital (sitio web, sistema o aplicación) para mi empresa.',
-      procesos: 'Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa.',
-      sitio: 'Hola, quiero cotizar un sitio web para mi empresa.',
-      sistema: 'Hola, necesito un sistema a la medida para mi empresa. ¿Cuánto costaría?',
-      paso1: 'Hola, quiero agendar la conversación inicial sin costo.'
-    },
-    en: {
-      general: "Hi, I saw the Pixan Tech website and I'd like a quote for a project for my business.",
-      caso: "Hi, I'd like to tell you how we work today at my business and see what we can improve.",
-      precio: 'Hi, could you give me a price range? This is what I need: ',
-      automatizar: 'Hi, I want to automate repetitive tasks at my business. How much would it cost?',
-      producto: "Hi, I'd like a quote for a digital product (website, system or app) for my business.",
-      procesos: "Hi, I'm interested in digital adoption and process improvement advisory for my business.",
-      sitio: "Hi, I'd like a quote for a website for my business.",
-      sistema: 'Hi, I need a custom system for my business. How much would it cost?',
-      paso1: "Hi, I'd like to schedule the free initial conversation."
-    }
-  }
-};
+// Every WhatsApp link shares one number; each carries its own pre-written message.
+const WA = "50258253416";
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(a.dataset.wa);
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+document.getElementById("y").textContent = new Date().getFullYear();
 
-function setWhatsApp(lang) {
-  const base = `https://wa.me/${WHATSAPP.countryCode}${WHATSAPP.number}?text=`;
-  const msgs = WHATSAPP.messages[lang];
-  document.querySelectorAll('[data-wa]').forEach(a => {
-    a.href = base + encodeURIComponent(msgs[a.dataset.wa] || msgs.general);
-    a.target = '_blank';
-    a.rel = 'noopener';
+const header = document.querySelector(".site-header");
+const onScroll = () => header.classList.toggle("scrolled", scrollY > 8);
+addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+// Mark the nav link of the section in view.
+const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    links.forEach(l => l.setAttribute("aria-current", l.getAttribute("href") === "#" + e.target.id ? "true" : "false"));
   });
+}, { rootMargin: "-45% 0px -50% 0px" });
+["servicios", "demo", "metodo", "quien", "preguntas"].forEach(id => io.observe(document.getElementById(id)));
+
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Demo: sample data for a fictional hardware store.
+const days = [["Mié", 6120], ["Jue", 7480], ["Vie", 9310], ["Sáb", 11240], ["Dom", 4380], ["Lun", 7505], ["Hoy", 8436]];
+const stock = [
+  ["Cemento gris 42.5 kg", 18, 40],
+  ["Varilla corrugada 3/8\"", 126, 80],
+  ["Pintura blanca 1 gal", 9, 24],
+  ["Tubo PVC 1/2\" 6 m", 64, 50],
+  ["Tornillo punta broca 1\" (100)", 11, 30],
+  ["Lámina troquelada 10 pies", 52, 20],
+];
+const cats = [["Construcción", 48210], ["Plomería", 21875], ["Pintura", 17340], ["Electricidad", 12960], ["Herramientas", 9415]];
+const q = n => "Q " + n.toLocaleString("en-US", { minimumFractionDigits: 0 });
+
+const bars = document.getElementById("bars");
+const max = Math.max(...days.map(d => d[1]));
+bars.innerHTML = days.map(([d, v]) =>
+  `<div class="col" title="${d}: ${q(v)}"><div class="b" data-h="${(v / max * 100).toFixed(1)}%"></div><small>${d}</small></div>`).join("");
+
+const hbars = document.getElementById("hbars");
+const cmax = Math.max(...cats.map(c => c[1]));
+hbars.innerHTML = cats.map(([c, v]) =>
+  `<li><span>${c}</span><div class="track"><div class="fill" data-w="${(v / cmax * 100).toFixed(1)}%"></div></div><b>${q(v)}</b></li>`).join("");
+
+const rows = document.getElementById("stock-rows");
+const lowCount = document.getElementById("low-count");
+function renderStock() {
+  rows.innerHTML = stock.map(([name, have, min], i) => {
+    const low = have < min;
+    return `<tr class="${low ? "low" : ""}"><td>${name}</td><td>${have}</td><td>${min}</td><td>${
+      low ? `<button type="button" data-i="${i}">Reabastecer</button>` : `<span class="ok-tag">En orden</span>`}</td></tr>`;
+  }).join("");
+  const n = stock.filter(([, h, m]) => h < m).length;
+  lowCount.textContent = n;
+  lowCount.classList.toggle("ok", n === 0);
 }
-document.getElementById('year').textContent = new Date().getFullYear();
+rows.addEventListener("click", e => {
+  const b = e.target.closest("button[data-i]");
+  if (!b) return;
+  const item = stock[b.dataset.i];
+  item[1] = item[2] * 2;
+  renderStock();
+});
+renderStock();
 
-/* ===== Translation: Spanish is written in the HTML; this maps each Spanish string to English.
-   If you edit a Spanish text in the page, update its line here too. ===== */
-const EN = {
-  ...EXTRA_EN,
-  // Head
-  'Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala': 'Pixan Tech | Systems, websites and digital processes for businesses in Guatemala',
-  'Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.': 'Custom systems, websites and digital adoption and process advisory for businesses in Guatemala. First consultation free: get a quote on WhatsApp.',
-  'Menos trabajo manual, más control de tu negocio. Cotiza tu proyecto por WhatsApp.': 'Less manual work, more control of your business. Get a quote on WhatsApp.',
-  // Nav and accessibility labels
-  'Saltar al contenido': 'Skip to content',
-  'Pixan Tech, ir al inicio': 'Pixan Tech, go to top',
-  'Idioma': 'Language',
-  'Escríbeme por WhatsApp': 'Message me on WhatsApp',
-  'El camino': 'The journey',
-  'Servicios': 'Services',
-  'Método': 'Method',
-  'Cotizar por WhatsApp': 'Get a quote on WhatsApp',
-  'Capítulos del recorrido': 'Journey chapters',
-  'Inicio': 'Home',
-  'El punto de partida': 'The starting point',
-  'El guía': 'The guide',
-  'La transformación': 'The transformation',
-  'Preguntas frecuentes': 'FAQ',
-  'Contacto': 'Contact',
-  // Hero
-  'Para empresas que quieren crecer con tecnología': 'For businesses ready to grow with technology',
-  'Menos trabajo manual. Más control de tu negocio.': 'Less manual work. More control of your business.',
-  'Creo los sistemas, sitios web y procesos digitales que tu empresa necesita para vender más y operar mejor. Cuéntame tu caso y te digo cuánto costaría.': 'I build the systems, websites and digital processes your business needs to sell more and run better. Tell me about your case and I’ll tell you what it would cost.',
-  'Cotiza tu proyecto por WhatsApp': 'Get a quote on WhatsApp',
-  'Ver servicios': 'See services',
-  'Primera asesoría sin costo. Te respondo personalmente.': 'First consultation is free. I reply personally.',
-  // Chapter 1
-  'Capítulo uno: el punto de partida': 'Chapter one: the starting point',
-  '¿Tu empresa todavía funciona así?': 'Does your business still run like this?',
-  'Horas copiando datos entre hojas de cálculo. Sistemas que no se hablan entre sí. Procesos que se detienen cuando falta una persona. Herramientas que pagas y nadie usa.': "Hours copying data between spreadsheets. Systems that don't talk to each other. Processes that stop when one person is out. Tools you pay for that nobody uses.",
-  'Cada día así te cuesta dinero: en horas perdidas, en errores y en clientes que se van con quien responde más rápido.': 'Every day like this costs you money: in lost hours, in mistakes and in customers who go to whoever answers faster.',
-  'Cuéntame tu caso por WhatsApp': 'Tell me about your case on WhatsApp',
-  // Chapter 2
-  'Capítulo dos: el guía': 'Chapter two: the guide',
-  'No necesitas más herramientas. Necesitas un plan que funcione.': "You don't need more tools. You need a plan that works.",
-  'Analizo cómo opera tu empresa, te digo qué conviene digitalizar primero según tu presupuesto y lo implemento de principio a fin.': 'I analyze how your business operates, tell you what to digitize first based on your budget, and implement it from start to finish.',
-  'Tienes un solo responsable para todo: sin coordinar a cinco proveedores y sin jerga técnica. Recibes propuestas claras, con precio y plazos.': 'One person accountable for everything: no juggling five vendors and no technical jargon. You get clear proposals with price and timelines.',
-  'Pregúntame cuánto costaría tu proyecto': 'Ask me what your project would cost',
-  // Chapter 3
-  'Capítulo tres: lo que puedo hacer por ti': 'Chapter three: what I can do for you',
-  'Elige por dónde empezar.': 'Choose where to start.',
-  'Ideal si': 'Ideal if',
-  'Productos digitales': 'Digital products',
-  'Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.': 'A website that brings you customers and custom systems that organize your operation: inventory, sales, reports or whatever your business needs.',
-  'tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.': 'your business lives in spreadsheets or you want to sell and get customers online.',
-  'Sitios web': 'Websites',
-  'Sistemas internos': 'Internal systems',
-  'Bases de datos': 'Databases',
-  'Integraciones': 'Integrations',
-  'Cotizar un sitio o sistema': 'Get a website or system quote',
-  'Adopción digital y mejora de procesos': 'Digital adoption and process improvement',
-  'Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.': 'Advisory to streamline your processes, automate repetitive tasks and get your team to actually use technology.',
-  'ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.': "you've invested in tools and see no results, or you don't know where to start.",
-  'Diagnóstico': 'Assessment',
-  'Automatización': 'Automation',
-  'Capacitación': 'Training',
-  'Indicadores': 'KPIs',
-  'Pedir una asesoría': 'Request a consultation',
-  // Chapter 4
-  'Capítulo cuatro: el recorrido': 'Chapter four: the journey',
-  'Así empezamos a trabajar.': "Here's how we get started.",
-  'Me escribes por WhatsApp': 'You message me on WhatsApp',
-  'Me cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.': 'Tell me your situation in one message. No forms, no sales calls.',
-  'Conversación inicial sin costo': 'Free initial conversation',
-  'Entiendo qué necesitas y te doy un primer rango de precio.': 'I understand what you need and give you a first price range.',
-  'Propuesta clara': 'A clear proposal',
-  'Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.': 'You get scope, price and timelines in writing. You decide whether we move forward.',
-  'Implementación y acompañamiento': 'Implementation and support',
-  'Trabajo por etapas para que veas avances pronto, capacito a tu equipo y me quedo hasta que todo funcione.': 'I work in stages so you see progress early, train your team and stay until everything works.',
-  'Dar el primer paso ahora': 'Take the first step now',
-  // Chapter 5
-  'Capítulo cinco: la transformación': 'Chapter five: the transformation',
-  'Imagina tu empresa dentro de unos meses.': 'Picture your business a few months from now.',
-  'Toda tu información en un solo lugar, al día y a la mano.': 'All your information in one place, up to date and at hand.',
-  'Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.': 'Repetitive tasks run on their own and your team focuses on selling and serving customers.',
-  'Menos errores y menos dependencia de una sola persona.': 'Fewer mistakes and less dependence on a single person.',
-  'Decisiones con datos reales, no con suposiciones.': 'Decisions based on real data, not assumptions.',
-  'Quiero esto para mi empresa': 'I want this for my business',
-  // FAQ
-  'Antes de escribirme': 'Before you message me',
-  'Lo que todos preguntan.': 'What everyone asks.',
-  '¿Cuánto cuesta?': 'How much does it cost?',
-  'Depende de lo que necesites, por eso no vendo paquetes genéricos que terminas pagando de más. Escríbeme con tu caso y en la primera conversación te doy un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.': "It depends on what you need, which is why I don't sell generic packages you end up overpaying for. Message me with your case and in our first conversation I'll give you a price range, free of charge. If we move forward, you get the price in writing before we start.",
-  'Pedir un rango de precio': 'Ask for a price range',
-  '¿Mi empresa es muy pequeña para esto?': 'Is my business too small for this?',
-  'No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.': 'No. The proposal fits your size and budget, and we start with what pays you back the fastest.',
-  '¿Cuánto tiempo toma?': 'How long does it take?',
-  'Depende del alcance. Trabajo por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indico los plazos de cada una.': 'It depends on the scope. I work in stages so you see results from the first deliveries, and the proposal includes the timeline for each one.',
-  'Ya tengo sistemas. ¿Tengo que cambiar todo?': 'I already have systems. Do I have to replace everything?',
-  'No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.': "No. First we make the most of what already works and connect what's isolated today. We only change what's really holding you back.",
-  '¿Qué pasa después de la entrega?': 'What happens after delivery?',
-  'Capacito a tu equipo y te ofrezco soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.': "I train your team and offer support so everything keeps running. You won't be left with a system nobody knows how to use.",
-  // Finale
-  'Tu siguiente capítulo': 'Your next chapter',
-  'Tu cotización empieza con un mensaje.': 'Your quote starts with a message.',
-  'Escríbeme por WhatsApp, cuéntame qué necesitas y te digo cómo lo resolvería y cuánto costaría. La primera conversación no tiene costo.': "Message me on WhatsApp, tell me what you need and I'll tell you how I'd solve it and what it would cost. The first conversation is free.",
-  'Pedir mi cotización por WhatsApp': 'Get my quote on WhatsApp',
-  'O toca un tema y el mensaje se escribe solo:': 'Or tap a topic and the message writes itself:',
-  'Quiero un sitio web': 'I want a website',
-  'Necesito un sistema a la medida': 'I need a custom system',
-  'Automatizar tareas repetitivas': 'Automate repetitive tasks',
-  'Digitalizar mis procesos': 'Digitize my processes'
+function grow(panelEl) {
+  panelEl.querySelectorAll("[data-h]").forEach(el => el.style.height = el.dataset.h);
+  panelEl.querySelectorAll("[data-w]").forEach(el => el.style.width = el.dataset.w);
+}
+
+// Tabs with arrow-key support.
+const tabs = [...document.querySelectorAll(".app-tabs [role=tab]")];
+function select(tab) {
+  tabs.forEach(t => {
+    const on = t === tab;
+    t.setAttribute("aria-selected", on);
+    t.tabIndex = on ? 0 : -1;
+    document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+  });
+  grow(document.getElementById(tab.getAttribute("aria-controls")));
+}
+tabs.forEach((t, i) => {
+  t.addEventListener("click", () => select(t));
+  t.addEventListener("keydown", e => {
+    const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+    if (!d) return;
+    const next = tabs[(i + d + tabs.length) % tabs.length];
+    next.focus();
+    select(next);
+  });
+});
+
+const status = document.getElementById("export-status");
+document.getElementById("export").addEventListener("click", () => {
+  status.textContent = "Generando reporte…";
+  setTimeout(() => { status.textContent = "Listo. En tu sistema, aquí se descargaría el archivo de Excel."; }, 900);
+});
+
+// The demo window tilts up into place the first time it scrolls into view.
+const device = document.getElementById("device");
+new IntersectionObserver((entries, obs) => {
+  if (!entries[0].isIntersecting) return;
+  device.classList.add("in");
+  grow(document.getElementById("t-ventas"));
+  obs.disconnect();
+}, { threshold: 0.25 }).observe(device);
+</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<script type="module">
+// Hero scene: a jade Maya pyramid on a dark circular dais with a glowing ring,
+// over a fading light grid. Energy rings pulse outward and motes of light drift up.
+import * as THREE from "three";
+import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+
+const host = document.getElementById("scene");
+const canvas = document.getElementById("jade-canvas");
+// With reduced motion we keep only a slow turn: no bobbing, pulses or parallax.
+const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+} catch {
+  throw new Error("WebGL unavailable; the static image stays visible.");
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+
+const GLOW = new THREE.Color("#4fd1a1");
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(new THREE.Color("#08110e"), 8, 19);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
+const camBase = new THREE.Vector3(0, 4.4, 9.6);
+
+scene.add(new THREE.HemisphereLight(0x9fd8c0, 0x050a08, 0.5));
+const key = new THREE.DirectionalLight(0xffffff, 2.4);
+key.position.set(-4, 9, 5);
+key.castShadow = true;
+key.shadow.mapSize.set(1024, 1024);
+Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 });
+key.shadow.bias = -0.0005;
+key.shadow.radius = 5;
+scene.add(key);
+const rim = new THREE.DirectionalLight(GLOW, 2.2);
+rim.position.set(5, 3, -6);
+scene.add(rim);
+const under = new THREE.PointLight(GLOW, 6, 6, 2);
+under.position.set(0, 0.25, 0);
+scene.add(under);
+
+// Light grid floor, fading into the fog.
+const grid = new THREE.GridHelper(40, 40, GLOW, GLOW);
+grid.material.transparent = true;
+grid.material.opacity = 0.16;
+grid.material.depthWrite = false;
+grid.position.y = -0.01;
+scene.add(grid);
+
+// Procedural jade veining.
+function jadeTexture() {
+  const c = document.createElement("canvas");
+  c.width = c.height = 512;
+  const g = c.getContext("2d");
+  g.fillStyle = "#1d6a4e";
+  g.fillRect(0, 0, 512, 512);
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 70; i++) {
+    const x = rnd() * 512, y = rnd() * 512, r = 30 + rnd() * 120;
+    const grad = g.createRadialGradient(x, y, 0, x, y, r);
+    grad.addColorStop(0, rnd() > 0.5 ? "rgba(12,58,40,0.55)" : "rgba(70,150,112,0.35)");
+    grad.addColorStop(1, "rgba(0,0,0,0)");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 512, 512);
+  }
+  g.filter = "blur(1.5px)";
+  g.strokeStyle = "rgba(170,215,190,0.14)";
+  for (let i = 0; i < 9; i++) {
+    g.lineWidth = 1 + rnd() * 2;
+    g.beginPath();
+    let x = rnd() * 512, y = rnd() * 512;
+    g.moveTo(x, y);
+    for (let k = 0; k < 6; k++) { x += (rnd() - 0.4) * 120; y += (rnd() - 0.5) * 90; g.lineTo(x, y); }
+    g.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+const jade = new THREE.MeshPhysicalMaterial({
+  map: jadeTexture(), roughness: 0.14, transmission: 0.3, thickness: 1.6, ior: 1.62,
+  attenuationColor: new THREE.Color("#0b3d2b"), attenuationDistance: 0.9,
+  clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.9,
+  emissive: new THREE.Color("#0b3d2b"), emissiveIntensity: 0.25,
+});
+const stone = new THREE.MeshPhysicalMaterial({ color: 0x9fbdab, roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.35, envMapIntensity: 0.5 });
+const basalt = new THREE.MeshPhysicalMaterial({ color: 0x0c1512, roughness: 0.4, metalness: 0.1, clearcoat: 0.6, clearcoatRoughness: 0.25, envMapIntensity: 0.25 });
+const shadowed = new THREE.MeshStandardMaterial({ color: 0x04100b, roughness: 0.9 });
+const glowLine = new THREE.MeshBasicMaterial({ color: GLOW, toneMapped: false });
+
+// Everything that turns together: dais + pyramid.
+const monument = new THREE.Group();
+scene.add(monument);
+const add = (parent, geo, mat, x, y, z) => {
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.set(x, y, z);
+  mesh.castShadow = mesh.receiveShadow = true;
+  parent.add(mesh);
+  return mesh;
 };
 
-(function setupLanguage() {
-  const ATTRS = ['aria-label', 'content', 'alt'];
-  const textNodes = [];
-  const attrNodes = [];
+// Dais: two stacked basalt discs, a glowing ring on each lip.
+add(monument, new THREE.CylinderGeometry(2.25, 2.38, 0.2, 96), basalt, 0, 0.1, 0);
+add(monument, new THREE.CylinderGeometry(1.98, 2.06, 0.18, 96), basalt, 0, 0.29, 0);
+for (const [r, y] of [[2.26, 0.205], [1.99, 0.385]]) {
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.014, 8, 160), glowLine);
+  ring.rotation.x = Math.PI / 2;
+  ring.position.y = y;
+  monument.add(ring);
+}
 
-  // Collect every translatable text node and attribute once, remembering its Spanish original.
-  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  while (walker.nextNode()) {
-    const n = walker.currentNode, key = n.nodeValue.trim();
-    if (EN[key]) textNodes.push({ n, es: n.nodeValue, en: n.nodeValue.replace(key, EN[key]) });
-  }
-  document.querySelectorAll('[aria-label], img[alt], meta[name="description"], meta[property^="og:"]').forEach(el => {
-    ATTRS.forEach(a => {
-      const v = el.getAttribute(a);
-      if (v && EN[v]) attrNodes.push({ el, a, es: v, en: EN[v] });
-    });
+// Stepped pyramid (after Tikal's Temple I).
+const pyramid = new THREE.Group();
+pyramid.position.y = 0.38;
+monument.add(pyramid);
+const TIERS = 6, TIER_H = 0.3, BASE = 2.3, SHRINK = 0.3;
+for (let i = 0; i < TIERS; i++) {
+  const w = BASE - i * SHRINK;
+  add(pyramid, new RoundedBoxGeometry(w, TIER_H, w, 3, 0.05), jade, 0, i * TIER_H + TIER_H / 2, 0);
+}
+const topY = TIERS * TIER_H;
+const templeW = BASE - TIERS * SHRINK + 0.1;
+const STEPS = TIERS * 3, stepH = topY / STEPS;
+const zBase = BASE / 2 + 0.35, zTop = templeW * 0.41;
+for (let k = 0; k < STEPS; k++) {
+  const front = zBase - (k / (STEPS - 1)) * (zBase - zTop);
+  add(pyramid, new THREE.BoxGeometry(0.54, stepH, front), stone, 0, (k + 0.5) * stepH, front / 2);
+}
+for (const side of [-1, 1]) {
+  const len = Math.hypot(zBase - zTop, topY);
+  const rail = add(pyramid, new THREE.BoxGeometry(0.09, 0.11, len), jade, side * 0.32, topY / 2 + 0.04, (zBase + zTop) / 2);
+  rail.rotation.x = Math.atan2(topY, zBase - zTop);
+}
+add(pyramid, new RoundedBoxGeometry(templeW, 0.44, templeW * 0.82, 3, 0.05), jade, 0, topY + 0.22, -0.04);
+const door = add(pyramid, new THREE.BoxGeometry(0.2, 0.26, 0.04), shadowed, 0, topY + 0.17, templeW * 0.41 - 0.02);
+add(pyramid, new RoundedBoxGeometry(templeW * 0.7, 0.34, 0.13, 2, 0.03), jade, 0, topY + 0.6, -0.12);
+// A thin line of light in the doorway.
+add(pyramid, new THREE.BoxGeometry(0.14, 0.02, 0.05), glowLine, 0, topY + 0.06, templeW * 0.41 - 0.01);
+monument.rotation.y = -0.55;
+
+// Energy pulses: flat rings that expand from the dais and fade out.
+const pulses = [0, 1, 2].map(i => {
+  const mat = new THREE.MeshBasicMaterial({ color: GLOW, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false, toneMapped: false });
+  const ring = new THREE.Mesh(new THREE.RingGeometry(0.985, 1, 128), mat);
+  ring.rotation.x = -Math.PI / 2;
+  ring.position.y = 0.005;
+  scene.add(ring);
+  return { ring, mat, offset: i / 3 };
+});
+
+// Motes of light drifting upward around the monument.
+const MOTES = 70;
+const motePos = new Float32Array(MOTES * 3);
+const moteSeed = [];
+for (let i = 0; i < MOTES; i++) {
+  const a = Math.random() * Math.PI * 2, r = 1.6 + Math.random() * 4;
+  moteSeed.push({ a, r, y: Math.random() * 4, v: 0.15 + Math.random() * 0.35 });
+}
+const moteGeo = new THREE.BufferGeometry();
+moteGeo.setAttribute("position", new THREE.BufferAttribute(motePos, 3));
+const motes = new THREE.Points(moteGeo, new THREE.PointsMaterial({ color: GLOW, size: 0.045, transparent: true, opacity: 0.7, depthWrite: false, toneMapped: false }));
+scene.add(motes);
+
+const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+if (!calm && matchMedia("(pointer: fine)").matches) {
+  host.addEventListener("pointermove", ev => {
+    const r = host.getBoundingClientRect();
+    pointer.tx = (ev.clientX - r.left) / r.width - 0.5;
+    pointer.ty = (ev.clientY - r.top) / r.height - 0.5;
   });
-  const titleEs = document.title;
+  host.addEventListener("pointerleave", () => { pointer.tx = pointer.ty = 0; });
+}
 
-  const buttons = document.querySelectorAll('.lang button');
+function frame(t) {
+  const time = t / 1000;
+  monument.rotation.y = -0.55 + time * (calm ? 0.08 : 0.18);
 
-  function apply(lang) {
-    textNodes.forEach(t => { t.n.nodeValue = t[lang]; });
-    attrNodes.forEach(t => t.el.setAttribute(t.a, t[lang]));
-    document.title = lang === 'en' ? EN[titleEs] : titleEs;
-    document.documentElement.lang = lang;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    setWhatsApp(lang);
-    try { localStorage.setItem('lang', lang); } catch (e) {}
+  if (!calm) {
+    pyramid.position.y = 0.38 + (Math.sin(time * 1.2) * 0.5 + 0.5) * 0.06;
+    under.intensity = 5 + Math.sin(time * 2) * 1.5;
+    pulses.forEach(p => {
+      const k = (time * 0.28 + p.offset) % 1;
+      p.ring.scale.setScalar(2.4 + k * 5.5);
+      p.mat.opacity = (1 - k) * 0.45;
+    });
+    moteSeed.forEach((m, i) => {
+      const y = (m.y + time * m.v) % 4;
+      motePos[i * 3] = Math.cos(m.a + time * 0.05) * m.r;
+      motePos[i * 3 + 1] = y;
+      motePos[i * 3 + 2] = Math.sin(m.a + time * 0.05) * m.r;
+    });
+    moteGeo.attributes.position.needsUpdate = true;
   }
 
-  buttons.forEach(b => b.addEventListener('click', () => apply(b.dataset.lang)));
+  pointer.x += (pointer.tx - pointer.x) * 0.05;
+  pointer.y += (pointer.ty - pointer.y) * 0.05;
+  camera.position.set(camBase.x + pointer.x * 2, camBase.y - pointer.y * 1, camBase.z);
+  camera.lookAt(0, 1.05, 0);
+  renderer.render(scene, camera);
+}
 
-  // Spanish by default; English only if requested via ?lang=en or chosen before on this device.
-  let lang = 'es';
-  const param = new URLSearchParams(location.search).get('lang');
-  if (param === 'en' || param === 'es') lang = param;
-  else { try { if (localStorage.getItem('lang') === 'en') lang = 'en'; } catch (e) {} }
-  apply(lang);
-})();
+function resize() {
+  const { width, height } = host.getBoundingClientRect();
+  renderer.setSize(width, height, false);
+  camera.aspect = width / height;
+  camera.fov = width < 640 ? 48 : 30;
+  camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(host);
+resize();
 
-/* ===== Nav background, dock visibility, active chapter ===== */
-(function setupChrome() {
-  const nav = document.getElementById('nav');
-  const dock = document.getElementById('dock');
-  const finale = document.getElementById('contacto');
-  const hero = document.getElementById('inicio');
+// Animate only while on screen.
+let running = false;
+const loop = t => { if (!running) return; frame(t); requestAnimationFrame(loop); };
+new IntersectionObserver(([entry]) => {
+  running = entry.isIntersecting;
+  if (running) requestAnimationFrame(loop);
+}).observe(host);
 
-  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Hide the mobile dock on the hero (it has its own CTA) and on the finale.
-  let heroVisible = true, finaleVisible = false;
-  // Same rule for the nav CTA on desktop: one violet button per view.
-  const syncDock = () => {
-    const hide = heroVisible || finaleVisible;
-    dock.classList.toggle('is-hidden', hide);
-    nav.classList.toggle('cta-hidden', hide);
-  };
-  new IntersectionObserver(([e]) => { heroVisible = e.intersectionRatio > 0.35; syncDock(); },
-    { threshold: [0, 0.35, 1] }).observe(hero);
-  new IntersectionObserver(([e]) => { finaleVisible = e.isIntersecting; syncDock(); },
-    { threshold: 0 }).observe(finale);
-  syncDock();
-})();
-
+frame(0);
+host.classList.add("live");
 </script>
 </body>
 </html>
