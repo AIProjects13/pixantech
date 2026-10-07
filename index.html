@@ -1,636 +1,2494 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala</title>
-<meta name="description" content="Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
-<meta name="theme-color" content="#14201c">
-<link rel="icon" href="assets/favicon-64.png" sizes="64x64">
-<link rel="apple-touch-icon" href="assets/favicon-180.png">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.pixantech.net/">
-<meta property="og:title" content="Pixan Tech | Menos trabajo manual. Más control de tu negocio.">
-<meta property="og:description" content="Sistemas a la medida, sitios web y mejora de procesos para empresas en Guatemala. Primera asesoría sin costo.">
-<meta property="og:image" content="https://www.pixantech.net/assets/og-image.jpg">
-<meta property="og:locale" content="es_GT">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#f3f5f1;
-  --paper-2:#e3eae4;
-  --ink:#14201c;
-  --ink-2:#1d2c27;
-  --stone:#56635e;
-  --line:#d2dad5;
-  --jade:#1f6b53;
-  --jade-ink:#174f3e;
-  --jade-soft:#d9e7df;
-  --glow:#4fd1a1;        /* jade luminoso: el mismo acento, usado solo sobre fondos oscuros */
-  --pending:#b4442d;
-  --on-ink:#e9efeb;
-  --on-ink-mute:#a4b3ac;
-  --radius-s:6px;
-  --radius-m:14px;
-  --radius-l:28px;
-  --wrap:1200px;
-  --display:"Archivo", "Arial Narrow", sans-serif;
-  --body:"Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --ease:cubic-bezier(.22,1,.36,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{font-family:var(--display);font-stretch:82%;font-weight:750;line-height:1.02;letter-spacing:-.01em;word-spacing:.04em;margin:0;text-wrap:balance}
-p{margin:0;text-wrap:pretty}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,4vw,40px)}
-.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:var(--radius-s);z-index:30;text-decoration:none}
-.skip:focus{top:12px}
-:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:4px}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixan Tech | Sistemas, sitios web y procesos digitales para empresas en Guatemala</title>
+  <meta name="description"
+    content="Sistemas a la medida, sitios web y asesoría en adopción digital y procesos para empresas en Guatemala. Primera asesoría sin costo: cotiza por WhatsApp.">
+  <meta name="theme-color" content="#14201c">
+  <link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/favicon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pixantech.net/">
+  <meta property="og:title" content="Pixan Tech | Menos trabajo manual. Más control de tu negocio.">
+  <meta property="og:description"
+    content="Sistemas a la medida, sitios web y mejora de procesos para empresas en Guatemala. Primera asesoría sin costo.">
+  <meta property="og:image" content="https://www.pixantech.net/assets/og-image.jpg">
+  <meta property="og:locale" content="es_GT">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f3f5f1;
+      --paper-2: #e3eae4;
+      --ink: #14201c;
+      --ink-2: #1d2c27;
+      --stone: #56635e;
+      --line: #d2dad5;
+      --jade: #1f6b53;
+      --jade-ink: #174f3e;
+      --jade-soft: #d9e7df;
+      --glow: #4fd1a1;
+      /* jade luminoso: el mismo acento, usado solo sobre fondos oscuros */
+      --pending: #b4442d;
+      --on-ink: #e9efeb;
+      --on-ink-mute: #a4b3ac;
+      --radius-s: 6px;
+      --radius-m: 14px;
+      --radius-l: 28px;
+      --wrap: 1200px;
+      --display: "Archivo", "Arial Narrow", sans-serif;
+      --body: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
 
-/* Maya numerals: dots = 1, bars = 5 */
-.maya{display:inline-flex;flex-direction:column;align-items:center;gap:4px;justify-self:start;align-self:start}
-.maya .dots{display:flex;gap:5px}
-.maya .dot{width:8px;height:8px;border-radius:50%;background:currentColor}
-.maya .bar{width:34px;height:7px;border-radius:2px;background:currentColor}
-.maya.lg .dot{width:11px;height:11px}
-.maya.lg .bar{width:46px;height:9px}
-.maya.lg .dots{gap:7px}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 1rem/1 var(--body);padding:16px 22px;border-radius:999px;text-decoration:none;transition:background-color .2s var(--ease),transform .2s var(--ease),color .2s var(--ease)}
-.btn:active{transform:translateY(1px) scale(.99)}
-.btn svg{width:20px;height:20px;flex:none}
-.btn-primary{background:var(--jade);color:#fff}
-.btn-primary:hover{background:var(--jade-ink)}
-.btn-light{background:var(--paper);color:var(--ink)}
-.btn-light:hover{background:#fff}
-.link{font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px;transition:color .2s}
-.link:hover{color:var(--jade)}
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%
+    }
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
-.site-header.scrolled{border-bottom-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.05rem/1 var(--display);font-stretch:85%;letter-spacing:.02em}
-.brand img{width:44px;height:auto}
-.nav-links{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
-.nav-links a{text-decoration:none;font-weight:500;color:var(--stone);transition:color .2s}
-.nav-links a:hover,.nav-links a[aria-current="true"]{color:var(--ink)}
-.nav .btn{padding:12px 18px;font-size:.95rem}
-.nav-links a.btn,.nav-links a.btn:hover{color:#fff}
-@media (max-width:820px){.nav-links li:not(:last-child){display:none}}
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+    }
 
-/* Hero */
-.hero{padding:clamp(36px,5vw,64px) 0 clamp(64px,9vw,112px)}
-.hero-top{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,72px);align-items:end;margin-bottom:clamp(32px,4.5vw,56px)}
-.hero h1{font-size:clamp(2.8rem,6.2vw,5.4rem);font-stretch:78%;font-weight:800;word-spacing:.06em}
-.hero h1 span{display:block;color:var(--jade)}
-.hero .lead{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--stone);max-width:40ch;margin:0 0 28px}
-@media (max-width:900px){.hero-top{grid-template-columns:1fr;align-items:start}}
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 400 1.0625rem/1.65 var(--body);
+      -webkit-font-smoothing: antialiased
+    }
 
-/* Live 3D scene: jade block over a rippling stone floor (Three.js) */
-.scene{position:relative;height:clamp(340px,44vw,520px);border-radius:var(--radius-l);overflow:hidden;clip-path:inset(0 round var(--radius-l));isolation:isolate;background:radial-gradient(70% 90% at 50% 30%,#123327 0%,#0b1814 45%,#060c0a 100%)}
-.scene::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(79,209,161,.12);border-radius:inherit}
-.scene canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .8s var(--ease)}
-.scene.live canvas{opacity:1}
-.scene-fallback{position:absolute;left:50%;top:50%;width:min(420px,70%);transform:translate(-50%,-50%);border-radius:24px;transition:opacity .6s}
-.scene.live .scene-fallback{opacity:0}
-.scene-areas{position:absolute;left:clamp(16px,2.5vw,28px);bottom:clamp(16px,2.5vw,28px);display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;z-index:1}
-@media (max-width:640px){.scene-areas{display:none}}
-.scene-areas li{font-size:.9rem;font-weight:500;color:var(--on-ink);padding:9px 14px;border-radius:999px;background:rgba(10,24,19,.55);border:1px solid rgba(79,209,161,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:24px}
-.hero-note{margin-top:22px;font-size:.95rem;color:var(--stone);display:flex;align-items:center;gap:8px}
-.hero-note::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 4px var(--jade-soft)}
+    img {
+      max-width: 100%;
+      display: block
+    }
 
-/* Sections */
-section{scroll-margin-top:80px}
-.chapter{padding:clamp(72px,10vw,128px) 0}
-.chapter-head{display:grid;grid-template-columns:72px 1fr;gap:clamp(16px,3vw,32px);align-items:start;margin-bottom:clamp(36px,5vw,56px)}
-.chapter-head .maya{color:var(--jade);padding-top:10px}
-.chapter-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem);max-width:18ch}
-.chapter-body{margin-left:calc(72px + clamp(16px,3vw,32px))}
-.tint{background:var(--paper-2)}
-@media (max-width:720px){.chapter-head{grid-template-columns:1fr}.chapter-head .maya{padding-top:0}.chapter-body{margin-left:0}}
+    a {
+      color: inherit
+    }
 
-/* 1. Problem */
-.pains{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:start}
-.pain-list{list-style:none;margin:0;padding:0;counter-reset:p}
-.pain-list li{font-family:var(--display);font-stretch:85%;font-weight:600;font-size:clamp(1.3rem,2.2vw,1.65rem);line-height:1.2;padding:20px 0;border-top:1px solid var(--line)}
-.pain-list li:last-child{border-bottom:1px solid var(--line)}
-.cost{font-size:1.15rem;max-width:40ch}
-.cost strong{font-weight:600}
-.cost + .link{display:inline-block;margin-top:28px}
+    h1,
+    h2,
+    h3 {
+      font-family: var(--display);
+      font-stretch: 82%;
+      font-weight: 750;
+      line-height: 1.02;
+      letter-spacing: -.01em;
+      word-spacing: .04em;
+      margin: 0;
+      text-wrap: balance
+    }
 
-/* 2. Guide */
-.guide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px)}
-.guide p{max-width:44ch}
-.guide p + p{margin-top:18px}
-.promise{border-left:3px solid var(--jade);padding-left:24px}
-.promise ul{list-style:none;padding:0;margin:20px 0 28px}
-.promise li{padding:8px 0 8px 28px;position:relative}
-.promise li::before{content:"";position:absolute;left:0;top:18px;width:12px;height:2px;background:var(--jade)}
+    p {
+      margin: 0;
+      text-wrap: pretty
+    }
 
-/* 3. Services */
-.services{display:grid;gap:clamp(20px,3vw,28px)}
-.service{display:grid;grid-template-columns:auto 1fr 1fr;gap:clamp(24px,4vw,56px);align-items:start;background:#fff;border-radius:var(--radius-m);padding:clamp(28px,4vw,48px);box-shadow:0 1px 0 rgba(20,32,28,.04),0 18px 40px -28px rgba(20,32,28,.25)}
-.service .maya{color:var(--jade)}
-.service h3{font-size:clamp(1.6rem,2.6vw,2.1rem);margin-bottom:14px}
-.service p{color:var(--stone);max-width:42ch}
-.ideal{margin-top:18px;font-size:.98rem}
-.ideal b{color:var(--ink);font-weight:600}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding:0;list-style:none}
-.tags li{font-size:.9rem;font-weight:500;padding:7px 12px;border-radius:var(--radius-s);background:var(--paper)}
-.legend{margin-top:20px;font-size:.9rem;color:var(--stone)}
-@media (max-width:900px){.service{grid-template-columns:1fr}}
+    .wrap {
+      max-width: var(--wrap);
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 40px)
+    }
 
-/* Sample-content marker: discreet, but present on every illustrative block until replaced. */
-.sample{position:relative}
-.sample::after{content:"Ejemplo";position:absolute;top:10px;right:10px;z-index:2;font:600 .68rem/1 var(--body);letter-spacing:.03em;color:var(--pending);background:#fbefeb;border:1px solid #efc9bf;padding:4px 7px;border-radius:4px;pointer-events:none}
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 10px 14px;
+      border-radius: var(--radius-s);
+      z-index: 30;
+      text-decoration: none
+    }
 
-/* Case thumbnails drawn in CSS (no stock images). */
-.case-media.mock-orders{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:clamp(14px,2.5vw,28px);background:linear-gradient(160deg,#173a2e,#0f2a21);color:var(--on-ink)}
-.mo-bar{display:flex;gap:6px;margin-bottom:6px}
-.mo-bar i{width:9px;height:9px;border-radius:50%;background:rgba(233,239,235,.25)}
-.mo-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;background:rgba(255,255,255,.06);border-radius:8px;padding:11px 14px;font-size:.88rem}
-.mo-row span{color:var(--on-ink-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mo-row em{font-style:normal;font-size:.78rem;padding:4px 8px;border-radius:99px;background:rgba(233,239,235,.12)}
-.mo-row em.ok{background:rgba(79,209,161,.18);color:var(--glow)}
-.mo-row em.warn{background:rgba(232,140,110,.18);color:#f0a58c}
-.case-media.mock-calendar{padding:18px}
-.mc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;width:100%}
-.mc-grid i{aspect-ratio:1.4;border-radius:5px;background:rgba(31,107,83,.12)}
-.mc-grid i.on{background:var(--jade)}
-.case-media.mock-report{padding:22px 18px;color:var(--jade)}
-.mock-report svg{width:100%;height:100%}
+    .skip:focus {
+      top: 12px
+    }
 
-/* Recent work */
-.work{padding:clamp(72px,9vw,112px) 0}
-.work-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 40px;margin-bottom:clamp(32px,4vw,48px)}
-.work-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
-.work-head p{color:var(--stone);max-width:36ch}
-.cases{display:grid;grid-template-columns:1.6fr 1fr;grid-template-rows:auto auto;gap:clamp(18px,2.5vw,28px)}
-.case{display:flex;flex-direction:column;gap:10px}
-.case-main{grid-row:span 2;align-self:start;background:#fff;border-radius:var(--radius-m);padding:clamp(18px,2.4vw,28px);box-shadow:0 18px 40px -28px rgba(20,32,28,.3)}
-.case-media{aspect-ratio:16/10;border-radius:10px;background:linear-gradient(135deg,var(--paper-2),#d3ddd6);display:grid;place-items:center;color:var(--stone);font-size:.9rem;margin-bottom:8px;overflow:hidden}
-.case:not(.case-main){background:#fff;border-radius:var(--radius-m);padding:clamp(16px,2vw,22px);box-shadow:0 18px 40px -30px rgba(20,32,28,.3)}
-.case-main .case-media{aspect-ratio:16/9}
-.case-client{font-size:.88rem;color:var(--jade);font-weight:600}
-.case h3{font-size:clamp(1.25rem,2vw,1.6rem);font-stretch:88%}
-.case-result{color:var(--stone)}
-.case-result b{color:var(--ink);font-weight:600}
-.case blockquote{margin:12px 0 0;padding:16px 0 0;border-top:1px solid var(--line);font-family:var(--display);font-stretch:90%;font-size:1.2rem;line-height:1.35}
-.case blockquote footer{font-family:var(--body);font-size:.9rem;color:var(--stone);margin-top:8px}
-@media (max-width:820px){.cases{grid-template-columns:1fr}.case-main{grid-row:auto}}
+    :focus-visible {
+      outline: 2px solid var(--jade);
+      outline-offset: 3px;
+      border-radius: 4px
+    }
 
-/* Founders */
-.about-head{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)}
-.about-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
-.about-head p{color:var(--stone);font-size:1.1rem;max-width:46ch}
-.founders{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.5vw,28px)}
-.founder{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start;background:#fff;border-radius:var(--radius-m);padding:clamp(22px,3vw,36px);box-shadow:0 18px 40px -30px rgba(20,32,28,.3)}
-.monogram{width:clamp(76px,8vw,104px);aspect-ratio:1;border-radius:22px;display:grid;place-items:center;font:800 clamp(1.6rem,2.6vw,2.2rem)/1 var(--display);font-stretch:80%;letter-spacing:.02em;color:var(--glow);background:radial-gradient(120% 120% at 30% 20%,#1d4a3a,#0b1814)}
-.monogram.alt{background:radial-gradient(120% 120% at 70% 20%,#245c47,#0b1814)}
-.founder h3{font-size:clamp(1.4rem,2.2vw,1.75rem);font-stretch:85%}
-.role{color:var(--jade);font-weight:600;font-size:.95rem;margin:6px 0 14px}
-.founder p:last-child{color:var(--stone);max-width:44ch}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:clamp(28px,4vw,44px) 0 0;padding-top:28px;border-top:1px solid var(--line)}
-.facts dt{font:800 clamp(2rem,3.6vw,2.8rem)/1 var(--display);font-stretch:80%;color:var(--jade);font-variant-numeric:tabular-nums}
-.facts dd{margin:8px 0 0;color:var(--stone);font-size:.95rem;max-width:26ch}
-@media (max-width:900px){.about-head,.founders{grid-template-columns:1fr}}
-@media (max-width:560px){.founder{grid-template-columns:1fr}.facts{grid-template-columns:1fr}}
+    /* Maya numerals: dots = 1, bars = 5 */
+    .maya {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      justify-self: start;
+      align-self: start
+    }
 
-/* Price hints in the FAQ */
-.price-hints{list-style:none;margin:16px 0 4px;padding:6px 16px;background:var(--paper-2);border-radius:10px;max-width:440px}
-.price-hints li{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);color:var(--ink)}
-.price-hints li:last-child{border-bottom:0}
-.price-hints b{font-weight:600;font-variant-numeric:tabular-nums}
+    .maya .dots {
+      display: flex;
+      gap: 5px
+    }
 
-/* Dark sections share the luminous jade for focus and hover. */
-.demo-section :focus-visible,.final :focus-visible,.site-footer :focus-visible{outline-color:var(--glow)}
-.demo-note .link:hover{color:var(--glow)}
-.topics a:hover{background:transparent;color:var(--glow);border-color:var(--glow)}
-.final h2{text-wrap:balance}
+    .maya .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor
+    }
 
-/* Live demo */
-.demo-section{background:var(--ink);color:var(--on-ink);padding:clamp(72px,10vw,128px) 0;position:relative;overflow:hidden}
-.demo-section::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 0%,rgba(61,150,118,.22),transparent 70%);pointer-events:none}
-.demo-head{position:relative;max-width:640px;margin-bottom:clamp(36px,5vw,56px)}
-.demo-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
-.demo-head p{color:var(--on-ink-mute);font-size:1.1rem;margin-top:18px}
-.device{perspective:1400px;position:relative}
-.app{background:#fff;color:var(--ink);border-radius:var(--radius-m);overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6),0 0 0 1px rgba(233,239,235,.08);transform-origin:50% 100%}
-@media (prefers-reduced-motion:no-preference){
-  .app{transform:rotateX(14deg) translateY(30px) scale(.97);opacity:.4;transition:transform 1.1s var(--ease),opacity .8s var(--ease)}
-  .device.in .app{transform:none;opacity:1}
-}
-.app-bar{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--line);background:#fafbf9}
-.app-name{display:flex;flex-direction:column;line-height:1.25}
-.app-name b{font-weight:600}
-.app-name small{color:var(--stone);font-size:.8rem}
-.app-tabs{display:flex;gap:4px;background:var(--paper-2);padding:4px;border-radius:10px}
-.app-tabs button{font:500 .92rem/1 var(--body);border:0;background:transparent;color:var(--stone);padding:9px 14px;border-radius:7px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background-color .2s,color .2s}
-.app-tabs button:hover{color:var(--ink)}
-.app-tabs button[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(20,32,28,.12)}
-.badge{font-size:.72rem;font-weight:600;background:#b4442d;color:#fff;border-radius:999px;padding:2px 7px;font-variant-numeric:tabular-nums}
-.badge.ok{background:var(--jade)}
-.app-body{padding:clamp(18px,2.5vw,28px);min-height:430px}
-@media (max-width:760px){.app-body{min-height:0}}
-.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
-.kpi{border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
-.kpi span{font-size:.85rem;color:var(--stone)}
-.kpi b{font:700 1.5rem/1.1 var(--display);font-stretch:88%;font-variant-numeric:tabular-nums}
-.kpi em{font-style:normal;font-size:.8rem;font-weight:500}
-.up{color:var(--jade)}.down{color:#b4442d}
-.split{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
-.chart{margin:0;border:1px solid var(--line);border-radius:10px;padding:16px}
-.chart figcaption,.feed-title{font-size:.85rem;color:var(--stone);margin:0 0 12px}
-.bars{display:flex;align-items:flex-end;gap:10px;height:170px}
-.bars .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
-.bars .b{width:100%;background:var(--jade-soft);border-radius:5px 5px 2px 2px;height:0;transition:height .9s var(--ease),background-color .2s}
-.bars .col:last-child .b{background:var(--jade)}
-.bars .col:hover .b{background:var(--jade)}
-.bars small{font-size:.75rem;color:var(--stone)}
-.feed{border:1px solid var(--line);border-radius:10px;padding:16px}
-.feed ul{list-style:none;margin:0;padding:0}
-.feed li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:.9rem}
-.feed li span{color:var(--stone);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.feed b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
-.stock{width:100%;border-collapse:collapse;font-size:.95rem}
-.stock th{text-align:left;font-weight:500;font-size:.82rem;color:var(--stone);padding:0 10px 10px}
-.stock td{padding:12px 10px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
-.stock tr.low td:nth-child(2){color:#b4442d;font-weight:600}
-.stock td:last-child{text-align:right}
-.stock button{font:500 .85rem/1 var(--body);border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:7px;cursor:pointer;transition:background-color .2s,border-color .2s}
-.stock button:hover{border-color:var(--jade);background:var(--jade-soft)}
-.stock .ok-tag{font-size:.85rem;color:var(--jade);font-weight:500}
-.report{display:grid;grid-template-columns:1.5fr 1fr;gap:18px;align-items:start}
-.hbars{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.hbars li{display:grid;grid-template-columns:110px 1fr 84px;gap:10px;align-items:center;font-size:.9rem}
-.hbars .track{height:10px;background:var(--paper-2);border-radius:99px;overflow:hidden}
-.hbars .fill{height:100%;width:0;background:var(--jade);border-radius:99px;transition:width .9s var(--ease)}
-.hbars b{font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
-.export{border:1px solid var(--line);border-radius:10px;padding:16px}
-.export .btn{width:100%;justify-content:center}
-.status{font-size:.88rem;color:var(--stone);margin-top:12px;min-height:1.4em}
-.demo-note{position:relative;margin-top:32px;color:var(--on-ink-mute)}
-.demo-note .link{color:var(--on-ink)}
-@media (max-width:760px){.kpis{grid-template-columns:1fr 1fr}.kpi:last-child{grid-column:span 2}.split,.report{grid-template-columns:1fr}.hbars li{grid-template-columns:90px 1fr 74px}.app-tabs{width:100%}.app-tabs button{flex:1;justify-content:center}.stock th:nth-child(3),.stock td:nth-child(3){display:none}}
+    .maya .bar {
+      width: 34px;
+      height: 7px;
+      border-radius: 2px;
+      background: currentColor
+    }
 
-/* Ways of working */
-.modes-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)}
-.modes-head h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
-.modes-head p{color:var(--stone);max-width:40ch}
-.modes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1.15fr 1fr;border-top:1px solid var(--line)}
-.mode{padding:32px clamp(20px,3vw,36px) 36px;display:flex;flex-direction:column;gap:14px}
-.mode + .mode{border-left:1px solid var(--line)}
-@media (min-width:901px){.mode:first-child{padding-left:0}}
-.mode h3{font-size:1.7rem;font-stretch:85%}
-.mode p{color:var(--stone)}
-.mode .fit{color:var(--ink);font-weight:500;margin-top:auto}
-.mode .link,.mode .btn{align-self:flex-start}
-.mode.featured{background:#fff;border-radius:0 0 var(--radius-m) var(--radius-m);box-shadow:0 18px 40px -28px rgba(20,32,28,.3)}
-@media (max-width:900px){.modes-head{grid-template-columns:1fr}.modes{grid-template-columns:1fr}.mode + .mode{border-left:0;border-top:1px solid var(--line)}.mode.featured{border-radius:var(--radius-m)}}
+    .maya.lg .dot {
+      width: 11px;
+      height: 11px
+    }
 
-/* 4. Process */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
-.steps::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:var(--line)}
-.step{padding-right:clamp(16px,2.5vw,32px);position:relative}
-.step .marker{height:56px;display:flex;align-items:center}
-.step .maya{background:var(--paper);padding:6px 10px 6px 0;color:var(--jade);position:relative}
-.step h3{font-size:1.35rem;font-stretch:88%;margin:18px 0 10px}
-.step p{color:var(--stone);font-size:.98rem}
-.steps + .btn{margin-top:48px}
-@media (max-width:900px){.steps{grid-template-columns:1fr 1fr;row-gap:40px}.steps::before{display:none}}
-@media (max-width:560px){.steps{grid-template-columns:1fr}}
+    .maya.lg .bar {
+      width: 46px;
+      height: 9px
+    }
 
-/* 5. Transformation */
-.future{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line)}
-.future li{list-style:none;padding:28px 28px 28px 0;border-bottom:1px solid var(--line);font-size:1.15rem;display:flex;gap:16px}
-.future li:nth-child(odd){border-right:1px solid var(--line)}
-.future li:nth-child(even){padding-left:28px}
-.future svg{flex:none;width:24px;height:24px;color:var(--jade);margin-top:3px}
-.future{padding:0;margin:0}
-.future + .btn{margin-top:40px}
-@media (max-width:720px){.future{grid-template-columns:1fr}.future li:nth-child(odd){border-right:0}.future li:nth-child(even){padding-left:0}}
+    .maya.lg .dots {
+      gap: 7px
+    }
 
-/* FAQ */
-.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,80px);align-items:start}
-.faq h2{font-size:clamp(2.1rem,4.6vw,3.6rem)}
-.faq-intro p{color:var(--stone);margin-top:18px;max-width:30ch}
-.faq details{border-top:1px solid var(--line)}
-.faq details:last-child{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font:600 1.2rem/1.3 var(--display);font-stretch:88%}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary .plus{flex:none;width:28px;height:28px;border-radius:50%;background:var(--paper-2);position:relative;transition:background-color .2s,transform .25s var(--ease)}
-.faq summary .plus::before,.faq summary .plus::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--ink);transform:translate(-50%,-50%)}
-.faq summary .plus::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .25s var(--ease)}
-.faq details[open] .plus{background:var(--jade-soft)}
-.faq details[open] .plus::after{transform:translate(-50%,-50%) rotate(0)}
-.faq summary:hover .plus{background:var(--jade-soft)}
-.faq .answer{padding:0 48px 26px 0;color:var(--stone);max-width:60ch}
-.faq .answer .link{display:inline-block;margin-top:14px;color:var(--ink)}
-@media (max-width:820px){.faq{grid-template-columns:1fr}}
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font: 600 1rem/1 var(--body);
+      padding: 16px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background-color .2s var(--ease), transform .2s var(--ease), color .2s var(--ease)
+    }
 
-/* Final CTA */
-.final{background:var(--ink);color:var(--on-ink);padding:clamp(80px,11vw,140px) 0 clamp(64px,8vw,96px);position:relative;overflow:hidden}
-.final::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 80% 20%,rgba(61,150,118,.22),transparent 70%);pointer-events:none}
-.final-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(32px,6vw,80px);align-items:end;position:relative}
-.final h2{font-size:clamp(2.6rem,6.4vw,5rem);font-stretch:78%;font-weight:800}
-.final p{color:var(--on-ink-mute);font-size:1.15rem;max-width:44ch;margin:24px 0 36px}
-.final img{width:100%;max-width:300px;opacity:.95;justify-self:end}
-.topics{margin-top:44px;position:relative}
-.topics p{margin:0 0 14px;font-size:.95rem;color:var(--on-ink-mute)}
-.topics ul{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
-.topics a{display:inline-block;text-decoration:none;font-weight:500;padding:11px 16px;border-radius:999px;border:1px solid rgba(233,239,235,.22);transition:background-color .2s,border-color .2s,color .2s}
-.topics a:hover{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
-@media (max-width:820px){.final-grid{grid-template-columns:1fr}.final img{justify-self:start;max-width:200px}}
+    .btn:active {
+      transform: translateY(1px) scale(.99)
+    }
 
-/* Footer */
-.site-footer{background:var(--ink);color:var(--on-ink-mute);border-top:1px solid rgba(233,239,235,.1);padding:36px 0;font-size:.95rem}
-.foot{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:center;justify-content:space-between}
-.foot .brand{color:var(--on-ink)}
-.foot ul{display:flex;flex-wrap:wrap;gap:24px;list-style:none;margin:0;padding:0}
-.foot a{text-decoration:none;transition:color .2s}
-.foot a:hover{color:var(--on-ink)}
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      flex: none
+    }
 
-/* Floating WhatsApp (mobile) */
-.wa-float{position:fixed;right:16px;bottom:16px;z-index:25;width:56px;height:56px;border-radius:50%;background:var(--jade);color:#fff;display:none;place-items:center;box-shadow:0 10px 24px -8px rgba(23,79,62,.6);transition:transform .2s var(--ease)}
-.wa-float:active{transform:scale(.96)}
-.wa-float svg{width:28px;height:28px}
-@media (max-width:820px){.wa-float{display:grid}}
+    .btn-primary {
+      background: var(--jade);
+      color: #fff
+    }
 
-/* Single orchestrated load reveal for the hero */
-@media (prefers-reduced-motion:no-preference){
-  .reveal{opacity:0;transform:translateY(14px);animation:rise .8s var(--ease) forwards}
-  .reveal.d1{animation-delay:.08s}.reveal.d2{animation-delay:.16s}.reveal.d3{animation-delay:.24s}.reveal.d4{animation-delay:.34s}
-  @keyframes rise{to{opacity:1;transform:none}}
-}
-@media (max-width:900px){.pains,.guide{grid-template-columns:1fr}}
-</style>
+    .btn-primary:hover {
+      background: var(--jade-ink)
+    }
+
+    .btn-light {
+      background: var(--paper);
+      color: var(--ink)
+    }
+
+    .btn-light:hover {
+      background: #fff
+    }
+
+    .link {
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid currentColor;
+      padding-bottom: 2px;
+      transition: color .2s
+    }
+
+    .link:hover {
+      color: var(--jade)
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      backdrop-filter: saturate(1.4) blur(10px);
+      -webkit-backdrop-filter: saturate(1.4) blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s
+    }
+
+    .site-header.scrolled {
+      border-bottom-color: var(--line)
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font: 700 1.05rem/1 var(--display);
+      font-stretch: 85%;
+      letter-spacing: .02em
+    }
+
+    .brand img {
+      width: 44px;
+      height: auto
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--stone);
+      transition: color .2s
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="true"] {
+      color: var(--ink)
+    }
+
+    .nav .btn {
+      padding: 12px 18px;
+      font-size: .95rem
+    }
+
+    .nav-links a.btn,
+    .nav-links a.btn:hover {
+      color: #fff
+    }
+
+    @media (max-width:820px) {
+      .nav-links li:not(:last-child):not(.keep) {
+        display: none
+      }
+
+      .nav-links {
+        gap: 12px
+      }
+    }
+
+    .brand {
+      white-space: nowrap
+    }
+
+    @media (max-width:420px) {
+      .nav .btn span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0)
+      }
+
+      .nav .btn {
+        padding: 12px
+      }
+
+      .lang button {
+        padding: 8px 9px
+      }
+    }
+
+    .lang {
+      display: inline-flex;
+      padding: 3px;
+      border-radius: 999px;
+      background: var(--paper-2);
+      border: 1px solid var(--line)
+    }
+
+    .lang button {
+      font: 600 .8rem/1 var(--body);
+      letter-spacing: .04em;
+      border: 0;
+      background: transparent;
+      color: var(--stone);
+      padding: 8px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color .2s, color .2s
+    }
+
+    .lang button:hover {
+      color: var(--ink)
+    }
+
+    .lang button[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--paper)
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(36px, 5vw, 64px) 0 clamp(64px, 9vw, 112px)
+    }
+
+    .hero-top {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+      margin-bottom: clamp(32px, 4.5vw, 56px)
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6.2vw, 5.4rem);
+      font-stretch: 78%;
+      font-weight: 800;
+      word-spacing: .06em
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--jade)
+    }
+
+    .hero .lead {
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      color: var(--stone);
+      max-width: 40ch;
+      margin: 0 0 28px
+    }
+
+    @media (max-width:900px) {
+      .hero-top {
+        grid-template-columns: 1fr;
+        align-items: start
+      }
+    }
+
+    /* Live 3D scene: jade block over a rippling stone floor (Three.js) */
+    .scene {
+      position: relative;
+      height: clamp(340px, 44vw, 520px);
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      clip-path: inset(0 round var(--radius-l));
+      isolation: isolate;
+      background: radial-gradient(70% 90% at 50% 30%, #123327 0%, #0b1814 45%, #060c0a 100%)
+    }
+
+    .scene::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(79, 209, 161, .12);
+      border-radius: inherit
+    }
+
+    .scene canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      opacity: 0;
+      transition: opacity .8s var(--ease)
+    }
+
+    .scene.live canvas {
+      opacity: 1
+    }
+
+    .scene-fallback {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: min(420px, 70%);
+      transform: translate(-50%, -50%);
+      border-radius: 24px;
+      transition: opacity .6s
+    }
+
+    .scene.live .scene-fallback {
+      opacity: 0
+    }
+
+    .scene-areas {
+      position: absolute;
+      left: clamp(16px, 2.5vw, 28px);
+      bottom: clamp(16px, 2.5vw, 28px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      z-index: 1
+    }
+
+    @media (max-width:640px) {
+      .scene-areas {
+        display: none
+      }
+    }
+
+    .scene-areas li {
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--on-ink);
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(10, 24, 19, .55);
+      border: 1px solid rgba(79, 209, 161, .22);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px)
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      font-size: .95rem;
+      color: var(--stone);
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .hero-note::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--jade);
+      box-shadow: 0 0 0 4px var(--jade-soft)
+    }
+
+    /* Sections */
+    section {
+      scroll-margin-top: 80px
+    }
+
+    .chapter {
+      padding: clamp(72px, 10vw, 128px) 0
+    }
+
+    .chapter-head {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: clamp(16px, 3vw, 32px);
+      align-items: start;
+      margin-bottom: clamp(36px, 5vw, 56px)
+    }
+
+    .chapter-head .maya {
+      color: var(--jade);
+      padding-top: 10px
+    }
+
+    .chapter-head h2 {
+      font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+      max-width: 18ch
+    }
+
+    .chapter-body {
+      margin-left: calc(72px + clamp(16px, 3vw, 32px))
+    }
+
+    .tint {
+      background: var(--paper-2)
+    }
+
+    @media (max-width:720px) {
+      .chapter-head {
+        grid-template-columns: 1fr
+      }
+
+      .chapter-head .maya {
+        padding-top: 0
+      }
+
+      .chapter-body {
+        margin-left: 0
+      }
+    }
+
+    /* 1. Problem */
+    .pains {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 6vw, 80px);
+      align-items: start
+    }
+
+    .pain-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      counter-reset: p
+    }
+
+    .pain-list li {
+      font-family: var(--display);
+      font-stretch: 85%;
+      font-weight: 600;
+      font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+      line-height: 1.2;
+      padding: 20px 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .pain-list li:last-child {
+      border-bottom: 1px solid var(--line)
+    }
+
+    .cost {
+      font-size: 1.15rem;
+      max-width: 40ch
+    }
+
+    .cost strong {
+      font-weight: 600
+    }
+
+    .cost+.link {
+      display: inline-block;
+      margin-top: 28px
+    }
+
+    /* 2. Guide */
+    .guide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 6vw, 80px)
+    }
+
+    .guide p {
+      max-width: 44ch
+    }
+
+    .guide p+p {
+      margin-top: 18px
+    }
+
+    .promise {
+      border-left: 3px solid var(--jade);
+      padding-left: 24px
+    }
+
+    .promise ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 28px
+    }
+
+    .promise li {
+      padding: 8px 0 8px 28px;
+      position: relative
+    }
+
+    .promise li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 18px;
+      width: 12px;
+      height: 2px;
+      background: var(--jade)
+    }
+
+    /* 3. Services */
+    .services {
+      display: grid;
+      gap: clamp(20px, 3vw, 28px)
+    }
+
+    .service {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
+      align-items: start;
+      background: #fff;
+      border-radius: var(--radius-m);
+      padding: clamp(28px, 4vw, 48px);
+      box-shadow: 0 1px 0 rgba(20, 32, 28, .04), 0 18px 40px -28px rgba(20, 32, 28, .25)
+    }
+
+    .service .maya {
+      color: var(--jade)
+    }
+
+    .service h3 {
+      font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+      margin-bottom: 14px
+    }
+
+    .service p {
+      color: var(--stone);
+      max-width: 42ch
+    }
+
+    .ideal {
+      margin-top: 18px;
+      font-size: .98rem
+    }
+
+    .ideal b {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 26px;
+      padding: 0;
+      list-style: none
+    }
+
+    .tags li {
+      font-size: .9rem;
+      font-weight: 500;
+      padding: 7px 12px;
+      border-radius: var(--radius-s);
+      background: var(--paper)
+    }
+
+    .legend {
+      margin-top: 20px;
+      font-size: .9rem;
+      color: var(--stone)
+    }
+
+    @media (max-width:900px) {
+      .service {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* Sample-content marker: discreet, but present on every illustrative block until replaced. */
+    .sample {
+      position: relative
+    }
+
+    .sample::after {
+      content: "Ejemplo";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      font: 600 .68rem/1 var(--body);
+      letter-spacing: .03em;
+      color: var(--pending);
+      background: #fbefeb;
+      border: 1px solid #efc9bf;
+      padding: 4px 7px;
+      border-radius: 4px;
+      pointer-events: none
+    }
+
+    /* Case thumbnails drawn in CSS (no stock images). */
+    .case-media.mock-orders {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      padding: clamp(14px, 2.5vw, 28px);
+      background: linear-gradient(160deg, #173a2e, #0f2a21);
+      color: var(--on-ink)
+    }
+
+    .mo-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px
+    }
+
+    .mo-bar i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(233, 239, 235, .25)
+    }
+
+    .mo-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      background: rgba(255, 255, 255, .06);
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: .88rem
+    }
+
+    .mo-row span {
+      color: var(--on-ink-mute);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .mo-row em {
+      font-style: normal;
+      font-size: .78rem;
+      padding: 4px 8px;
+      border-radius: 99px;
+      background: rgba(233, 239, 235, .12)
+    }
+
+    .mo-row em.ok {
+      background: rgba(79, 209, 161, .18);
+      color: var(--glow)
+    }
+
+    .mo-row em.warn {
+      background: rgba(232, 140, 110, .18);
+      color: #f0a58c
+    }
+
+    .case-media.mock-calendar {
+      padding: 18px
+    }
+
+    .mc-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      width: 100%
+    }
+
+    .mc-grid i {
+      aspect-ratio: 1.4;
+      border-radius: 5px;
+      background: rgba(31, 107, 83, .12)
+    }
+
+    .mc-grid i.on {
+      background: var(--jade)
+    }
+
+    .case-media.mock-report {
+      padding: 22px 18px;
+      color: var(--jade)
+    }
+
+    .mock-report svg {
+      width: 100%;
+      height: 100%
+    }
+
+    /* Recent work */
+    .work {
+      padding: clamp(72px, 9vw, 112px) 0
+    }
+
+    .work-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px 40px;
+      margin-bottom: clamp(32px, 4vw, 48px)
+    }
+
+    .work-head h2 {
+      font-size: clamp(2.1rem, 4.6vw, 3.6rem)
+    }
+
+    .work-head p {
+      color: var(--stone);
+      max-width: 36ch
+    }
+
+    .cases {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: auto auto;
+      gap: clamp(18px, 2.5vw, 28px)
+    }
+
+    .case {
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .case-main {
+      grid-row: span 2;
+      align-self: start;
+      background: #fff;
+      border-radius: var(--radius-m);
+      padding: clamp(18px, 2.4vw, 28px);
+      box-shadow: 0 18px 40px -28px rgba(20, 32, 28, .3)
+    }
+
+    .case-media {
+      aspect-ratio: 16/10;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--paper-2), #d3ddd6);
+      display: grid;
+      place-items: center;
+      color: var(--stone);
+      font-size: .9rem;
+      margin-bottom: 8px;
+      overflow: hidden
+    }
+
+    .case:not(.case-main) {
+      background: #fff;
+      border-radius: var(--radius-m);
+      padding: clamp(16px, 2vw, 22px);
+      box-shadow: 0 18px 40px -30px rgba(20, 32, 28, .3)
+    }
+
+    .case-main .case-media {
+      aspect-ratio: 16/9
+    }
+
+    .case-client {
+      font-size: .88rem;
+      color: var(--jade);
+      font-weight: 600
+    }
+
+    .case h3 {
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      font-stretch: 88%
+    }
+
+    .case-result {
+      color: var(--stone)
+    }
+
+    .case-result b {
+      color: var(--ink);
+      font-weight: 600
+    }
+
+    .case blockquote {
+      margin: 12px 0 0;
+      padding: 16px 0 0;
+      border-top: 1px solid var(--line);
+      font-family: var(--display);
+      font-stretch: 90%;
+      font-size: 1.2rem;
+      line-height: 1.35
+    }
+
+    .case blockquote footer {
+      font-family: var(--body);
+      font-size: .9rem;
+      color: var(--stone);
+      margin-top: 8px
+    }
+
+    @media (max-width:820px) {
+      .cases {
+        grid-template-columns: 1fr
+      }
+
+      .case-main {
+        grid-row: auto
+      }
+    }
+
+    /* Founders */
+    .about-head {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(24px, 5vw, 64px);
+      align-items: end;
+      margin-bottom: clamp(36px, 5vw, 56px)
+    }
+
+    .about-head h2 {
+      font-size: clamp(2.1rem, 4.6vw, 3.6rem)
+    }
+
+    .about-head p {
+      color: var(--stone);
+      font-size: 1.1rem;
+      max-width: 46ch
+    }
+
+    .founders {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(18px, 2.5vw, 28px)
+    }
+
+    .founder {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+      background: #fff;
+      border-radius: var(--radius-m);
+      padding: clamp(22px, 3vw, 36px);
+      box-shadow: 0 18px 40px -30px rgba(20, 32, 28, .3)
+    }
+
+    .monogram {
+      width: clamp(76px, 8vw, 104px);
+      aspect-ratio: 1;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      font: 800 clamp(1.6rem, 2.6vw, 2.2rem)/1 var(--display);
+      font-stretch: 80%;
+      letter-spacing: .02em;
+      color: var(--glow);
+      background: radial-gradient(120% 120% at 30% 20%, #1d4a3a, #0b1814)
+    }
+
+    .monogram.alt {
+      background: radial-gradient(120% 120% at 70% 20%, #245c47, #0b1814)
+    }
+
+    .founder h3 {
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+      font-stretch: 85%
+    }
+
+    .role {
+      color: var(--jade);
+      font-weight: 600;
+      font-size: .95rem;
+      margin: 6px 0 14px
+    }
+
+    .founder p:last-child {
+      color: var(--stone);
+      max-width: 44ch
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: clamp(28px, 4vw, 44px) 0 0;
+      padding-top: 28px;
+      border-top: 1px solid var(--line)
+    }
+
+    .facts dt {
+      font: 800 clamp(2rem, 3.6vw, 2.8rem)/1 var(--display);
+      font-stretch: 80%;
+      color: var(--jade);
+      font-variant-numeric: tabular-nums
+    }
+
+    .facts dd {
+      margin: 8px 0 0;
+      color: var(--stone);
+      font-size: .95rem;
+      max-width: 26ch
+    }
+
+    @media (max-width:900px) {
+
+      .about-head,
+      .founders {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width:560px) {
+      .founder {
+        grid-template-columns: 1fr
+      }
+
+      .facts {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* Price hints in the FAQ */
+    .price-hints {
+      list-style: none;
+      margin: 16px 0 4px;
+      padding: 6px 16px;
+      background: var(--paper-2);
+      border-radius: 10px;
+      max-width: 440px
+    }
+
+    .price-hints li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink)
+    }
+
+    .price-hints li:last-child {
+      border-bottom: 0
+    }
+
+    .price-hints b {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums
+    }
+
+    /* Dark sections share the luminous jade for focus and hover. */
+    .demo-section :focus-visible,
+    .final :focus-visible,
+    .site-footer :focus-visible {
+      outline-color: var(--glow)
+    }
+
+    .demo-note .link:hover {
+      color: var(--glow)
+    }
+
+    .topics a:hover {
+      background: transparent;
+      color: var(--glow);
+      border-color: var(--glow)
+    }
+
+    .final h2 {
+      text-wrap: balance
+    }
+
+    /* Live demo */
+    .demo-section {
+      background: var(--ink);
+      color: var(--on-ink);
+      padding: clamp(72px, 10vw, 128px) 0;
+      position: relative;
+      overflow: hidden
+    }
+
+    .demo-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(50% 60% at 50% 0%, rgba(61, 150, 118, .22), transparent 70%);
+      pointer-events: none
+    }
+
+    .demo-head {
+      position: relative;
+      max-width: 640px;
+      margin-bottom: clamp(36px, 5vw, 56px)
+    }
+
+    .demo-head h2 {
+      font-size: clamp(2.1rem, 4.6vw, 3.6rem)
+    }
+
+    .demo-head p {
+      color: var(--on-ink-mute);
+      font-size: 1.1rem;
+      margin-top: 18px
+    }
+
+    .device {
+      perspective: 1400px;
+      position: relative
+    }
+
+    .app {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6), 0 0 0 1px rgba(233, 239, 235, .08);
+      transform-origin: 50% 100%
+    }
+
+    @media (prefers-reduced-motion:no-preference) {
+      .app {
+        transform: rotateX(14deg) translateY(30px) scale(.97);
+        opacity: .4;
+        transition: transform 1.1s var(--ease), opacity .8s var(--ease)
+      }
+
+      .device.in .app {
+        transform: none;
+        opacity: 1
+      }
+    }
+
+    .app-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--line);
+      background: #fafbf9
+    }
+
+    .app-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25
+    }
+
+    .app-name b {
+      font-weight: 600
+    }
+
+    .app-name small {
+      color: var(--stone);
+      font-size: .8rem
+    }
+
+    .app-tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--paper-2);
+      padding: 4px;
+      border-radius: 10px
+    }
+
+    .app-tabs button {
+      font: 500 .92rem/1 var(--body);
+      border: 0;
+      background: transparent;
+      color: var(--stone);
+      padding: 9px 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color .2s, color .2s
+    }
+
+    .app-tabs button:hover {
+      color: var(--ink)
+    }
+
+    .app-tabs button[aria-selected="true"] {
+      background: #fff;
+      color: var(--ink);
+      box-shadow: 0 1px 2px rgba(20, 32, 28, .12)
+    }
+
+    .badge {
+      font-size: .72rem;
+      font-weight: 600;
+      background: #b4442d;
+      color: #fff;
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-variant-numeric: tabular-nums
+    }
+
+    .badge.ok {
+      background: var(--jade)
+    }
+
+    .app-body {
+      padding: clamp(18px, 2.5vw, 28px);
+      min-height: 430px
+    }
+
+    @media (max-width:760px) {
+      .app-body {
+        min-height: 0
+      }
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px
+    }
+
+    .kpi span {
+      font-size: .85rem;
+      color: var(--stone)
+    }
+
+    .kpi b {
+      font: 700 1.5rem/1.1 var(--display);
+      font-stretch: 88%;
+      font-variant-numeric: tabular-nums
+    }
+
+    .kpi em {
+      font-style: normal;
+      font-size: .8rem;
+      font-weight: 500
+    }
+
+    .up {
+      color: var(--jade)
+    }
+
+    .down {
+      color: #b4442d
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px
+    }
+
+    .split>*,
+    .report>*,
+    .kpi {
+      min-width: 0
+    }
+
+    .chart {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px
+    }
+
+    .chart figcaption,
+    .feed-title {
+      font-size: .85rem;
+      color: var(--stone);
+      margin: 0 0 12px
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 170px
+    }
+
+    .bars .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      height: 100%;
+      justify-content: flex-end
+    }
+
+    .bars .b {
+      width: 100%;
+      background: var(--jade-soft);
+      border-radius: 5px 5px 2px 2px;
+      height: 0;
+      transition: height .9s var(--ease), background-color .2s
+    }
+
+    .bars .col:last-child .b {
+      background: var(--jade)
+    }
+
+    .bars .col:hover .b {
+      background: var(--jade)
+    }
+
+    .bars small {
+      font-size: .75rem;
+      color: var(--stone)
+    }
+
+    .feed {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px
+    }
+
+    .feed ul {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .feed li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      font-size: .9rem
+    }
+
+    .feed li span {
+      color: var(--stone);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .feed b {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap
+    }
+
+    .stock {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem
+    }
+
+    .stock th {
+      text-align: left;
+      font-weight: 500;
+      font-size: .82rem;
+      color: var(--stone);
+      padding: 0 10px 10px
+    }
+
+    .stock td {
+      padding: 12px 10px;
+      border-top: 1px solid var(--line);
+      font-variant-numeric: tabular-nums
+    }
+
+    .stock tr.low td:nth-child(2) {
+      color: #b4442d;
+      font-weight: 600
+    }
+
+    .stock td:last-child {
+      text-align: right
+    }
+
+    .stock button {
+      font: 500 .85rem/1 var(--body);
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 8px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background-color .2s, border-color .2s
+    }
+
+    .stock button:hover {
+      border-color: var(--jade);
+      background: var(--jade-soft)
+    }
+
+    .stock .ok-tag {
+      font-size: .85rem;
+      color: var(--jade);
+      font-weight: 500
+    }
+
+    .report {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      align-items: start
+    }
+
+    .hbars {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 12px
+    }
+
+    .hbars li {
+      display: grid;
+      grid-template-columns: 110px 1fr 84px;
+      gap: 10px;
+      align-items: center;
+      font-size: .9rem
+    }
+
+    .hbars .track {
+      height: 10px;
+      background: var(--paper-2);
+      border-radius: 99px;
+      overflow: hidden
+    }
+
+    .hbars .fill {
+      height: 100%;
+      width: 0;
+      background: var(--jade);
+      border-radius: 99px;
+      transition: width .9s var(--ease)
+    }
+
+    .hbars b {
+      font-weight: 600;
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    .export {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px
+    }
+
+    .export .btn {
+      width: 100%;
+      justify-content: center
+    }
+
+    .status {
+      font-size: .88rem;
+      color: var(--stone);
+      margin-top: 12px;
+      min-height: 1.4em
+    }
+
+    .csv {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fafbf9;
+      overflow: hidden
+    }
+
+    .csv pre {
+      margin: 0;
+      padding: 12px;
+      font: 500 .78rem/1.55 ui-monospace, Consolas, monospace;
+      overflow-x: auto;
+      white-space: pre;
+      color: var(--ink)
+    }
+
+    .csv .copy {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+      font: 600 .85rem/1 var(--body);
+      padding: 11px;
+      cursor: pointer;
+      color: var(--jade);
+      transition: background-color .2s
+    }
+
+    .csv .copy:hover {
+      background: var(--jade-soft)
+    }
+
+    .demo-note {
+      position: relative;
+      margin-top: 32px;
+      color: var(--on-ink-mute)
+    }
+
+    .demo-note .link {
+      color: var(--on-ink)
+    }
+
+    @media (max-width:760px) {
+      .kpis {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .kpi:last-child {
+        grid-column: span 2
+      }
+
+      .split,
+      .report {
+        grid-template-columns: 1fr
+      }
+
+      .hbars li {
+        grid-template-columns: 90px 1fr 74px
+      }
+
+      .app-tabs {
+        width: 100%
+      }
+
+      .app-tabs button {
+        flex: 1;
+        justify-content: center
+      }
+
+      .stock th:nth-child(3),
+      .stock td:nth-child(3) {
+        display: none
+      }
+    }
+
+    /* Ways of working */
+    .modes-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 5vw, 64px);
+      align-items: end;
+      margin-bottom: clamp(36px, 5vw, 56px)
+    }
+
+    .modes-head h2 {
+      font-size: clamp(2.1rem, 4.6vw, 3.6rem)
+    }
+
+    .modes-head p {
+      color: var(--stone);
+      max-width: 40ch
+    }
+
+    .modes {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      border-top: 1px solid var(--line)
+    }
+
+    .mode {
+      padding: 32px clamp(20px, 3vw, 36px) 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    .mode+.mode {
+      border-left: 1px solid var(--line)
+    }
+
+    @media (min-width:901px) {
+      .mode:first-child {
+        padding-left: 0
+      }
+    }
+
+    .mode h3 {
+      font-size: 1.7rem;
+      font-stretch: 85%
+    }
+
+    .mode p {
+      color: var(--stone)
+    }
+
+    .mode .fit {
+      color: var(--ink);
+      font-weight: 500;
+      margin-top: auto
+    }
+
+    .mode .link,
+    .mode .btn {
+      align-self: flex-start
+    }
+
+    .mode.featured {
+      background: #fff;
+      border-radius: 0 0 var(--radius-m) var(--radius-m);
+      box-shadow: 0 18px 40px -28px rgba(20, 32, 28, .3)
+    }
+
+    @media (max-width:900px) {
+      .modes-head {
+        grid-template-columns: 1fr
+      }
+
+      .modes {
+        grid-template-columns: 1fr
+      }
+
+      .mode+.mode {
+        border-left: 0;
+        border-top: 1px solid var(--line)
+      }
+
+      .mode.featured {
+        border-radius: var(--radius-m)
+      }
+    }
+
+    /* 4. Process */
+    .steps {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative
+    }
+
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 27px;
+      height: 1px;
+      background: var(--line)
+    }
+
+    .step {
+      padding-right: clamp(16px, 2.5vw, 32px);
+      position: relative
+    }
+
+    .step .marker {
+      height: 56px;
+      display: flex;
+      align-items: center
+    }
+
+    .step .maya {
+      background: var(--paper);
+      padding: 6px 10px 6px 0;
+      color: var(--jade);
+      position: relative
+    }
+
+    .step h3 {
+      font-size: 1.35rem;
+      font-stretch: 88%;
+      margin: 18px 0 10px
+    }
+
+    .step p {
+      color: var(--stone);
+      font-size: .98rem
+    }
+
+    .steps+.btn {
+      margin-top: 48px
+    }
+
+    @media (max-width:900px) {
+      .steps {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px
+      }
+
+      .steps::before {
+        display: none
+      }
+    }
+
+    @media (max-width:560px) {
+      .steps {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* 5. Transformation */
+    .future {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line)
+    }
+
+    .future li {
+      list-style: none;
+      padding: 28px 28px 28px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.15rem;
+      display: flex;
+      gap: 16px
+    }
+
+    .future li:nth-child(odd) {
+      border-right: 1px solid var(--line)
+    }
+
+    .future li:nth-child(even) {
+      padding-left: 28px
+    }
+
+    .future svg {
+      flex: none;
+      width: 24px;
+      height: 24px;
+      color: var(--jade);
+      margin-top: 3px
+    }
+
+    .future {
+      padding: 0;
+      margin: 0
+    }
+
+    .future+.btn {
+      margin-top: 40px
+    }
+
+    @media (max-width:720px) {
+      .future {
+        grid-template-columns: 1fr
+      }
+
+      .future li:nth-child(odd) {
+        border-right: 0
+      }
+
+      .future li:nth-child(even) {
+        padding-left: 0
+      }
+    }
+
+    /* FAQ */
+    .faq {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: clamp(32px, 6vw, 80px);
+      align-items: start
+    }
+
+    .faq h2 {
+      font-size: clamp(2.1rem, 4.6vw, 3.6rem)
+    }
+
+    .faq-intro p {
+      color: var(--stone);
+      margin-top: 18px;
+      max-width: 30ch
+    }
+
+    .faq details {
+      border-top: 1px solid var(--line)
+    }
+
+    .faq details:last-child {
+      border-bottom: 1px solid var(--line)
+    }
+
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      font: 600 1.2rem/1.3 var(--display);
+      font-stretch: 88%
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none
+    }
+
+    .faq summary .plus {
+      flex: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--paper-2);
+      position: relative;
+      transition: background-color .2s, transform .25s var(--ease)
+    }
+
+    .faq summary .plus::before,
+    .faq summary .plus::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 12px;
+      height: 2px;
+      background: var(--ink);
+      transform: translate(-50%, -50%)
+    }
+
+    .faq summary .plus::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      transition: transform .25s var(--ease)
+    }
+
+    .faq details[open] .plus {
+      background: var(--jade-soft)
+    }
+
+    .faq details[open] .plus::after {
+      transform: translate(-50%, -50%) rotate(0)
+    }
+
+    .faq summary:hover .plus {
+      background: var(--jade-soft)
+    }
+
+    .faq .answer {
+      padding: 0 48px 26px 0;
+      color: var(--stone);
+      max-width: 60ch
+    }
+
+    .faq .answer .link {
+      display: inline-block;
+      margin-top: 14px;
+      color: var(--ink)
+    }
+
+    @media (max-width:820px) {
+      .faq {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* Final CTA */
+    .final {
+      background: var(--ink);
+      color: var(--on-ink);
+      padding: clamp(80px, 11vw, 140px) 0 clamp(64px, 8vw, 96px);
+      position: relative;
+      overflow: hidden
+    }
+
+    .final::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(60% 60% at 80% 20%, rgba(61, 150, 118, .22), transparent 70%);
+      pointer-events: none
+    }
+
+    .final-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: clamp(32px, 6vw, 80px);
+      align-items: end;
+      position: relative
+    }
+
+    .final h2 {
+      font-size: clamp(2.6rem, 6.4vw, 5rem);
+      font-stretch: 78%;
+      font-weight: 800
+    }
+
+    .final p {
+      color: var(--on-ink-mute);
+      font-size: 1.15rem;
+      max-width: 44ch;
+      margin: 24px 0 36px
+    }
+
+    /* Closing emblem: the logo at its true proportions inside a jade medallion with
+   concentric rings, a nod to carved Maya calendar stones. */
+    .final-emblem {
+      position: relative;
+      justify-self: end;
+      width: min(340px, 100%);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center
+    }
+
+    .final-emblem::before {
+      content: "";
+      position: absolute;
+      inset: 14%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 40%, rgba(79, 209, 161, .22), rgba(15, 39, 25, .6) 60%, transparent 72%)
+    }
+
+    .final-emblem .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(79, 209, 161, .28)
+    }
+
+    .final-emblem .r1 {
+      inset: 6%
+    }
+
+    .final-emblem .r2 {
+      inset: 0;
+      border-style: dashed;
+      border-color: rgba(79, 209, 161, .18)
+    }
+
+    .final-emblem .r3 {
+      inset: 20%;
+      border-color: rgba(79, 209, 161, .4)
+    }
+
+    .final-emblem img {
+      position: relative;
+      width: 66%;
+      height: auto;
+      max-width: 100%;
+      filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .35))
+    }
+
+    @media (prefers-reduced-motion:no-preference) {
+      .final-emblem .r2 {
+        animation: spin 60s linear infinite
+      }
+
+      .final-emblem img {
+        animation: drift 7s ease-in-out infinite
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg)
+        }
+      }
+
+      @keyframes drift {
+
+        0%,
+        100% {
+          transform: translateY(0)
+        }
+
+        50% {
+          transform: translateY(-8px)
+        }
+      }
+    }
+
+    .topics {
+      margin-top: 44px;
+      position: relative
+    }
+
+    .topics p {
+      margin: 0 0 14px;
+      font-size: .95rem;
+      color: var(--on-ink-mute)
+    }
+
+    .topics ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .topics a {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(233, 239, 235, .22);
+      transition: background-color .2s, border-color .2s, color .2s
+    }
+
+    .topics a:hover {
+      background: var(--on-ink);
+      color: var(--ink);
+      border-color: var(--on-ink)
+    }
+
+    @media (max-width:820px) {
+      .final-grid {
+        grid-template-columns: 1fr
+      }
+
+      .final-emblem {
+        justify-self: start;
+        width: min(240px, 70%)
+      }
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--ink);
+      color: var(--on-ink-mute);
+      border-top: 1px solid rgba(233, 239, 235, .1);
+      padding: 36px 0;
+      font-size: .95rem
+    }
+
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 40px;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .foot .brand {
+      color: var(--on-ink)
+    }
+
+    .foot ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    .foot a {
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .foot a:hover {
+      color: var(--on-ink)
+    }
+
+    /* Floating WhatsApp (mobile) */
+    .wa-float {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 25;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--jade);
+      color: #fff;
+      display: none;
+      place-items: center;
+      box-shadow: 0 10px 24px -8px rgba(23, 79, 62, .6);
+      transition: transform .2s var(--ease)
+    }
+
+    .wa-float:active {
+      transform: scale(.96)
+    }
+
+    .wa-float svg {
+      width: 28px;
+      height: 28px
+    }
+
+    @media (max-width:820px) {
+      .wa-float {
+        display: grid
+      }
+    }
+
+    /* Single orchestrated load reveal for the hero */
+    @media (prefers-reduced-motion:no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: rise .8s var(--ease) forwards
+      }
+
+      .reveal.d1 {
+        animation-delay: .08s
+      }
+
+      .reveal.d2 {
+        animation-delay: .16s
+      }
+
+      .reveal.d3 {
+        animation-delay: .24s
+      }
+
+      .reveal.d4 {
+        animation-delay: .34s
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: none
+        }
+      }
+    }
+
+    @media (max-width:900px) {
+
+      .pains,
+      .guide {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
 </head>
+
 <body>
-<a class="skip" href="#contenido">Saltar al contenido</a>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z"/></symbol>
-  <symbol id="check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12.5 9.5 18 20 6.5"/></symbol>
-</svg>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="wa" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.29Z" />
+    </symbol>
+    <symbol id="check" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M4 12.5 9.5 18 20 6.5" />
+    </symbol>
+  </svg>
 
-<header class="site-header" id="top">
-  <nav class="wrap nav" aria-label="Principal">
-    <a class="brand" href="#inicio"><img src="assets/pixan-emblem-black.png" alt="" width="44" height="33">PIXAN TECH</a>
-    <ul class="nav-links">
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#demo">Demo</a></li>
-      <li><a href="#metodo">Método</a></li>
-      <li><a href="#quien">Nosotros</a></li>
-      <li><a href="#preguntas">Preguntas</a></li>
-      <li><a class="btn btn-primary" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotizar</a></li>
-    </ul>
-  </nav>
-</header>
+  <header class="site-header" id="top">
+    <nav class="wrap nav" aria-label="Principal">
+      <a class="brand" href="#inicio"><img src="assets/pixan-emblem-black.png" alt="" width="44" height="33">PIXAN
+        TECH</a>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#quien">Nosotros</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li class="keep">
+          <div class="lang" role="group" aria-label="Idioma"><button type="button" data-lang="es"
+              aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+        </li>
+        <li><a class="btn btn-primary"
+            data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg
+              aria-hidden="true">
+              <use href="https://wa.me/50258253416" />
+            </svg><span>Cotizar</span></a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main id="contenido">
-  <section class="hero" id="inicio">
-    <div class="wrap">
-      <div class="hero-top">
-        <h1 class="reveal">Menos trabajo manual. <span>Más control de tu negocio.</span></h1>
-        <div class="hero-copy">
-          <p class="lead reveal d1">Sitios web, sistemas a la medida y automatizaciones para empresas en Guatemala. Te decimos qué conviene hacer primero, cuánto cuesta y lo construimos de principio a fin.</p>
-          <div class="hero-actions reveal d2">
-            <a class="btn btn-primary" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotiza tu proyecto por WhatsApp</a>
-            <a class="link" href="#servicios">Ver servicios</a>
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <div class="hero-top">
+          <h1 class="reveal">Menos trabajo manual. <span>Más control de tu negocio.</span></h1>
+          <div class="hero-copy">
+            <p class="lead reveal d1">Sitios web, sistemas a la medida y automatizaciones para empresas en Guatemala. Te
+              decimos qué conviene hacer primero, cuánto cuesta y lo construimos de principio a fin.</p>
+            <div class="hero-actions reveal d2">
+              <a class="btn btn-primary"
+                data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg
+                  aria-hidden="true">
+                  <use href="https://wa.me/50258253416" />
+                </svg>Cotiza tu proyecto por WhatsApp</a>
+              <a class="link" href="#servicios">Ver servicios</a>
+            </div>
+            <p class="hero-note reveal d3">Primera asesoría sin costo. Te responden directamente los fundadores.</p>
           </div>
-          <p class="hero-note reveal d3">Primera asesoría sin costo. Te responden directamente los fundadores.</p>
         </div>
-      </div>
-      <div class="scene reveal d3" id="scene" role="img" aria-label="Pirámide maya de jade flotando sobre un suelo de piedra">
-        <img class="scene-fallback" src="assets/jade-maya-3d.jpg" alt="" width="880" height="880">
-        <canvas id="jade-canvas" aria-hidden="true"></canvas>
-        <ul class="scene-areas" aria-label="Áreas de trabajo">
-          <li>Productos digitales</li>
-          <li>Procesos</li>
-          <li>Adopción digital</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter tint" aria-labelledby="c1">
-    <div class="wrap">
-      <div class="chapter-head">
-        <span class="maya lg" role="img" aria-label="Capítulo 1"><span class="dots"><i class="dot"></i></span></span>
-        <h2 id="c1">¿Tu empresa todavía funciona así?</h2>
-      </div>
-      <div class="chapter-body pains">
-        <ul class="pain-list">
-          <li>Horas copiando datos entre hojas de cálculo.</li>
-          <li>Sistemas que no se hablan entre sí.</li>
-          <li>Procesos que se detienen cuando falta una persona.</li>
-          <li>Herramientas que pagas y nadie usa.</li>
-        </ul>
-        <div>
-          <p class="cost"><strong>Cada día así te cuesta dinero:</strong> en horas perdidas, en errores y en clientes que se van con quien responde más rápido.</p>
-          <a class="link" data-wa="Hola, quiero contarte cómo trabajamos hoy en mi empresa y ver qué podemos mejorar." href="#">Cuéntanos tu caso por WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter" aria-labelledby="c2">
-    <div class="wrap">
-      <div class="chapter-head">
-        <span class="maya lg" role="img" aria-label="Capítulo 2"><span class="dots"><i class="dot"></i><i class="dot"></i></span></span>
-        <h2 id="c2">Primero un plan claro. Después, la tecnología.</h2>
-      </div>
-      <div class="chapter-body guide">
-        <div>
-          <p>Analizamos cómo opera tu empresa, te decimos qué conviene digitalizar primero según tu presupuesto y lo implementamos de principio a fin.</p>
-          <p>Trabajas directo con los dos fundadores: uno se encarga de la estrategia y el diseño, el otro de la programación y los datos. Un solo equipo, un solo interlocutor y cero jerga técnica.</p>
-        </div>
-        <div class="promise">
-          <p>Recibes propuestas claras:</p>
-          <ul>
-            <li>Alcance definido por escrito</li>
-            <li>Precio antes de empezar</li>
-            <li>Plazos por etapa</li>
+        <div class="scene reveal d3" id="scene" role="img"
+          aria-label="Pirámide maya de jade flotando sobre un suelo de piedra">
+          <img class="scene-fallback" src="assets/jade-maya-3d.jpg" alt="" width="880" height="880">
+          <canvas id="jade-canvas" aria-hidden="true"></canvas>
+          <ul class="scene-areas" aria-label="Áreas de trabajo">
+            <li>Productos digitales</li>
+            <li>Procesos</li>
+            <li>Adopción digital</li>
           </ul>
-          <a class="link" data-wa="Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito: " href="#">Pregúntanos cuánto costaría tu proyecto</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="chapter tint" id="servicios" aria-labelledby="c3">
-    <div class="wrap">
-      <div class="chapter-head">
-        <span class="maya lg" role="img" aria-label="Capítulo 3"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span>
-        <h2 id="c3">Elige por dónde empezar.</h2>
-      </div>
-      <div class="services">
-        <article class="service">
-          <span class="maya lg" role="img" aria-label="Servicio 1"><span class="dots"><i class="dot"></i></span></span>
+    <section class="chapter tint" aria-labelledby="c1">
+      <div class="wrap">
+        <div class="chapter-head">
+          <span class="maya lg" role="img" aria-label="Capítulo 1"><span class="dots"><i class="dot"></i></span></span>
+          <h2 id="c1">¿Tu empresa todavía funciona así?</h2>
+        </div>
+        <div class="chapter-body pains">
+          <ul class="pain-list">
+            <li>Horas copiando datos entre hojas de cálculo.</li>
+            <li>Sistemas que no se hablan entre sí.</li>
+            <li>Procesos que se detienen cuando falta una persona.</li>
+            <li>Herramientas que pagas y nadie usa.</li>
+          </ul>
           <div>
-            <h3>Productos digitales</h3>
-            <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.</p>
-            <p class="ideal"><b>Ideal si</b> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.</p>
-          </div>
-          <div>
-            <ul class="tags"><li>Sitios web</li><li>Sistemas internos</li><li>Bases de datos</li><li>Integraciones</li></ul>
-            <a class="btn btn-primary" data-wa="Hola, quiero cotizar un producto digital (sitio web, sistema o aplicación) para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotizar un sitio o sistema</a>
-          </div>
-        </article>
-        <article class="service">
-          <span class="maya lg" role="img" aria-label="Servicio 2"><span class="dots"><i class="dot"></i><i class="dot"></i></span></span>
-          <div>
-            <h3>Adopción digital y mejora de procesos</h3>
-            <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.</p>
-            <p class="ideal"><b>Ideal si</b> ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.</p>
-          </div>
-          <div>
-            <ul class="tags"><li>Diagnóstico</li><li>Automatización</li><li>Capacitación</li><li>Indicadores</li></ul>
-            <a class="btn btn-primary" data-wa="Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Pedir una asesoría</a>
-          </div>
-        </article>
-      </div>
-      <p class="legend chapter-body">Numerado con numerales mayas: cada punto vale uno.</p>
-    </div>
-  </section>
-
-  <section class="demo-section" id="demo" aria-labelledby="demo-title">
-    <div class="wrap">
-      <div class="demo-head">
-        <h2 id="demo-title">Así se ve un sistema por dentro.</h2>
-        <p>Una demo que puedes tocar: ventas, inventario y reportes de una ferretería ficticia. Es el tipo de herramienta que construimos a la medida de cada empresa.</p>
-      </div>
-      <div class="device" id="device">
-        <div class="app" role="region" aria-label="Demo interactiva de un sistema de gestión">
-          <div class="app-bar">
-            <span class="app-name"><b>Ferretería El Volcán</b><small>Datos de ejemplo</small></span>
-            <div class="app-tabs" role="tablist" aria-label="Módulos">
-              <button role="tab" aria-selected="true" aria-controls="t-ventas" id="b-ventas">Ventas</button>
-              <button role="tab" aria-selected="false" aria-controls="t-inv" id="b-inv" tabindex="-1">Inventario <span class="badge" id="low-count">3</span></button>
-              <button role="tab" aria-selected="false" aria-controls="t-rep" id="b-rep" tabindex="-1">Reportes</button>
-            </div>
-          </div>
-
-          <div class="app-body" role="tabpanel" id="t-ventas" aria-labelledby="b-ventas">
-            <div class="kpis">
-              <div class="kpi"><span>Ventas de hoy</span><b>Q 8,436.50</b><em class="up">+12.4% vs. ayer</em></div>
-              <div class="kpi"><span>Pedidos</span><b>37</b><em class="up">+5</em></div>
-              <div class="kpi"><span>Ticket promedio</span><b>Q 228.01</b><em class="down">−2.1%</em></div>
-            </div>
-            <div class="split">
-              <figure class="chart">
-                <figcaption>Ventas de los últimos 7 días</figcaption>
-                <div class="bars" id="bars"></div>
-              </figure>
-              <div class="feed">
-                <p class="feed-title">Últimos pedidos</p>
-                <ul>
-                  <li><span>#1048 · Constructora Álvarez</span><b>Q 1,284.00</b></li>
-                  <li><span>#1047 · Mostrador</span><b>Q 96.50</b></li>
-                  <li><span>#1046 · Pinturas Xela</span><b>Q 642.75</b></li>
-                  <li><span>#1045 · Mostrador</span><b>Q 214.00</b></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="app-body" role="tabpanel" id="t-inv" aria-labelledby="b-inv" hidden>
-            <table class="stock">
-              <thead><tr><th>Producto</th><th>Existencia</th><th>Mínimo</th><th></th></tr></thead>
-              <tbody id="stock-rows"></tbody>
-            </table>
-          </div>
-
-          <div class="app-body" role="tabpanel" id="t-rep" aria-labelledby="b-rep" hidden>
-            <div class="report">
-              <figure class="chart">
-                <figcaption>Ventas por categoría · septiembre</figcaption>
-                <ul class="hbars" id="hbars"></ul>
-              </figure>
-              <div class="export">
-                <button class="btn btn-primary" id="export" type="button">Exportar a Excel</button>
-                <p class="status" id="export-status" role="status"></p>
-              </div>
-            </div>
+            <p class="cost"><strong>Cada día así te cuesta dinero:</strong> en horas perdidas, en errores y en clientes
+              que se van con quien responde más rápido.</p>
+            <a class="link" data-wa="Hola, quiero contarte cómo trabajamos hoy en mi empresa y ver qué podemos mejorar."
+              href="#">Cuéntanos tu caso por WhatsApp</a>
           </div>
         </div>
       </div>
-      <p class="demo-note">¿Te imaginas algo así con los datos de tu empresa? <a class="link" data-wa="Hola, vi la demo en tu página y quiero algo así para mi empresa." href="#">Cuéntanos qué necesitas controlar</a></p>
-    </div>
-  </section>
+    </section>
 
-  <section class="chapter" id="metodo" aria-labelledby="c4">
-    <div class="wrap">
-      <div class="chapter-head">
-        <span class="maya lg" role="img" aria-label="Capítulo 4"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span>
-        <h2 id="c4">Así empezamos a trabajar.</h2>
+    <section class="chapter" aria-labelledby="c2">
+      <div class="wrap">
+        <div class="chapter-head">
+          <span class="maya lg" role="img" aria-label="Capítulo 2"><span class="dots"><i class="dot"></i><i
+                class="dot"></i></span></span>
+          <h2 id="c2">Primero un plan claro. Después, la tecnología.</h2>
+        </div>
+        <div class="chapter-body guide">
+          <div>
+            <p>Analizamos cómo opera tu empresa, te decimos qué conviene digitalizar primero según tu presupuesto y lo
+              implementamos de principio a fin.</p>
+            <p>Trabajas directo con los dos fundadores: uno se encarga de la estrategia y el diseño, el otro de la
+              programación y los datos. Un solo equipo, un solo interlocutor y cero jerga técnica.</p>
+          </div>
+          <div class="promise">
+            <p>Recibes propuestas claras:</p>
+            <ul>
+              <li>Alcance definido por escrito</li>
+              <li>Precio antes de empezar</li>
+              <li>Plazos por etapa</li>
+            </ul>
+            <a class="link" data-wa="Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito: "
+              href="#">Pregúntanos cuánto costaría tu proyecto</a>
+          </div>
+        </div>
       </div>
-      <ol class="steps">
-        <li class="step">
-          <div class="marker"><span class="maya" role="img" aria-label="Paso 1"><span class="dots"><i class="dot"></i></span></span></div>
-          <h3>Nos escribes por WhatsApp</h3>
-          <p>Nos cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.</p>
-        </li>
-        <li class="step">
-          <div class="marker"><span class="maya" role="img" aria-label="Paso 2"><span class="dots"><i class="dot"></i><i class="dot"></i></span></span></div>
-          <h3>Conversación inicial sin costo</h3>
-          <p>Entendemos qué necesitas y te damos un primer rango de precio.</p>
-        </li>
-        <li class="step">
-          <div class="marker"><span class="maya" role="img" aria-label="Paso 3"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span></div>
-          <h3>Propuesta clara</h3>
-          <p>Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.</p>
-        </li>
-        <li class="step">
-          <div class="marker"><span class="maya" role="img" aria-label="Paso 4"><span class="dots"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span></div>
-          <h3>Implementación y acompañamiento</h3>
-          <p>Trabajamos por etapas para que veas avances pronto, capacitamos a tu equipo y nos quedamos hasta que todo funcione.</p>
-        </li>
-      </ol>
-      <a class="btn btn-primary" data-wa="Hola, quiero agendar la conversación inicial sin costo." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Dar el primer paso ahora</a>
-    </div>
-  </section>
+    </section>
 
-  <section class="chapter tint modes-section" aria-labelledby="modes-title">
-    <div class="wrap">
-      <div class="modes-head">
-        <h2 id="modes-title">Tres formas de trabajar con nosotros.</h2>
-        <p>Sin paquetes genéricos: el precio depende del alcance y lo recibes por escrito antes de empezar.</p>
+    <section class="chapter tint" id="servicios" aria-labelledby="c3">
+      <div class="wrap">
+        <div class="chapter-head">
+          <span class="maya lg" role="img" aria-label="Capítulo 3"><span class="dots"><i class="dot"></i><i
+                class="dot"></i><i class="dot"></i></span></span>
+          <h2 id="c3">Elige por dónde empezar.</h2>
+        </div>
+        <div class="services">
+          <article class="service">
+            <span class="maya lg" role="img" aria-label="Servicio 1"><span class="dots"><i
+                  class="dot"></i></span></span>
+            <div>
+              <h3>Productos digitales</h3>
+              <p>Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios,
+                ventas, reportes o lo que tu negocio necesite.</p>
+              <p class="ideal"><b>Ideal si</b> tu negocio vive en hojas de cálculo o quieres vender y recibir clientes
+                en línea.</p>
+            </div>
+            <div>
+              <ul class="tags">
+                <li>Sitios web</li>
+                <li>Sistemas internos</li>
+                <li>Bases de datos</li>
+                <li>Integraciones</li>
+              </ul>
+              <a class="btn btn-primary"
+                data-wa="Hola, quiero cotizar un producto digital (sitio web, sistema o aplicación) para mi empresa."
+                href="#"><svg aria-hidden="true">
+                  <use href="https://wa.me/50258253416" />
+                </svg>Cotizar un sitio o sistema</a>
+            </div>
+          </article>
+          <article class="service">
+            <span class="maya lg" role="img" aria-label="Servicio 2"><span class="dots"><i class="dot"></i><i
+                  class="dot"></i></span></span>
+            <div>
+              <h3>Adopción digital y mejora de procesos</h3>
+              <p>Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la
+                tecnología de verdad.</p>
+              <p class="ideal"><b>Ideal si</b> ya invertiste en herramientas y no ves resultados, o no sabes por dónde
+                empezar.</p>
+            </div>
+            <div>
+              <ul class="tags">
+                <li>Diagnóstico</li>
+                <li>Automatización</li>
+                <li>Capacitación</li>
+                <li>Indicadores</li>
+              </ul>
+              <a class="btn btn-primary"
+                data-wa="Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa."
+                href="#"><svg aria-hidden="true">
+                  <use href="https://wa.me/50258253416" />
+                </svg>Pedir una asesoría</a>
+            </div>
+          </article>
+        </div>
+        <p class="legend chapter-body">Numerado con numerales mayas: cada punto vale uno.</p>
       </div>
-      <ol class="modes">
-        <li class="mode">
-          <h3>Diagnóstico</h3>
-          <p>Revisamos cómo opera tu empresa y te entregamos un plan por prioridades, con lo que conviene digitalizar primero y su costo estimado.</p>
-          <p class="fit">Para ti si no sabes por dónde empezar.</p>
-          <a class="link" data-wa="Hola, me interesa un diagnóstico de mi empresa." href="#">Pedir un diagnóstico</a>
-        </li>
-        <li class="mode featured">
-          <h3>Proyecto</h3>
-          <p>Un sitio web, sistema o automatización con alcance, precio y plazos cerrados por escrito. Entregas por etapas para que veas avances pronto.</p>
-          <p class="fit">Para ti si ya sabes qué necesitas.</p>
-          <a class="btn btn-primary" data-wa="Hola, quiero cotizar un proyecto para mi empresa. Esto es lo que necesito: " href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Cotizar un proyecto</a>
-        </li>
-        <li class="mode">
-          <h3>Acompañamiento</h3>
-          <p>Soporte, mejoras y capacitación después de la entrega, para que el sistema crezca con tu negocio y tu equipo lo use de verdad.</p>
-          <p class="fit">Para ti si quieres que todo siga funcionando.</p>
-          <a class="link" data-wa="Hola, me interesa el acompañamiento y soporte continuo para mi empresa." href="#">Preguntar por acompañamiento</a>
-        </li>
-      </ol>
-    </div>
-  </section>
+    </section>
 
-  <!--
+    <section class="demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="wrap">
+        <div class="demo-head">
+          <h2 id="demo-title">Así se ve un sistema por dentro.</h2>
+          <p>Una demo que puedes tocar: ventas, inventario y reportes de una ferretería ficticia. Es el tipo de
+            herramienta que construimos a la medida de cada empresa.</p>
+        </div>
+        <div class="device" id="device">
+          <div class="app" role="region" aria-label="Demo interactiva de un sistema de gestión">
+            <div class="app-bar">
+              <span class="app-name"><b>Ferretería El Volcán</b><small>Datos de ejemplo</small></span>
+              <div class="app-tabs" role="tablist" aria-label="Módulos">
+                <button role="tab" aria-selected="true" aria-controls="t-ventas" id="b-ventas">Ventas</button>
+                <button role="tab" aria-selected="false" aria-controls="t-inv" id="b-inv" tabindex="-1">Inventario <span
+                    class="badge" id="low-count">3</span></button>
+                <button role="tab" aria-selected="false" aria-controls="t-rep" id="b-rep"
+                  tabindex="-1">Reportes</button>
+              </div>
+            </div>
+
+            <div class="app-body" role="tabpanel" id="t-ventas" aria-labelledby="b-ventas">
+              <div class="kpis">
+                <div class="kpi"><span>Ventas de hoy</span><b>Q 8,436.50</b><em class="up">+12.4% vs. ayer</em></div>
+                <div class="kpi"><span>Pedidos</span><b>37</b><em class="up">+5</em></div>
+                <div class="kpi"><span>Ticket promedio</span><b>Q 228.01</b><em class="down">−2.1%</em></div>
+              </div>
+              <div class="split">
+                <figure class="chart">
+                  <figcaption>Ventas de los últimos 7 días</figcaption>
+                  <div class="bars" id="bars"></div>
+                </figure>
+                <div class="feed">
+                  <p class="feed-title">Últimos pedidos</p>
+                  <ul>
+                    <li><span>#1048 · Constructora Álvarez</span><b>Q 1,284.00</b></li>
+                    <li><span>#1047 · Mostrador</span><b>Q 96.50</b></li>
+                    <li><span>#1046 · Pinturas Xela</span><b>Q 642.75</b></li>
+                    <li><span>#1045 · Mostrador</span><b>Q 214.00</b></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="app-body" role="tabpanel" id="t-inv" aria-labelledby="b-inv" hidden>
+              <table class="stock">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Existencia</th>
+                    <th>Mínimo</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="stock-rows"></tbody>
+              </table>
+            </div>
+
+            <div class="app-body" role="tabpanel" id="t-rep" aria-labelledby="b-rep" hidden>
+              <div class="report">
+                <figure class="chart">
+                  <figcaption>Ventas por categoría · septiembre</figcaption>
+                  <ul class="hbars" id="hbars"></ul>
+                </figure>
+                <div class="export">
+                  <button class="btn btn-primary" id="export" type="button">Exportar a CSV</button>
+                  <p class="status" id="export-status" role="status">Descarga la tabla para abrirla en Excel o Google
+                    Sheets.</p>
+                  <div class="csv" id="csv" hidden>
+                    <pre id="csv-text"></pre>
+                    <button class="copy" id="csv-copy" type="button">Copiar CSV</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="demo-note">¿Te imaginas algo así con los datos de tu empresa? <a class="link"
+            data-wa="Hola, vi la demo en tu página y quiero algo así para mi empresa." href="#">Cuéntanos qué necesitas
+            controlar</a></p>
+      </div>
+    </section>
+
+    <section class="chapter" id="metodo" aria-labelledby="c4">
+      <div class="wrap">
+        <div class="chapter-head">
+          <span class="maya lg" role="img" aria-label="Capítulo 4"><span class="dots"><i class="dot"></i><i
+                class="dot"></i><i class="dot"></i><i class="dot"></i></span></span>
+          <h2 id="c4">Así empezamos a trabajar.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <div class="marker"><span class="maya" role="img" aria-label="Paso 1"><span class="dots"><i
+                    class="dot"></i></span></span></div>
+            <h3>Nos escribes por WhatsApp</h3>
+            <p>Nos cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.</p>
+          </li>
+          <li class="step">
+            <div class="marker"><span class="maya" role="img" aria-label="Paso 2"><span class="dots"><i
+                    class="dot"></i><i class="dot"></i></span></span></div>
+            <h3>Conversación inicial sin costo</h3>
+            <p>Entendemos qué necesitas y te damos un primer rango de precio.</p>
+          </li>
+          <li class="step">
+            <div class="marker"><span class="maya" role="img" aria-label="Paso 3"><span class="dots"><i
+                    class="dot"></i><i class="dot"></i><i class="dot"></i></span></span></div>
+            <h3>Propuesta clara</h3>
+            <p>Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.</p>
+          </li>
+          <li class="step">
+            <div class="marker"><span class="maya" role="img" aria-label="Paso 4"><span class="dots"><i
+                    class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></span></span></div>
+            <h3>Implementación y acompañamiento</h3>
+            <p>Trabajamos por etapas para que veas avances pronto, capacitamos a tu equipo y nos quedamos hasta que todo
+              funcione.</p>
+          </li>
+        </ol>
+        <a class="btn btn-primary" data-wa="Hola, quiero agendar la conversación inicial sin costo." href="#"><svg
+            aria-hidden="true">
+            <use href="https://wa.me/50258253416" />
+          </svg>Dar el primer paso ahora</a>
+      </div>
+    </section>
+
+    <section class="chapter tint modes-section" aria-labelledby="modes-title">
+      <div class="wrap">
+        <div class="modes-head">
+          <h2 id="modes-title">Tres formas de trabajar con nosotros.</h2>
+          <p>Sin paquetes genéricos: el precio depende del alcance y lo recibes por escrito antes de empezar.</p>
+        </div>
+        <ol class="modes">
+          <li class="mode">
+            <h3>Diagnóstico</h3>
+            <p>Revisamos cómo opera tu empresa y te entregamos un plan por prioridades, con lo que conviene digitalizar
+              primero y su costo estimado.</p>
+            <p class="fit">Para ti si no sabes por dónde empezar.</p>
+            <a class="link" data-wa="Hola, me interesa un diagnóstico de mi empresa." href="#">Pedir un diagnóstico</a>
+          </li>
+          <li class="mode featured">
+            <h3>Proyecto</h3>
+            <p>Un sitio web, sistema o automatización con alcance, precio y plazos cerrados por escrito. Entregas por
+              etapas para que veas avances pronto.</p>
+            <p class="fit">Para ti si ya sabes qué necesitas.</p>
+            <a class="btn btn-primary"
+              data-wa="Hola, quiero cotizar un proyecto para mi empresa. Esto es lo que necesito: " href="#"><svg
+                aria-hidden="true">
+                <use href="https://wa.me/50258253416" />
+              </svg>Cotizar un proyecto</a>
+          </li>
+          <li class="mode">
+            <h3>Acompañamiento</h3>
+            <p>Soporte, mejoras y capacitación después de la entrega, para que el sistema crezca con tu negocio y tu
+              equipo lo use de verdad.</p>
+            <p class="fit">Para ti si quieres que todo siga funcionando.</p>
+            <a class="link" data-wa="Hola, me interesa el acompañamiento y soporte continuo para mi empresa."
+              href="#">Preguntar por acompañamiento</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!--
     TESTIMONIOS: sección lista para cuando haya testimonios reales (nombre, cargo y empresa).
     Para activarla, copia este bloque fuera del comentario y reemplaza el texto.
   <section class="chapter quotes" aria-labelledby="quotes-title">
@@ -644,466 +2502,763 @@ section{scroll-margin-top:80px}
   </section>
   -->
 
-  <section class="chapter" aria-labelledby="c5">
-    <div class="wrap">
-      <div class="chapter-head">
-        <span class="maya lg" role="img" aria-label="Capítulo 5"><span class="bar"></span></span>
-        <h2 id="c5">Imagina tu empresa dentro de unos meses.</h2>
-      </div>
-      <ul class="future">
-        <li><svg aria-hidden="true"><use href="#check"/></svg>Toda tu información en un solo lugar, al día y a la mano.</li>
-        <li><svg aria-hidden="true"><use href="#check"/></svg>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
-        <li><svg aria-hidden="true"><use href="#check"/></svg>Menos errores y menos dependencia de una sola persona.</li>
-        <li><svg aria-hidden="true"><use href="#check"/></svg>Ventas, inventario y cobros al día en un solo tablero para decidir con números.</li>
-      </ul>
-      <a class="btn btn-primary" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Quiero esto para mi empresa</a>
-    </div>
-  </section>
-  <section class="chapter tint about" id="quien" aria-labelledby="about-title">
-    <div class="wrap">
-      <div class="about-head">
-        <h2 id="about-title">Dos fundadores. Un mismo equipo de principio a fin.</h2>
-        <p>Pixan Tech une lo que casi siempre se contrata por separado: alguien que entiende cómo vende tu negocio y alguien que construye el sistema que lo hace posible.</p>
-      </div>
-      <div class="founders">
-        <article class="founder">
-          <div class="monogram" aria-hidden="true">AA</div>
-          <div>
-            <h3>Andrés Arrivillaga Shaw</h3>
-            <p class="role">Marketing y diseño</p>
-          </div>
-        </article>
-        <article class="founder">
-          <div class="monogram alt" aria-hidden="true">FG</div>
-          <div>
-            <h3>Fernando Gaitán Serrano</h3>
-            <p class="role">Programación y análisis de datos</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter" id="preguntas" aria-labelledby="faq-title">
-    <div class="wrap faq">
-      <div class="faq-intro">
-        <h2 id="faq-title">Lo que todos preguntan.</h2>
-        <p>¿Tu duda no está aquí? Escríbenos y te responde uno de los fundadores.</p>
-      </div>
-      <div>
-        <details open>
-          <summary>¿Cuánto cuesta?<span class="plus" aria-hidden="true"></span></summary>
-          <div class="answer"><p>Depende de lo que necesites, por eso no vendemos paquetes genéricos que terminas pagando de más. Escríbenos con tu caso y en la primera conversación te damos un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.</p>
-          <a class="link" data-wa="Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito: " href="#">Pedir un rango de precio</a></div>
-        </details>
-        <details>
-          <summary>¿Mi empresa es muy pequeña para esto?<span class="plus" aria-hidden="true"></span></summary>
-          <div class="answer"><p>No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.</p></div>
-        </details>
-        <details>
-          <summary>¿Cuánto tiempo toma?<span class="plus" aria-hidden="true"></span></summary>
-          <div class="answer"><p>Depende del alcance. Trabajamos por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indicamos los plazos de cada una.</p></div>
-        </details>
-        <details>
-          <summary>Ya tengo sistemas. ¿Tengo que cambiar todo?<span class="plus" aria-hidden="true"></span></summary>
-          <div class="answer"><p>No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.</p></div>
-        </details>
-        <details>
-          <summary>¿Qué pasa después de la entrega?<span class="plus" aria-hidden="true"></span></summary>
-          <div class="answer"><p>Capacitamos a tu equipo y te damos soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.</p></div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <section class="final" aria-labelledby="cta-title">
-    <div class="wrap">
-      <div class="final-grid">
-        <div>
-          <h2 id="cta-title">¿Qué te gustaría dejar de hacer a mano?</h2>
-          <p>Cuéntanoslo por WhatsApp en un mensaje. Te respondemos con cómo lo resolveríamos y un rango de precio. La primera conversación no tiene costo.</p>
-          <a class="btn btn-light" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg aria-hidden="true"><use href="#wa"/></svg>Pedir mi cotización por WhatsApp</a>
+    <section class="chapter" aria-labelledby="c5">
+      <div class="wrap">
+        <div class="chapter-head">
+          <span class="maya lg" role="img" aria-label="Capítulo 5"><span class="bar"></span></span>
+          <h2 id="c5">Imagina tu empresa dentro de unos meses.</h2>
         </div>
-        <img src="assets/pixan-emblem.png" alt="" width="589" height="440">
-      </div>
-      <div class="topics">
-        <p>O elige un tema y el mensaje se escribe solo:</p>
-        <ul>
-          <li><a data-wa="Hola, quiero cotizar un sitio web para mi empresa." href="#">Quiero un sitio web</a></li>
-          <li><a data-wa="Hola, necesito un sistema a la medida para mi empresa. ¿Cuánto costaría?" href="#">Necesito un sistema a la medida</a></li>
-          <li><a data-wa="Hola, quiero automatizar tareas repetitivas en mi empresa. ¿Cuánto costaría?" href="#">Automatizar tareas repetitivas</a></li>
-          <li><a data-wa="Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa." href="#">Digitalizar mis procesos</a></li>
+        <ul class="future">
+          <li><svg aria-hidden="true">
+              <use href="#check" />
+            </svg>Toda tu información en un solo lugar, al día y a la mano.</li>
+          <li><svg aria-hidden="true">
+              <use href="#check" />
+            </svg>Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.</li>
+          <li><svg aria-hidden="true">
+              <use href="#check" />
+            </svg>Menos errores y menos dependencia de una sola persona.</li>
+          <li><svg aria-hidden="true">
+              <use href="#check" />
+            </svg>Ventas, inventario y cobros al día en un solo tablero para decidir con números.</li>
         </ul>
+        <a class="btn btn-primary"
+          data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg
+            aria-hidden="true">
+            <use href="https://wa.me/50258253416" />
+          </svg>Quiero esto para mi empresa</a>
       </div>
+    </section>
+    <section class="chapter tint about" id="quien" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about-head">
+          <h2 id="about-title">Dos fundadores. Un mismo equipo de principio a fin.</h2>
+          <p>Pixan Tech une lo que casi siempre se contrata por separado: alguien que entiende cómo vende tu negocio y
+            alguien que construye el sistema que lo hace posible.</p>
+        </div>
+        <div class="founders">
+          <article class="founder">
+            <div class="monogram" aria-hidden="true">AA</div>
+            <div>
+              <h3>Andrés Arrivillaga Shaw</h3>
+              <p class="role">Marketing y diseño</p>
+            </div>
+          </article>
+          <article class="founder">
+            <div class="monogram alt" aria-hidden="true">FG</div>
+            <div>
+              <h3>Fernando Gaitán Serrano</h3>
+              <p class="role">Programación y análisis de datos</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="preguntas" aria-labelledby="faq-title">
+      <div class="wrap faq">
+        <div class="faq-intro">
+          <h2 id="faq-title">Lo que todos preguntan.</h2>
+          <p>¿Tu duda no está aquí? Escríbenos y te responde uno de los fundadores.</p>
+        </div>
+        <div>
+          <details open>
+            <summary>¿Cuánto cuesta?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer">
+              <p>Depende de lo que necesites, por eso no vendemos paquetes genéricos que terminas pagando de más.
+                Escríbenos con tu caso y en la primera conversación te damos un rango de precio, sin costo. Si
+                avanzamos, recibes el precio por escrito antes de empezar.</p>
+              <a class="link" data-wa="Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito: "
+                href="#">Pedir un rango de precio</a>
+            </div>
+          </details>
+          <details>
+            <summary>¿Mi empresa es muy pequeña para esto?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer">
+              <p>No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la
+                inversión.</p>
+            </div>
+          </details>
+          <details>
+            <summary>¿Cuánto tiempo toma?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer">
+              <p>Depende del alcance. Trabajamos por etapas para que veas resultados desde las primeras entregas, y en
+                la propuesta te indicamos los plazos de cada una.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Ya tengo sistemas. ¿Tengo que cambiar todo?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer">
+              <p>No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que
+                de verdad te frena.</p>
+            </div>
+          </details>
+          <details>
+            <summary>¿Qué pasa después de la entrega?<span class="plus" aria-hidden="true"></span></summary>
+            <div class="answer">
+              <p>Capacitamos a tu equipo y te damos soporte para que todo siga funcionando. No te quedas con un sistema
+                que nadie sabe usar.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="final-grid">
+          <div>
+            <h2 id="cta-title">¿Qué te gustaría dejar de hacer a mano?</h2>
+            <p>Cuéntanoslo por WhatsApp en un mensaje. Te respondemos con cómo lo resolveríamos y un rango de precio. La
+              primera conversación no tiene costo.</p>
+            <a class="btn btn-light"
+              data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"><svg
+                aria-hidden="true">
+                <use href="https://wa.me/50258253416" />
+              </svg>Pedir mi cotización por WhatsApp</a>
+          </div>
+          <div class="final-emblem" aria-hidden="true">
+            <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+            <img src="assets/pixan-emblem.png" alt="" width="589" height="440">
+          </div>
+        </div>
+        <div class="topics">
+          <p>O elige un tema y el mensaje se escribe solo:</p>
+          <ul>
+            <li><a data-wa="Hola, quiero cotizar un sitio web para mi empresa." href="#">Quiero un sitio web</a></li>
+            <li><a data-wa="Hola, necesito un sistema a la medida para mi empresa. ¿Cuánto costaría?" href="#">Necesito
+                un sistema a la medida</a></li>
+            <li><a data-wa="Hola, quiero automatizar tareas repetitivas en mi empresa. ¿Cuánto costaría?"
+                href="#">Automatizar tareas repetitivas</a></li>
+            <li><a data-wa="Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa."
+                href="#">Digitalizar mis procesos</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <a class="brand" href="#inicio"><img src="assets/pixan-emblem.png" alt="" width="44" height="33">PIXAN TECH</a>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#preguntas">Preguntas</a></li>
+        <li><a data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa."
+            href="#">WhatsApp +502 5825 3416</a></li>
+      </ul>
+      <p>© <span id="y">2026</span> Pixan Tech · Guatemala</p>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="site-footer">
-  <div class="wrap foot">
-    <a class="brand" href="#inicio"><img src="assets/pixan-emblem.png" alt="" width="44" height="33">PIXAN TECH</a>
-    <ul>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#metodo">Método</a></li>
-      <li><a href="#preguntas">Preguntas</a></li>
-      <li><a data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#">WhatsApp +502 5825 3416</a></li>
-    </ul>
-    <p>© <span id="y">2026</span> Pixan Tech · Guatemala</p>
-  </div>
-</footer>
+  <a class="wa-float" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#"
+    aria-label="Escribir por WhatsApp"><svg aria-hidden="true">
+      <use href="https://wa.me/50258253416" />
+    </svg></a>
 
-<a class="wa-float" data-wa="Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa." href="#" aria-label="Escribir por WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+  <script>
+    // Every WhatsApp link shares one number; each carries its own pre-written message.
+    const WA = "50258253416";
+    document.querySelectorAll("[data-wa]").forEach(a => {
+      a.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(a.dataset.wa);
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-<script>
-// Every WhatsApp link shares one number; each carries its own pre-written message.
-const WA = "50258253416";
-document.querySelectorAll("[data-wa]").forEach(a => {
-  a.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(a.dataset.wa);
-  a.target = "_blank";
-  a.rel = "noopener";
-});
-document.getElementById("y").textContent = new Date().getFullYear();
+    const header = document.querySelector(".site-header");
+    const onScroll = () => header.classList.toggle("scrolled", scrollY > 8);
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
 
-const header = document.querySelector(".site-header");
-const onScroll = () => header.classList.toggle("scrolled", scrollY > 8);
-addEventListener("scroll", onScroll, { passive: true });
-onScroll();
+    // Mark the nav link of the section in view.
+    const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        links.forEach(l => l.setAttribute("aria-current", l.getAttribute("href") === "#" + e.target.id ? "true" : "false"));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["servicios", "demo", "metodo", "quien", "preguntas"].forEach(id => io.observe(document.getElementById(id)));
 
-// Mark the nav link of the section in view.
-const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    links.forEach(l => l.setAttribute("aria-current", l.getAttribute("href") === "#" + e.target.id ? "true" : "false"));
-  });
-}, { rootMargin: "-45% 0px -50% 0px" });
-["servicios", "demo", "metodo", "quien", "preguntas"].forEach(id => io.observe(document.getElementById(id)));
+    const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Demo: sample data for a fictional hardware store.
+    const days = [["Mié", 6120], ["Jue", 7480], ["Vie", 9310], ["Sáb", 11240], ["Dom", 4380], ["Lun", 7505], ["Hoy", 8436]];
+    const stock = [
+      ["Cemento gris 42.5 kg", 18, 40],
+      ["Varilla corrugada 3/8\"", 126, 80],
+      ["Pintura blanca 1 gal", 9, 24],
+      ["Tubo PVC 1/2\" 6 m", 64, 50],
+      ["Tornillo punta broca 1\" (100)", 11, 30],
+      ["Lámina troquelada 10 pies", 52, 20],
+    ];
+    const cats = [["Construcción", 48210], ["Plomería", 21875], ["Pintura", 17340], ["Electricidad", 12960], ["Herramientas", 9415]];
+    const q = n => "Q " + n.toLocaleString("en-US", { minimumFractionDigits: 0 });
 
-// Demo: sample data for a fictional hardware store.
-const days = [["Mié", 6120], ["Jue", 7480], ["Vie", 9310], ["Sáb", 11240], ["Dom", 4380], ["Lun", 7505], ["Hoy", 8436]];
-const stock = [
-  ["Cemento gris 42.5 kg", 18, 40],
-  ["Varilla corrugada 3/8\"", 126, 80],
-  ["Pintura blanca 1 gal", 9, 24],
-  ["Tubo PVC 1/2\" 6 m", 64, 50],
-  ["Tornillo punta broca 1\" (100)", 11, 30],
-  ["Lámina troquelada 10 pies", 52, 20],
-];
-const cats = [["Construcción", 48210], ["Plomería", 21875], ["Pintura", 17340], ["Electricidad", 12960], ["Herramientas", 9415]];
-const q = n => "Q " + n.toLocaleString("en-US", { minimumFractionDigits: 0 });
+    const bars = document.getElementById("bars");
+    const max = Math.max(...days.map(d => d[1]));
+    bars.innerHTML = days.map(([d, v]) =>
+      `<div class="col" title="${d}: ${q(v)}"><div class="b" data-h="${(v / max * 100).toFixed(1)}%"></div><small>${d}</small></div>`).join("");
 
-const bars = document.getElementById("bars");
-const max = Math.max(...days.map(d => d[1]));
-bars.innerHTML = days.map(([d, v]) =>
-  `<div class="col" title="${d}: ${q(v)}"><div class="b" data-h="${(v / max * 100).toFixed(1)}%"></div><small>${d}</small></div>`).join("");
+    const hbars = document.getElementById("hbars");
+    const cmax = Math.max(...cats.map(c => c[1]));
+    hbars.innerHTML = cats.map(([c, v]) =>
+      `<li><span>${c}</span><div class="track"><div class="fill" data-w="${(v / cmax * 100).toFixed(1)}%"></div></div><b>${q(v)}</b></li>`).join("");
 
-const hbars = document.getElementById("hbars");
-const cmax = Math.max(...cats.map(c => c[1]));
-hbars.innerHTML = cats.map(([c, v]) =>
-  `<li><span>${c}</span><div class="track"><div class="fill" data-w="${(v / cmax * 100).toFixed(1)}%"></div></div><b>${q(v)}</b></li>`).join("");
+    const rows = document.getElementById("stock-rows");
+    const lowCount = document.getElementById("low-count");
+    function renderStock() {
+      rows.innerHTML = stock.map(([name, have, min], i) => {
+        const low = have < min;
+        return `<tr class="${low ? "low" : ""}"><td>${name}</td><td>${have}</td><td>${min}</td><td>${low ? `<button type="button" data-i="${i}">Reabastecer</button>` : `<span class="ok-tag">En orden</span>`}</td></tr>`;
+      }).join("");
+      const n = stock.filter(([, h, m]) => h < m).length;
+      lowCount.textContent = n;
+      lowCount.classList.toggle("ok", n === 0);
+      if (window.pxApplyLang) window.pxApplyLang(rows);
+    }
+    rows.addEventListener("click", e => {
+      const b = e.target.closest("button[data-i]");
+      if (!b) return;
+      const item = stock[b.dataset.i];
+      item[1] = item[2] * 2;
+      renderStock();
+    });
+    renderStock();
 
-const rows = document.getElementById("stock-rows");
-const lowCount = document.getElementById("low-count");
-function renderStock() {
-  rows.innerHTML = stock.map(([name, have, min], i) => {
-    const low = have < min;
-    return `<tr class="${low ? "low" : ""}"><td>${name}</td><td>${have}</td><td>${min}</td><td>${
-      low ? `<button type="button" data-i="${i}">Reabastecer</button>` : `<span class="ok-tag">En orden</span>`}</td></tr>`;
-  }).join("");
-  const n = stock.filter(([, h, m]) => h < m).length;
-  lowCount.textContent = n;
-  lowCount.classList.toggle("ok", n === 0);
-}
-rows.addEventListener("click", e => {
-  const b = e.target.closest("button[data-i]");
-  if (!b) return;
-  const item = stock[b.dataset.i];
-  item[1] = item[2] * 2;
-  renderStock();
-});
-renderStock();
+    function grow(panelEl) {
+      panelEl.querySelectorAll("[data-h]").forEach(el => el.style.height = el.dataset.h);
+      panelEl.querySelectorAll("[data-w]").forEach(el => el.style.width = el.dataset.w);
+    }
 
-function grow(panelEl) {
-  panelEl.querySelectorAll("[data-h]").forEach(el => el.style.height = el.dataset.h);
-  panelEl.querySelectorAll("[data-w]").forEach(el => el.style.width = el.dataset.w);
-}
+    // Tabs with arrow-key support.
+    const tabs = [...document.querySelectorAll(".app-tabs [role=tab]")];
+    function select(tab) {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute("aria-selected", on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+      });
+      grow(document.getElementById(tab.getAttribute("aria-controls")));
+    }
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => select(t));
+      t.addEventListener("keydown", e => {
+        const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (!d) return;
+        const next = tabs[(i + d + tabs.length) % tabs.length];
+        next.focus();
+        select(next);
+      });
+    });
 
-// Tabs with arrow-key support.
-const tabs = [...document.querySelectorAll(".app-tabs [role=tab]")];
-function select(tab) {
-  tabs.forEach(t => {
-    const on = t === tab;
-    t.setAttribute("aria-selected", on);
-    t.tabIndex = on ? 0 : -1;
-    document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
-  });
-  grow(document.getElementById(tab.getAttribute("aria-controls")));
-}
-tabs.forEach((t, i) => {
-  t.addEventListener("click", () => select(t));
-  t.addEventListener("keydown", e => {
-    const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-    if (!d) return;
-    const next = tabs[(i + d + tabs.length) % tabs.length];
-    next.focus();
-    select(next);
-  });
-});
+    // Reports: export the category table as CSV (download + visible copy, since some
+    // embedded viewers block downloads).
+    const status = document.getElementById("export-status");
+    const csvBox = document.getElementById("csv");
+    const csvText = document.getElementById("csv-text");
+    const tr = s => (window.pxT ? window.pxT(s) : s);
+    function buildCsv() {
+      const total = cats.reduce((sum, [, v]) => sum + v, 0);
+      const cell = v => /[",\n]/.test(v) ? `"${String(v).replace(/"/g, '""')}"` : v;
+      const rows = [[tr("Categoría"), tr("Ventas (Q)"), tr("% del total")]];
+      cats.forEach(([c, v]) => rows.push([tr(c), v.toFixed(2), (v / total * 100).toFixed(1)]));
+      rows.push([tr("Total"), total.toFixed(2), "100.0"]);
+      return rows.map(r => r.map(cell).join(",")).join("\r\n");
+    }
+    document.getElementById("export").addEventListener("click", () => {
+      const csv = buildCsv();
+      const name = tr("ventas-por-categoria") + "-2026-09.csv";
+      // BOM so Excel reads accents correctly.
+      const url = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" }));
+      const a = Object.assign(document.createElement("a"), { href: url, download: name });
+      document.body.append(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
+      csvText.textContent = csv;
+      csvBox.hidden = false;
+      status.textContent = tr("Archivo generado:") + " " + name + ". " + tr("Si no se descargó, copia el contenido de abajo.");
+    });
+    document.getElementById("csv-copy").addEventListener("click", e => {
+      const btn = e.currentTarget;
+      navigator.clipboard.writeText(csvText.textContent).then(
+        () => { btn.textContent = tr("Copiado"); setTimeout(() => { btn.textContent = tr("Copiar CSV"); }, 1600); },
+        () => { getSelection().selectAllChildren(csvText); btn.textContent = tr("Selecciona y copia con Ctrl+C"); }
+      );
+    });
 
-const status = document.getElementById("export-status");
-document.getElementById("export").addEventListener("click", () => {
-  status.textContent = "Generando reporte…";
-  setTimeout(() => { status.textContent = "Listo. En tu sistema, aquí se descargaría el archivo de Excel."; }, 900);
-});
+    // The demo window tilts up into place the first time it scrolls into view.
+    const device = document.getElementById("device");
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      device.classList.add("in");
+      grow(document.getElementById("t-ventas"));
+      obs.disconnect();
+    }, { threshold: 0.25 }).observe(device);
+  </script>
 
-// The demo window tilts up into place the first time it scrolls into view.
-const device = document.getElementById("device");
-new IntersectionObserver((entries, obs) => {
-  if (!entries[0].isIntersecting) return;
-  device.classList.add("in");
-  grow(document.getElementById("t-ventas"));
-  obs.disconnect();
-}, { threshold: 0.25 }).observe(device);
-</script>
+  <script>
+    // ES/EN switch. Spanish lives in the HTML; this maps each Spanish text node and
+    // attribute to its English version and swaps them in place (and back).
+    (() => {
+      const EN = {
+        "Saltar al contenido": "Skip to content",
+        "Servicios": "Services", "Demo": "Demo", "Método": "Process", "Nosotros": "About us", "Preguntas": "FAQ", "Cotizar": "Get a quote",
+        "Menos trabajo manual.": "Less manual work.",
+        "Más control de tu negocio.": "More control of your business.",
+        "Sitios web, sistemas a la medida y automatizaciones para empresas en Guatemala. Te decimos qué conviene hacer primero, cuánto cuesta y lo construimos de principio a fin.": "Websites, custom software and automation for companies in Guatemala. We tell you what to tackle first, what it costs, and we build it end to end.",
+        "Cotiza tu proyecto por WhatsApp": "Get a quote on WhatsApp",
+        "Ver servicios": "See services",
+        "Primera asesoría sin costo. Te responden directamente los fundadores.": "Your first consultation is free. The founders reply to you directly.",
+        "Productos digitales": "Digital products", "Procesos": "Processes", "Adopción digital": "Digital adoption",
+        "Trabajo reciente.": "Recent work.",
+        "Tres empresas que dejaron las hojas de cálculo atrás.": "Three companies that left spreadsheets behind.",
+        "Pedido 2318": "Order 2318", "Pedido 2317": "Order 2317", "Pedido 2316": "Order 2316", "Pedido 2315": "Order 2315",
+        "Despachado": "Shipped", "En ruta": "On route", "Falta stock": "Out of stock",
+        "Distribuidora de abarrotes · Quetzaltenango": "Grocery distributor · Quetzaltenango",
+        "Pedidos, inventario y rutas de reparto en un solo sistema.": "Orders, inventory and delivery routes in one system.",
+        "El cierre diario bajó de 2 horas a 15 minutos": "Daily closing went from 2 hours to 15 minutes",
+        "y los pedidos con producto agotado se detectan antes de salir a ruta.": "and orders with out-of-stock items are caught before trucks leave.",
+        "“Antes todo dependía de un Excel que solo entendía una persona. Hoy los vendedores, la bodega y yo vemos lo mismo, al minuto.”": "“Everything used to depend on a spreadsheet only one person understood. Now sales, the warehouse and I see the same numbers, up to the minute.”",
+        "Gerente general, distribuidora de abarrotes": "General manager, grocery distributor",
+        "Clínica dental · Ciudad de Guatemala": "Dental clinic · Guatemala City",
+        "Sitio web con agenda de citas en línea.": "Website with online appointment booking.",
+        "4 de cada 10 citas": "4 out of 10 appointments",
+        "ya se agendan solas, sin llamadas ni mensajes de ida y vuelta.": "now book themselves, without calls or back-and-forth messages.",
+        "Agroexportadora · Chimaltenango": "Agricultural exporter · Chimaltenango",
+        "Reportes de producción automáticos.": "Automatic production reports.",
+        "El reporte semanal se arma en 10 minutos": "The weekly report takes 10 minutes",
+        ", antes tomaba un día completo de una persona.": "; it used to take one person a full day.",
+        "¿Tu empresa todavía funciona así?": "Does your company still run like this?",
+        "Horas copiando datos entre hojas de cálculo.": "Hours spent copying data between spreadsheets.",
+        "Sistemas que no se hablan entre sí.": "Systems that don't talk to each other.",
+        "Procesos que se detienen cuando falta una persona.": "Processes that stop when one person is out.",
+        "Herramientas que pagas y nadie usa.": "Tools you pay for that nobody uses.",
+        "Cada día así te cuesta dinero:": "Every day like this costs you money:",
+        "en horas perdidas, en errores y en clientes que se van con quien responde más rápido.": "in lost hours, in mistakes, and in customers who go to whoever answers faster.",
+        "Cuéntanos tu caso por WhatsApp": "Tell us about it on WhatsApp",
+        "Primero un plan claro. Después, la tecnología.": "A clear plan first. Then the technology.",
+        "Analizamos cómo opera tu empresa, te decimos qué conviene digitalizar primero según tu presupuesto y lo implementamos de principio a fin.": "We look at how your company runs, tell you what to digitize first for your budget, and implement it end to end.",
+        "Trabajas directo con los dos fundadores: uno se encarga de la estrategia y el diseño, el otro de la programación y los datos. Un solo equipo, un solo interlocutor y cero jerga técnica.": "You work directly with both founders: one leads strategy and design, the other leads engineering and data. One team, one point of contact, and plain language throughout.",
+        "Recibes propuestas claras:": "You get clear proposals:",
+        "Alcance definido por escrito": "Scope defined in writing", "Precio antes de empezar": "Price agreed before we start", "Plazos por etapa": "Timelines for each stage",
+        "Pregúntanos cuánto costaría tu proyecto": "Ask us what your project would cost",
+        "Elige por dónde empezar.": "Choose where to start.",
+        "Un sitio web que te traiga clientes y sistemas a la medida que ordenen tu operación: inventarios, ventas, reportes o lo que tu negocio necesite.": "A website that brings in customers, and custom software that organizes your operation: inventory, sales, reporting or whatever your business needs.",
+        "Ideal si": "Best if",
+        "tu negocio vive en hojas de cálculo o quieres vender y recibir clientes en línea.": "your business lives in spreadsheets or you want to sell and take customers online.",
+        "Sitios web": "Websites", "Sistemas internos": "Internal systems", "Bases de datos": "Databases", "Integraciones": "Integrations",
+        "Cotizar un sitio o sistema": "Quote a website or system",
+        "Adopción digital y mejora de procesos": "Digital adoption and process improvement",
+        "Asesoría para ordenar tus procesos, automatizar tareas repetitivas y lograr que tu equipo use la tecnología de verdad.": "Guidance to organize your processes, automate repetitive tasks and get your team to actually use the technology.",
+        "ya invertiste en herramientas y no ves resultados, o no sabes por dónde empezar.": "you already invested in tools and see no results, or you don't know where to start.",
+        "Diagnóstico": "Assessment", "Automatización": "Automation", "Capacitación": "Training", "Indicadores": "KPIs",
+        "Pedir una asesoría": "Request a consultation",
+        "Numerado con numerales mayas: cada punto vale uno.": "Numbered with Maya numerals: each dot counts as one.",
+        "Así se ve un sistema por dentro.": "This is what a system looks like inside.",
+        "Una demo que puedes tocar: ventas, inventario y reportes de una ferretería ficticia. Es el tipo de herramienta que construimos a la medida de cada empresa.": "A demo you can click through: sales, inventory and reports for a fictional hardware store. It's the kind of tool we build to fit each company.",
+        "Datos de ejemplo": "Sample data",
+        "Ventas": "Sales", "Inventario": "Inventory", "Reportes": "Reports",
+        "Ventas de hoy": "Today's sales", "+12.4% vs. ayer": "+12.4% vs. yesterday", "Pedidos": "Orders", "Ticket promedio": "Average ticket",
+        "Ventas de los últimos 7 días": "Sales over the last 7 days",
+        "Mié": "Wed", "Jue": "Thu", "Vie": "Fri", "Sáb": "Sat", "Dom": "Sun", "Lun": "Mon", "Hoy": "Today",
+        "Últimos pedidos": "Latest orders",
+        "#1047 · Mostrador": "#1047 · Walk-in", "#1045 · Mostrador": "#1045 · Walk-in",
+        "Producto": "Product", "Existencia": "In stock", "Mínimo": "Minimum",
+        "Cemento gris 42.5 kg": "Gray cement 42.5 kg", "Varilla corrugada 3/8\"": "Rebar 3/8\"", "Pintura blanca 1 gal": "White paint 1 gal",
+        "Tubo PVC 1/2\" 6 m": "PVC pipe 1/2\" 6 m", "Tornillo punta broca 1\" (100)": "Self-drilling screw 1\" (100)", "Lámina troquelada 10 pies": "Corrugated sheet 10 ft",
+        "Reabastecer": "Restock", "En orden": "In order",
+        "Ventas por categoría · septiembre": "Sales by category · September",
+        "Construcción": "Construction", "Plomería": "Plumbing", "Pintura": "Paint", "Electricidad": "Electrical", "Herramientas": "Tools",
+        "Exportar a CSV": "Export to CSV",
+        "Descarga la tabla para abrirla en Excel o Google Sheets.": "Download the table to open it in Excel or Google Sheets.",
+        "Copiar CSV": "Copy CSV", "Copiado": "Copied", "Selecciona y copia con Ctrl+C": "Select it and press Ctrl+C",
+        "Categoría": "Category", "Ventas (Q)": "Sales (Q)", "% del total": "% of total", "Total": "Total",
+        "ventas-por-categoria": "sales-by-category",
+        "Archivo generado:": "File created:", "Si no se descargó, copia el contenido de abajo.": "If it didn't download, copy the content below.",
+        "¿Te imaginas algo así con los datos de tu empresa?": "Picture this with your company's data?",
+        "Cuéntanos qué necesitas controlar": "Tell us what you need to keep track of",
+        "Así empezamos a trabajar.": "How we get started.",
+        "Nos escribes por WhatsApp": "You message us on WhatsApp",
+        "Nos cuentas tu situación en un mensaje. Sin formularios ni llamadas de venta.": "Describe your situation in one message. Skip the forms and sales calls.",
+        "Conversación inicial sin costo": "Free first conversation",
+        "Entendemos qué necesitas y te damos un primer rango de precio.": "We understand what you need and give you an initial price range.",
+        "Propuesta clara": "Clear proposal",
+        "Recibes alcance, precio y plazos por escrito. Tú decides si avanzamos.": "You get scope, price and timelines in writing. You decide whether we go ahead.",
+        "Implementación y acompañamiento": "Build and support",
+        "Trabajamos por etapas para que veas avances pronto, capacitamos a tu equipo y nos quedamos hasta que todo funcione.": "We work in stages so you see progress early, train your team, and stay until everything works.",
+        "Dar el primer paso ahora": "Take the first step",
+        "Tres formas de trabajar con nosotros.": "Three ways to work with us.",
+        "Sin paquetes genéricos: el precio depende del alcance y lo recibes por escrito antes de empezar.": "Every project is priced on its scope, and you get the price in writing before we start.",
+        "Revisamos cómo opera tu empresa y te entregamos un plan por prioridades, con lo que conviene digitalizar primero y su costo estimado.": "We review how your company runs and hand you a prioritized plan: what to digitize first and what it will cost.",
+        "Para ti si no sabes por dónde empezar.": "For you if you don't know where to start.",
+        "Pedir un diagnóstico": "Request an assessment",
+        "Proyecto": "Project",
+        "Un sitio web, sistema o automatización con alcance, precio y plazos cerrados por escrito. Entregas por etapas para que veas avances pronto.": "A website, system or automation with fixed scope, price and timelines in writing. Delivered in stages so you see progress early.",
+        "Para ti si ya sabes qué necesitas.": "For you if you already know what you need.",
+        "Cotizar un proyecto": "Quote a project",
+        "Acompañamiento": "Ongoing support",
+        "Soporte, mejoras y capacitación después de la entrega, para que el sistema crezca con tu negocio y tu equipo lo use de verdad.": "Support, improvements and training after launch, so the system grows with your business and your team keeps using it.",
+        "Para ti si quieres que todo siga funcionando.": "For you if you want everything to keep running.",
+        "Preguntar por acompañamiento": "Ask about ongoing support",
+        "Imagina tu empresa dentro de unos meses.": "Picture your company a few months from now.",
+        "Toda tu información en un solo lugar, al día y a la mano.": "All your information in one place, up to date and at hand.",
+        "Las tareas repetitivas se hacen solas y tu equipo se enfoca en vender y atender.": "Repetitive tasks run on their own, and your team focuses on selling and serving customers.",
+        "Menos errores y menos dependencia de una sola persona.": "Fewer mistakes and less dependence on any one person.",
+        "Ventas, inventario y cobros al día en un solo tablero para decidir con números.": "Sales, inventory and collections up to date on one dashboard, so you decide with numbers.",
+        "Quiero esto para mi empresa": "I want this for my company",
+        "Dos fundadores. Un mismo equipo de principio a fin.": "Two founders. One team from start to finish.",
+        "Pixan Tech une lo que casi siempre se contrata por separado: alguien que entiende cómo vende tu negocio y alguien que construye el sistema que lo hace posible.": "Pixan Tech brings together what you'd usually hire separately: someone who understands how your business sells, and someone who builds the system that makes it possible.",
+        "Marketing y diseño": "Marketing and design",
+        "Diseña cómo te ven tus clientes y cómo te encuentran: sitios web, identidad y la experiencia de quien usa el sistema todos los días. Su pregunta de siempre: ¿esto ayuda a vender?": "Designs how customers see and find you: websites, brand identity, and the experience of the people who use the system every day. His standing question: does this help us sell?",
+        "Programación y análisis de datos": "Software engineering and data analysis",
+        "Construye los sistemas, las integraciones y los tableros que convierten tus datos en decisiones. Su pregunta de siempre: ¿qué número necesitas ver cada mañana?": "Builds the systems, integrations and dashboards that turn your data into decisions. His standing question: which number do you need to see every morning?",
+        "años sumando experiencia en marketing, diseño y software": "combined years in marketing, design and software",
+        "proyectos entregados a empresas guatemaltecas": "projects delivered to Guatemalan companies",
+        "para responder tu primer mensaje, en tu zona horaria": "to reply to your first message, in your time zone",
+        "Lo que todos preguntan.": "What everyone asks.",
+        "¿Tu duda no está aquí? Escríbenos y te responde uno de los fundadores.": "Question not here? Message us and one of the founders will reply.",
+        "¿Cuánto cuesta?": "How much does it cost?",
+        "Depende de lo que necesites, por eso no vendemos paquetes genéricos que terminas pagando de más. Escríbenos con tu caso y en la primera conversación te damos un rango de precio, sin costo. Si avanzamos, recibes el precio por escrito antes de empezar.": "It depends on what you need, which is why we don't sell one-size-fits-all packages you end up overpaying for. Message us with your case and in the first conversation we'll give you a price range, free of charge. If we move forward, you get the price in writing before we start.",
+        "Sitio web profesional": "Professional website", "Sistema a la medida": "Custom system", "Diagnóstico de procesos": "Process assessment",
+        "desde Q4,500": "from Q4,500", "desde Q15,000": "from Q15,000", "desde Q1,800": "from Q1,800",
+        "Pedir un rango de precio": "Ask for a price range",
+        "¿Mi empresa es muy pequeña para esto?": "Is my company too small for this?",
+        "No. La propuesta se ajusta a tu tamaño y presupuesto, y empezamos por lo que más rápido te devuelve la inversión.": "No. The proposal fits your size and budget, and we start with whatever pays you back fastest.",
+        "¿Cuánto tiempo toma?": "How long does it take?",
+        "Depende del alcance. Trabajamos por etapas para que veas resultados desde las primeras entregas, y en la propuesta te indicamos los plazos de cada una.": "It depends on the scope. We work in stages so you see results from the first deliveries, and the proposal lists the timeline for each one.",
+        "Ya tengo sistemas. ¿Tengo que cambiar todo?": "I already have systems. Do I have to replace everything?",
+        "No. Primero aprovechamos lo que ya funciona y conectamos lo que hoy está aislado. Solo cambiamos lo que de verdad te frena.": "No. We build on what already works and connect what's isolated today. We only replace what's actually holding you back.",
+        "¿Qué pasa después de la entrega?": "What happens after launch?",
+        "Capacitamos a tu equipo y te damos soporte para que todo siga funcionando. No te quedas con un sistema que nadie sabe usar.": "We train your team and support you so everything keeps running. You won't be left with a system nobody knows how to use.",
+        "¿Qué te gustaría dejar de hacer a mano?": "What would you like to stop doing by hand?",
+        "Cuéntanoslo por WhatsApp en un mensaje. Te respondemos con cómo lo resolveríamos y un rango de precio. La primera conversación no tiene costo.": "Tell us in one WhatsApp message. We'll reply with how we'd solve it and a price range. The first conversation is free.",
+        "Pedir mi cotización por WhatsApp": "Get my quote on WhatsApp",
+        "O elige un tema y el mensaje se escribe solo:": "Or pick a topic and the message writes itself:",
+        "Quiero un sitio web": "I want a website", "Necesito un sistema a la medida": "I need a custom system",
+        "Automatizar tareas repetitivas": "Automate repetitive tasks", "Digitalizar mis procesos": "Digitize my processes",
+        // Attributes: accessible labels and pre-written WhatsApp messages.
+        "Principal": "Main", "Idioma": "Language", "Áreas de trabajo": "Areas of work", "Módulos": "Modules",
+        "Pirámide maya de jade flotando sobre un suelo de piedra": "Jade Maya pyramid floating above a stone floor",
+        "Demo interactiva de un sistema de gestión": "Interactive demo of a management system",
+        "Capítulo 1": "Chapter 1", "Capítulo 2": "Chapter 2", "Capítulo 3": "Chapter 3", "Capítulo 4": "Chapter 4", "Capítulo 5": "Chapter 5",
+        "Servicio 1": "Service 1", "Servicio 2": "Service 2", "Paso 1": "Step 1", "Paso 2": "Step 2", "Paso 3": "Step 3", "Paso 4": "Step 4",
+        "Escribir por WhatsApp": "Message us on WhatsApp",
+        "Hola, vi la página de Pixan Tech y quiero cotizar un proyecto para mi empresa.": "Hi, I saw the Pixan Tech website and I'd like a quote for a project for my company.",
+        "Hola, quiero contarte cómo trabajamos hoy en mi empresa y ver qué podemos mejorar.": "Hi, I'd like to tell you how my company works today and see what we can improve.",
+        "Hola, ¿me pueden dar un rango de precio? Esto es lo que necesito:": "Hi, could you give me a price range? This is what I need:",
+        "Hola, quiero cotizar un producto digital (sitio web, sistema o aplicación) para mi empresa.": "Hi, I'd like a quote for a digital product (website, system or app) for my company.",
+        "Hola, me interesa una asesoría en adopción digital y mejora de procesos para mi empresa.": "Hi, I'm interested in a consultation on digital adoption and process improvement for my company.",
+        "Hola, vi la demo en tu página y quiero algo así para mi empresa.": "Hi, I saw the demo on your website and I'd like something like it for my company.",
+        "Hola, quiero agendar la conversación inicial sin costo.": "Hi, I'd like to schedule the free first conversation.",
+        "Hola, me interesa un diagnóstico de mi empresa.": "Hi, I'm interested in an assessment of my company.",
+        "Hola, quiero cotizar un proyecto para mi empresa. Esto es lo que necesito:": "Hi, I'd like a quote for a project for my company. This is what I need:",
+        "Hola, me interesa el acompañamiento y soporte continuo para mi empresa.": "Hi, I'm interested in ongoing support for my company.",
+        "Hola, quiero cotizar un sitio web para mi empresa.": "Hi, I'd like a quote for a website for my company.",
+        "Hola, necesito un sistema a la medida para mi empresa. ¿Cuánto costaría?": "Hi, I need a custom system for my company. How much would it cost?",
+        "Hola, quiero automatizar tareas repetitivas en mi empresa. ¿Cuánto costaría?": "Hi, I'd like to automate repetitive tasks in my company. How much would it cost?",
+      };
+      const META = {
+        es: { title: document.title, desc: document.querySelector('meta[name="description"]')?.content },
+        en: {
+          title: "Pixan Tech | Websites, custom software and digital processes for companies in Guatemala",
+          desc: "Custom software, websites and digital adoption consulting for companies in Guatemala. Free first consultation: get a quote on WhatsApp."
+        },
+      };
+      const norm = s => s.replace(/\s+/g, " ").trim();
+      const original = new WeakMap();
+      let lang = "es";
 
-<script type="importmap">
+      window.pxT = s => (lang === "en" && EN[norm(s)]) || s;
+
+      function translateText(root) {
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode: n => n.parentElement && !/^(SCRIPT|STYLE|PRE)$/.test(n.parentElement.tagName) ? 1 : 3,
+        });
+        for (let n; (n = walker.nextNode());) {
+          if (!original.has(n)) original.set(n, n.textContent);
+          const es = original.get(n), key = norm(es);
+          if (!key) continue;
+          const en = EN[key];
+          // Keep the surrounding whitespace so inline spacing survives the swap.
+          const [, lead, trail] = es.match(/^(\s*)[\s\S]*?(\s*)$/);
+          n.textContent = lang === "en" && en ? lead + en + trail : es;
+        }
+      }
+      function translateAttrs(root) {
+        root.querySelectorAll("[aria-label],[alt],[data-wa]").forEach(el => {
+          for (const attr of ["aria-label", "alt", "data-wa"]) {
+            if (!el.hasAttribute(attr)) continue;
+            const keep = "data-es-" + attr;
+            if (!el.hasAttribute(keep)) el.setAttribute(keep, el.getAttribute(attr));
+            const es = el.getAttribute(keep), en = EN[norm(es)];
+            const value = lang === "en" && en ? en + (/\s$/.test(es) ? " " : "") : es;
+            el.setAttribute(attr, value);
+            if (attr === "data-wa") el.href = "https://wa.me/50258253416?text=" + encodeURIComponent(value);
+          }
+        });
+      }
+      window.pxApplyLang = (root = document.body) => { translateText(root); translateAttrs(root); };
+
+      function setLang(next) {
+        lang = next;
+        document.documentElement.lang = next;
+        document.title = META[next].title;
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc && META[next].desc) desc.content = META[next].desc;
+        document.querySelectorAll(".lang [data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === next)));
+        window.pxApplyLang();
+        try { localStorage.setItem("px-lang", next); } catch { }
+      }
+      document.querySelectorAll(".lang [data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+      let saved = null;
+      try { saved = localStorage.getItem("px-lang"); } catch { }
+      if (saved === "en") setLang("en");
+    })();
+  </script>
+
+  <script type="importmap">
 { "imports": {
   "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
   "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
 } }
 </script>
-<script type="module">
-// Hero scene: a jade Maya pyramid on a dark circular dais with a glowing ring,
-// over a fading light grid. Energy rings pulse outward and motes of light drift up.
-import * as THREE from "three";
-import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
-import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+  <script type="module">
+    // Hero scene: a jade Maya pyramid on a dark circular dais with a glowing ring,
+    // over a fading light grid. Energy rings pulse outward and motes of light drift up.
+    import * as THREE from "three";
+    import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+    import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
-const host = document.getElementById("scene");
-const canvas = document.getElementById("jade-canvas");
-// With reduced motion we keep only a slow turn: no bobbing, pulses or parallax.
-const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const host = document.getElementById("scene");
+    const canvas = document.getElementById("jade-canvas");
+    // With reduced motion we keep only a slow turn: no bobbing, pulses or parallax.
+    const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-let renderer;
-try {
-  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-} catch {
-  throw new Error("WebGL unavailable; the static image stays visible.");
-}
-renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.1;
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    } catch {
+      throw new Error("WebGL unavailable; the static image stays visible.");
+    }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
 
-const GLOW = new THREE.Color("#4fd1a1");
-const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(new THREE.Color("#08110e"), 8, 19);
-const pmrem = new THREE.PMREMGenerator(renderer);
-scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    const GLOW = new THREE.Color("#4fd1a1");
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.Fog(new THREE.Color("#08110e"), 8, 19);
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
-const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
-const camBase = new THREE.Vector3(0, 4.4, 9.6);
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 60);
+    const camBase = new THREE.Vector3(0, 4.4, 9.6);
 
-scene.add(new THREE.HemisphereLight(0x9fd8c0, 0x050a08, 0.5));
-const key = new THREE.DirectionalLight(0xffffff, 2.4);
-key.position.set(-4, 9, 5);
-key.castShadow = true;
-key.shadow.mapSize.set(1024, 1024);
-Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 });
-key.shadow.bias = -0.0005;
-key.shadow.radius = 5;
-scene.add(key);
-const rim = new THREE.DirectionalLight(GLOW, 2.2);
-rim.position.set(5, 3, -6);
-scene.add(rim);
-const under = new THREE.PointLight(GLOW, 6, 6, 2);
-under.position.set(0, 0.25, 0);
-scene.add(under);
+    scene.add(new THREE.HemisphereLight(0x9fd8c0, 0x050a08, 0.5));
+    const key = new THREE.DirectionalLight(0xffffff, 2.4);
+    key.position.set(-4, 9, 5);
+    key.castShadow = true;
+    key.shadow.mapSize.set(1024, 1024);
+    Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 25 });
+    key.shadow.bias = -0.0005;
+    key.shadow.radius = 5;
+    scene.add(key);
+    const rim = new THREE.DirectionalLight(GLOW, 2.2);
+    rim.position.set(5, 3, -6);
+    scene.add(rim);
+    const under = new THREE.PointLight(GLOW, 6, 6, 2);
+    under.position.set(0, 0.25, 0);
+    scene.add(under);
 
-// Light grid floor, fading into the fog.
-const grid = new THREE.GridHelper(40, 40, GLOW, GLOW);
-grid.material.transparent = true;
-grid.material.opacity = 0.16;
-grid.material.depthWrite = false;
-grid.position.y = -0.01;
-scene.add(grid);
+    // Light grid floor, fading into the fog.
+    const grid = new THREE.GridHelper(40, 40, GLOW, GLOW);
+    grid.material.transparent = true;
+    grid.material.opacity = 0.16;
+    grid.material.depthWrite = false;
+    grid.position.y = -0.01;
+    scene.add(grid);
 
-// Procedural jade veining.
-function jadeTexture() {
-  const c = document.createElement("canvas");
-  c.width = c.height = 512;
-  const g = c.getContext("2d");
-  g.fillStyle = "#1d6a4e";
-  g.fillRect(0, 0, 512, 512);
-  let seed = 7;
-  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  for (let i = 0; i < 70; i++) {
-    const x = rnd() * 512, y = rnd() * 512, r = 30 + rnd() * 120;
-    const grad = g.createRadialGradient(x, y, 0, x, y, r);
-    grad.addColorStop(0, rnd() > 0.5 ? "rgba(12,58,40,0.55)" : "rgba(70,150,112,0.35)");
-    grad.addColorStop(1, "rgba(0,0,0,0)");
-    g.fillStyle = grad;
-    g.fillRect(0, 0, 512, 512);
-  }
-  g.filter = "blur(1.5px)";
-  g.strokeStyle = "rgba(170,215,190,0.14)";
-  for (let i = 0; i < 9; i++) {
-    g.lineWidth = 1 + rnd() * 2;
-    g.beginPath();
-    let x = rnd() * 512, y = rnd() * 512;
-    g.moveTo(x, y);
-    for (let k = 0; k < 6; k++) { x += (rnd() - 0.4) * 120; y += (rnd() - 0.5) * 90; g.lineTo(x, y); }
-    g.stroke();
-  }
-  const tex = new THREE.CanvasTexture(c);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  return tex;
-}
-const jade = new THREE.MeshPhysicalMaterial({
-  map: jadeTexture(), roughness: 0.14, transmission: 0.3, thickness: 1.6, ior: 1.62,
-  attenuationColor: new THREE.Color("#0b3d2b"), attenuationDistance: 0.9,
-  clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.9,
-  emissive: new THREE.Color("#0b3d2b"), emissiveIntensity: 0.25,
-});
-const stone = new THREE.MeshPhysicalMaterial({ color: 0x9fbdab, roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.35, envMapIntensity: 0.5 });
-const basalt = new THREE.MeshPhysicalMaterial({ color: 0x0c1512, roughness: 0.4, metalness: 0.1, clearcoat: 0.6, clearcoatRoughness: 0.25, envMapIntensity: 0.25 });
-const shadowed = new THREE.MeshStandardMaterial({ color: 0x04100b, roughness: 0.9 });
-const glowLine = new THREE.MeshBasicMaterial({ color: GLOW, toneMapped: false });
-
-// Everything that turns together: dais + pyramid.
-const monument = new THREE.Group();
-scene.add(monument);
-const add = (parent, geo, mat, x, y, z) => {
-  const mesh = new THREE.Mesh(geo, mat);
-  mesh.position.set(x, y, z);
-  mesh.castShadow = mesh.receiveShadow = true;
-  parent.add(mesh);
-  return mesh;
-};
-
-// Dais: two stacked basalt discs, a glowing ring on each lip.
-add(monument, new THREE.CylinderGeometry(2.25, 2.38, 0.2, 96), basalt, 0, 0.1, 0);
-add(monument, new THREE.CylinderGeometry(1.98, 2.06, 0.18, 96), basalt, 0, 0.29, 0);
-for (const [r, y] of [[2.26, 0.205], [1.99, 0.385]]) {
-  const ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.014, 8, 160), glowLine);
-  ring.rotation.x = Math.PI / 2;
-  ring.position.y = y;
-  monument.add(ring);
-}
-
-// Stepped pyramid (after Tikal's Temple I).
-const pyramid = new THREE.Group();
-pyramid.position.y = 0.38;
-monument.add(pyramid);
-const TIERS = 6, TIER_H = 0.3, BASE = 2.3, SHRINK = 0.3;
-for (let i = 0; i < TIERS; i++) {
-  const w = BASE - i * SHRINK;
-  add(pyramid, new RoundedBoxGeometry(w, TIER_H, w, 3, 0.05), jade, 0, i * TIER_H + TIER_H / 2, 0);
-}
-const topY = TIERS * TIER_H;
-const templeW = BASE - TIERS * SHRINK + 0.1;
-const STEPS = TIERS * 3, stepH = topY / STEPS;
-const zBase = BASE / 2 + 0.35, zTop = templeW * 0.41;
-for (let k = 0; k < STEPS; k++) {
-  const front = zBase - (k / (STEPS - 1)) * (zBase - zTop);
-  add(pyramid, new THREE.BoxGeometry(0.54, stepH, front), stone, 0, (k + 0.5) * stepH, front / 2);
-}
-for (const side of [-1, 1]) {
-  const len = Math.hypot(zBase - zTop, topY);
-  const rail = add(pyramid, new THREE.BoxGeometry(0.09, 0.11, len), jade, side * 0.32, topY / 2 + 0.04, (zBase + zTop) / 2);
-  rail.rotation.x = Math.atan2(topY, zBase - zTop);
-}
-add(pyramid, new RoundedBoxGeometry(templeW, 0.44, templeW * 0.82, 3, 0.05), jade, 0, topY + 0.22, -0.04);
-const door = add(pyramid, new THREE.BoxGeometry(0.2, 0.26, 0.04), shadowed, 0, topY + 0.17, templeW * 0.41 - 0.02);
-add(pyramid, new RoundedBoxGeometry(templeW * 0.7, 0.34, 0.13, 2, 0.03), jade, 0, topY + 0.6, -0.12);
-// A thin line of light in the doorway.
-add(pyramid, new THREE.BoxGeometry(0.14, 0.02, 0.05), glowLine, 0, topY + 0.06, templeW * 0.41 - 0.01);
-monument.rotation.y = -0.55;
-
-// Energy pulses: flat rings that expand from the dais and fade out.
-const pulses = [0, 1, 2].map(i => {
-  const mat = new THREE.MeshBasicMaterial({ color: GLOW, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false, toneMapped: false });
-  const ring = new THREE.Mesh(new THREE.RingGeometry(0.985, 1, 128), mat);
-  ring.rotation.x = -Math.PI / 2;
-  ring.position.y = 0.005;
-  scene.add(ring);
-  return { ring, mat, offset: i / 3 };
-});
-
-// Motes of light drifting upward around the monument.
-const MOTES = 70;
-const motePos = new Float32Array(MOTES * 3);
-const moteSeed = [];
-for (let i = 0; i < MOTES; i++) {
-  const a = Math.random() * Math.PI * 2, r = 1.6 + Math.random() * 4;
-  moteSeed.push({ a, r, y: Math.random() * 4, v: 0.15 + Math.random() * 0.35 });
-}
-const moteGeo = new THREE.BufferGeometry();
-moteGeo.setAttribute("position", new THREE.BufferAttribute(motePos, 3));
-const motes = new THREE.Points(moteGeo, new THREE.PointsMaterial({ color: GLOW, size: 0.045, transparent: true, opacity: 0.7, depthWrite: false, toneMapped: false }));
-scene.add(motes);
-
-const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
-if (!calm && matchMedia("(pointer: fine)").matches) {
-  host.addEventListener("pointermove", ev => {
-    const r = host.getBoundingClientRect();
-    pointer.tx = (ev.clientX - r.left) / r.width - 0.5;
-    pointer.ty = (ev.clientY - r.top) / r.height - 0.5;
-  });
-  host.addEventListener("pointerleave", () => { pointer.tx = pointer.ty = 0; });
-}
-
-function frame(t) {
-  const time = t / 1000;
-  monument.rotation.y = -0.55 + time * (calm ? 0.08 : 0.18);
-
-  if (!calm) {
-    pyramid.position.y = 0.38 + (Math.sin(time * 1.2) * 0.5 + 0.5) * 0.06;
-    under.intensity = 5 + Math.sin(time * 2) * 1.5;
-    pulses.forEach(p => {
-      const k = (time * 0.28 + p.offset) % 1;
-      p.ring.scale.setScalar(2.4 + k * 5.5);
-      p.mat.opacity = (1 - k) * 0.45;
+    // Procedural jade veining.
+    function jadeTexture() {
+      const c = document.createElement("canvas");
+      c.width = c.height = 512;
+      const g = c.getContext("2d");
+      g.fillStyle = "#1d6a4e";
+      g.fillRect(0, 0, 512, 512);
+      let seed = 7;
+      const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+      for (let i = 0; i < 70; i++) {
+        const x = rnd() * 512, y = rnd() * 512, r = 30 + rnd() * 120;
+        const grad = g.createRadialGradient(x, y, 0, x, y, r);
+        grad.addColorStop(0, rnd() > 0.5 ? "rgba(12,58,40,0.55)" : "rgba(70,150,112,0.35)");
+        grad.addColorStop(1, "rgba(0,0,0,0)");
+        g.fillStyle = grad;
+        g.fillRect(0, 0, 512, 512);
+      }
+      g.filter = "blur(1.5px)";
+      g.strokeStyle = "rgba(170,215,190,0.14)";
+      for (let i = 0; i < 9; i++) {
+        g.lineWidth = 1 + rnd() * 2;
+        g.beginPath();
+        let x = rnd() * 512, y = rnd() * 512;
+        g.moveTo(x, y);
+        for (let k = 0; k < 6; k++) { x += (rnd() - 0.4) * 120; y += (rnd() - 0.5) * 90; g.lineTo(x, y); }
+        g.stroke();
+      }
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      return tex;
+    }
+    const jade = new THREE.MeshPhysicalMaterial({
+      map: jadeTexture(), roughness: 0.14, transmission: 0.3, thickness: 1.6, ior: 1.62,
+      attenuationColor: new THREE.Color("#0b3d2b"), attenuationDistance: 0.9,
+      clearcoat: 1, clearcoatRoughness: 0.06, envMapIntensity: 0.9,
+      emissive: new THREE.Color("#0b3d2b"), emissiveIntensity: 0.25,
     });
-    moteSeed.forEach((m, i) => {
-      const y = (m.y + time * m.v) % 4;
-      motePos[i * 3] = Math.cos(m.a + time * 0.05) * m.r;
-      motePos[i * 3 + 1] = y;
-      motePos[i * 3 + 2] = Math.sin(m.a + time * 0.05) * m.r;
+    const stone = new THREE.MeshPhysicalMaterial({ color: 0x9fbdab, roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.35, envMapIntensity: 0.5 });
+    const basalt = new THREE.MeshPhysicalMaterial({ color: 0x0c1512, roughness: 0.4, metalness: 0.1, clearcoat: 0.6, clearcoatRoughness: 0.25, envMapIntensity: 0.25 });
+    const shadowed = new THREE.MeshStandardMaterial({ color: 0x04100b, roughness: 0.9 });
+    const glowLine = new THREE.MeshBasicMaterial({ color: GLOW, toneMapped: false });
+
+    // Everything that turns together: dais + pyramid.
+    const monument = new THREE.Group();
+    scene.add(monument);
+    const add = (parent, geo, mat, x, y, z) => {
+      const mesh = new THREE.Mesh(geo, mat);
+      mesh.position.set(x, y, z);
+      mesh.castShadow = mesh.receiveShadow = true;
+      parent.add(mesh);
+      return mesh;
+    };
+
+    // Dais: two stacked basalt discs, a glowing ring on each lip.
+    add(monument, new THREE.CylinderGeometry(2.25, 2.38, 0.2, 96), basalt, 0, 0.1, 0);
+    add(monument, new THREE.CylinderGeometry(1.98, 2.06, 0.18, 96), basalt, 0, 0.29, 0);
+    for (const [r, y] of [[2.26, 0.205], [1.99, 0.385]]) {
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(r, 0.014, 8, 160), glowLine);
+      ring.rotation.x = Math.PI / 2;
+      ring.position.y = y;
+      monument.add(ring);
+    }
+
+    // Stepped pyramid (after Tikal's Temple I).
+    const pyramid = new THREE.Group();
+    pyramid.position.y = 0.38;
+    monument.add(pyramid);
+    const TIERS = 6, TIER_H = 0.3, BASE = 2.3, SHRINK = 0.3;
+    for (let i = 0; i < TIERS; i++) {
+      const w = BASE - i * SHRINK;
+      add(pyramid, new RoundedBoxGeometry(w, TIER_H, w, 3, 0.05), jade, 0, i * TIER_H + TIER_H / 2, 0);
+    }
+    const topY = TIERS * TIER_H;
+    const templeW = BASE - TIERS * SHRINK + 0.1;
+    const STEPS = TIERS * 3, stepH = topY / STEPS;
+    const zBase = BASE / 2 + 0.35, zTop = templeW * 0.41;
+    for (let k = 0; k < STEPS; k++) {
+      const front = zBase - (k / (STEPS - 1)) * (zBase - zTop);
+      add(pyramid, new THREE.BoxGeometry(0.54, stepH, front), stone, 0, (k + 0.5) * stepH, front / 2);
+    }
+    for (const side of [-1, 1]) {
+      const len = Math.hypot(zBase - zTop, topY);
+      const rail = add(pyramid, new THREE.BoxGeometry(0.09, 0.11, len), jade, side * 0.32, topY / 2 + 0.04, (zBase + zTop) / 2);
+      rail.rotation.x = Math.atan2(topY, zBase - zTop);
+    }
+    add(pyramid, new RoundedBoxGeometry(templeW, 0.44, templeW * 0.82, 3, 0.05), jade, 0, topY + 0.22, -0.04);
+    const door = add(pyramid, new THREE.BoxGeometry(0.2, 0.26, 0.04), shadowed, 0, topY + 0.17, templeW * 0.41 - 0.02);
+    add(pyramid, new RoundedBoxGeometry(templeW * 0.7, 0.34, 0.13, 2, 0.03), jade, 0, topY + 0.6, -0.12);
+    // A thin line of light in the doorway.
+    add(pyramid, new THREE.BoxGeometry(0.14, 0.02, 0.05), glowLine, 0, topY + 0.06, templeW * 0.41 - 0.01);
+    monument.rotation.y = -0.55;
+
+    // Energy pulses: flat rings that expand from the dais and fade out.
+    const pulses = [0, 1, 2].map(i => {
+      const mat = new THREE.MeshBasicMaterial({ color: GLOW, transparent: true, opacity: 0, side: THREE.DoubleSide, depthWrite: false, toneMapped: false });
+      const ring = new THREE.Mesh(new THREE.RingGeometry(0.985, 1, 128), mat);
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.y = 0.005;
+      scene.add(ring);
+      return { ring, mat, offset: i / 3 };
     });
-    moteGeo.attributes.position.needsUpdate = true;
-  }
 
-  pointer.x += (pointer.tx - pointer.x) * 0.05;
-  pointer.y += (pointer.ty - pointer.y) * 0.05;
-  camera.position.set(camBase.x + pointer.x * 2, camBase.y - pointer.y * 1, camBase.z);
-  camera.lookAt(0, 1.05, 0);
-  renderer.render(scene, camera);
-}
+    // Motes of light drifting upward around the monument.
+    const MOTES = 70;
+    const motePos = new Float32Array(MOTES * 3);
+    const moteSeed = [];
+    for (let i = 0; i < MOTES; i++) {
+      const a = Math.random() * Math.PI * 2, r = 1.6 + Math.random() * 4;
+      moteSeed.push({ a, r, y: Math.random() * 4, v: 0.15 + Math.random() * 0.35 });
+    }
+    const moteGeo = new THREE.BufferGeometry();
+    moteGeo.setAttribute("position", new THREE.BufferAttribute(motePos, 3));
+    const motes = new THREE.Points(moteGeo, new THREE.PointsMaterial({ color: GLOW, size: 0.045, transparent: true, opacity: 0.7, depthWrite: false, toneMapped: false }));
+    scene.add(motes);
 
-function resize() {
-  const { width, height } = host.getBoundingClientRect();
-  renderer.setSize(width, height, false);
-  camera.aspect = width / height;
-  camera.fov = width < 640 ? 48 : 30;
-  camera.updateProjectionMatrix();
-}
-new ResizeObserver(resize).observe(host);
-resize();
+    const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+    if (!calm && matchMedia("(pointer: fine)").matches) {
+      host.addEventListener("pointermove", ev => {
+        const r = host.getBoundingClientRect();
+        pointer.tx = (ev.clientX - r.left) / r.width - 0.5;
+        pointer.ty = (ev.clientY - r.top) / r.height - 0.5;
+      });
+      host.addEventListener("pointerleave", () => { pointer.tx = pointer.ty = 0; });
+    }
 
-// Animate only while on screen.
-let running = false;
-const loop = t => { if (!running) return; frame(t); requestAnimationFrame(loop); };
-new IntersectionObserver(([entry]) => {
-  running = entry.isIntersecting;
-  if (running) requestAnimationFrame(loop);
-}).observe(host);
+    function frame(t) {
+      const time = t / 1000;
+      monument.rotation.y = -0.55 + time * (calm ? 0.08 : 0.18);
 
-frame(0);
-host.classList.add("live");
-</script>
+      if (!calm) {
+        pyramid.position.y = 0.38 + (Math.sin(time * 1.2) * 0.5 + 0.5) * 0.06;
+        under.intensity = 5 + Math.sin(time * 2) * 1.5;
+        pulses.forEach(p => {
+          const k = (time * 0.28 + p.offset) % 1;
+          p.ring.scale.setScalar(2.4 + k * 5.5);
+          p.mat.opacity = (1 - k) * 0.45;
+        });
+        moteSeed.forEach((m, i) => {
+          const y = (m.y + time * m.v) % 4;
+          motePos[i * 3] = Math.cos(m.a + time * 0.05) * m.r;
+          motePos[i * 3 + 1] = y;
+          motePos[i * 3 + 2] = Math.sin(m.a + time * 0.05) * m.r;
+        });
+        moteGeo.attributes.position.needsUpdate = true;
+      }
+
+      pointer.x += (pointer.tx - pointer.x) * 0.05;
+      pointer.y += (pointer.ty - pointer.y) * 0.05;
+      camera.position.set(camBase.x + pointer.x * 2, camBase.y - pointer.y * 1, camBase.z);
+      camera.lookAt(0, 1.05, 0);
+      renderer.render(scene, camera);
+    }
+
+    function resize() {
+      const { width, height } = host.getBoundingClientRect();
+      renderer.setSize(width, height, false);
+      camera.aspect = width / height;
+      camera.fov = width < 640 ? 48 : 30;
+      camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(host);
+    resize();
+
+    // Animate only while on screen.
+    let running = false;
+    const loop = t => { if (!running) return; frame(t); requestAnimationFrame(loop); };
+    new IntersectionObserver(([entry]) => {
+      running = entry.isIntersecting;
+      if (running) requestAnimationFrame(loop);
+    }).observe(host);
+
+    frame(0);
+    host.classList.add("live");
+  </script>
 </body>
+
 </html>
